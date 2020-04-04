@@ -15,9 +15,14 @@ namespace FacebookApp.UI
 
         public UIManager()
         {
-            m_ApplicationSettings = new ApplicationSettings();
-
+            m_ApplicationSettings = ApplicationSettings.Instance;
+            m_LoginManager = LoginManager.Instance;
+            m_MainForm = new FormMain();
         }
 
+        public void Run()
+        {
+            Application.Run(m_MainForm);
+        }
     }
 }

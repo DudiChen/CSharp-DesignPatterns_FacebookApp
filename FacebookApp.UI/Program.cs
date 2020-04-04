@@ -15,7 +15,9 @@ namespace FacebookApp.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            UIManager ui = new UIManager();
+            ui.Run();
+            //Application.Run(new FormMain());
         }
     }
 }
