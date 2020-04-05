@@ -33,28 +33,28 @@
             this.pictureBoxProfilePic = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageNewsFeed = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelFeedPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePosts = new System.Windows.Forms.TabPage();
             this.tabPageFriends = new System.Windows.Forms.TabPage();
+            this.labelFriendPosts = new System.Windows.Forms.Label();
+            this.labelFriendAbout = new System.Windows.Forms.Label();
+            this.listBoxFriendAbout = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.labelFriendName = new System.Windows.Forms.Label();
+            this.pictureBoxFriendPic = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePhotos = new System.Windows.Forms.TabPage();
             this.tabPagePostsStatistics = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBoxCoverPic = new System.Windows.Forms.PictureBox();
             this.labelUserName = new System.Windows.Forms.Label();
-            this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBoxFriendPic = new System.Windows.Forms.PictureBox();
-            this.labelFriendName = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBoxFriendAbout = new System.Windows.Forms.ListBox();
-            this.labelFriendAbout = new System.Windows.Forms.Label();
-            this.labelFriendPosts = new System.Windows.Forms.Label();
-            this.flowLayoutPanelFeedPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageNewsFeed.SuspendLayout();
             this.tabPageFriends.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -110,6 +110,18 @@
             this.tabPageNewsFeed.Text = "News Feed";
             this.tabPageNewsFeed.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanelFeedPosts
+            // 
+            this.flowLayoutPanelFeedPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelFeedPosts.AutoScroll = true;
+            this.flowLayoutPanelFeedPosts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelFeedPosts.Location = new System.Drawing.Point(4, 4);
+            this.flowLayoutPanelFeedPosts.Name = "flowLayoutPanelFeedPosts";
+            this.flowLayoutPanelFeedPosts.Size = new System.Drawing.Size(855, 353);
+            this.flowLayoutPanelFeedPosts.TabIndex = 1;
+            // 
             // tabPagePosts
             // 
             this.tabPagePosts.Location = new System.Drawing.Point(4, 25);
@@ -136,6 +148,78 @@
             this.tabPageFriends.TabIndex = 2;
             this.tabPageFriends.Text = "Friends";
             this.tabPageFriends.UseVisualStyleBackColor = true;
+            // 
+            // labelFriendPosts
+            // 
+            this.labelFriendPosts.AutoSize = true;
+            this.labelFriendPosts.Location = new System.Drawing.Point(263, 122);
+            this.labelFriendPosts.Name = "labelFriendPosts";
+            this.labelFriendPosts.Size = new System.Drawing.Size(47, 17);
+            this.labelFriendPosts.TabIndex = 8;
+            this.labelFriendPosts.Text = "Posts:";
+            // 
+            // labelFriendAbout
+            // 
+            this.labelFriendAbout.AutoSize = true;
+            this.labelFriendAbout.Location = new System.Drawing.Point(390, 36);
+            this.labelFriendAbout.Name = "labelFriendAbout";
+            this.labelFriendAbout.Size = new System.Drawing.Size(49, 17);
+            this.labelFriendAbout.TabIndex = 7;
+            this.labelFriendAbout.Text = "About:";
+            // 
+            // listBoxFriendAbout
+            // 
+            this.listBoxFriendAbout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxFriendAbout.FormattingEnabled = true;
+            this.listBoxFriendAbout.ItemHeight = 16;
+            this.listBoxFriendAbout.Location = new System.Drawing.Point(393, 56);
+            this.listBoxFriendAbout.Name = "listBoxFriendAbout";
+            this.listBoxFriendAbout.Size = new System.Drawing.Size(466, 52);
+            this.listBoxFriendAbout.TabIndex = 6;
+            this.listBoxFriendAbout.Visible = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(240, 142);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(619, 212);
+            this.listBox1.TabIndex = 4;
+            this.listBox1.Visible = false;
+            // 
+            // labelFriendName
+            // 
+            this.labelFriendName.AutoSize = true;
+            this.labelFriendName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFriendName.Location = new System.Drawing.Point(389, 7);
+            this.labelFriendName.Name = "labelFriendName";
+            this.labelFriendName.Size = new System.Drawing.Size(107, 20);
+            this.labelFriendName.TabIndex = 2;
+            this.labelFriendName.Text = "Lorem Ipsum";
+            this.labelFriendName.Visible = false;
+            // 
+            // pictureBoxFriendPic
+            // 
+            this.pictureBoxFriendPic.Location = new System.Drawing.Point(240, 3);
+            this.pictureBoxFriendPic.Name = "pictureBoxFriendPic";
+            this.pictureBoxFriendPic.Size = new System.Drawing.Size(135, 105);
+            this.pictureBoxFriendPic.TabIndex = 1;
+            this.pictureBoxFriendPic.TabStop = false;
+            // 
+            // flowLayoutPanelFriends
+            // 
+            this.flowLayoutPanelFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowLayoutPanelFriends.AutoScroll = true;
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(7, 3);
+            this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
+            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(227, 351);
+            this.flowLayoutPanelFriends.TabIndex = 0;
             // 
             // tabPagePhotos
             // 
@@ -191,90 +275,6 @@
             this.labelUserName.Visible = false;
             this.labelUserName.Click += new System.EventHandler(this.label1_Click);
             // 
-            // flowLayoutPanelFriends
-            // 
-            this.flowLayoutPanelFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.flowLayoutPanelFriends.AutoScroll = true;
-            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(7, 3);
-            this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
-            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(227, 351);
-            this.flowLayoutPanelFriends.TabIndex = 0;
-            // 
-            // pictureBoxFriendPic
-            // 
-            this.pictureBoxFriendPic.Location = new System.Drawing.Point(240, 3);
-            this.pictureBoxFriendPic.Name = "pictureBoxFriendPic";
-            this.pictureBoxFriendPic.Size = new System.Drawing.Size(135, 105);
-            this.pictureBoxFriendPic.TabIndex = 1;
-            this.pictureBoxFriendPic.TabStop = false;
-            // 
-            // labelFriendName
-            // 
-            this.labelFriendName.AutoSize = true;
-            this.labelFriendName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFriendName.Location = new System.Drawing.Point(389, 7);
-            this.labelFriendName.Name = "labelFriendName";
-            this.labelFriendName.Size = new System.Drawing.Size(107, 20);
-            this.labelFriendName.TabIndex = 2;
-            this.labelFriendName.Text = "Lorem Ipsum";
-            this.labelFriendName.Visible = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(240, 142);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(619, 212);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.Visible = false;
-            // 
-            // listBoxFriendAbout
-            // 
-            this.listBoxFriendAbout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxFriendAbout.FormattingEnabled = true;
-            this.listBoxFriendAbout.ItemHeight = 16;
-            this.listBoxFriendAbout.Location = new System.Drawing.Point(393, 56);
-            this.listBoxFriendAbout.Name = "listBoxFriendAbout";
-            this.listBoxFriendAbout.Size = new System.Drawing.Size(466, 52);
-            this.listBoxFriendAbout.TabIndex = 6;
-            this.listBoxFriendAbout.Visible = false;
-            // 
-            // labelFriendAbout
-            // 
-            this.labelFriendAbout.AutoSize = true;
-            this.labelFriendAbout.Location = new System.Drawing.Point(390, 36);
-            this.labelFriendAbout.Name = "labelFriendAbout";
-            this.labelFriendAbout.Size = new System.Drawing.Size(49, 17);
-            this.labelFriendAbout.TabIndex = 7;
-            this.labelFriendAbout.Text = "About:";
-            // 
-            // labelFriendPosts
-            // 
-            this.labelFriendPosts.AutoSize = true;
-            this.labelFriendPosts.Location = new System.Drawing.Point(263, 122);
-            this.labelFriendPosts.Name = "labelFriendPosts";
-            this.labelFriendPosts.Size = new System.Drawing.Size(47, 17);
-            this.labelFriendPosts.TabIndex = 8;
-            this.labelFriendPosts.Text = "Posts:";
-            // 
-            // flowLayoutPanelFeedPosts
-            // 
-            this.flowLayoutPanelFeedPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelFeedPosts.AutoScroll = true;
-            this.flowLayoutPanelFeedPosts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanelFeedPosts.Location = new System.Drawing.Point(4, 4);
-            this.flowLayoutPanelFeedPosts.Name = "flowLayoutPanelFeedPosts";
-            this.flowLayoutPanelFeedPosts.Size = new System.Drawing.Size(855, 353);
-            this.flowLayoutPanelFeedPosts.TabIndex = 1;
-            // 
             // buttonLogout
             // 
             this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -310,8 +310,8 @@
             this.tabPageNewsFeed.ResumeLayout(false);
             this.tabPageFriends.ResumeLayout(false);
             this.tabPageFriends.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
