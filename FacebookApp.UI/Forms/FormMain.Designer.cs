@@ -59,13 +59,15 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.BackColor = System.Drawing.Color.Lime;
+            this.buttonLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLogin.BackColor = System.Drawing.Color.Transparent;
+            this.buttonLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonLogin.BackgroundImage")));
+            this.buttonLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonLogin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonLogin.Location = new System.Drawing.Point(7, 25);
+            this.buttonLogin.Location = new System.Drawing.Point(697, 12);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(152, 27);
+            this.buttonLogin.Size = new System.Drawing.Size(77, 65);
             this.buttonLogin.TabIndex = 0;
-            this.buttonLogin.Text = "Login";
             this.buttonLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonLogin.UseMnemonic = false;
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -117,6 +119,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelFeedPosts.AutoScroll = true;
             this.flowLayoutPanelFeedPosts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelFeedPosts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.flowLayoutPanelFeedPosts.Location = new System.Drawing.Point(4, 4);
             this.flowLayoutPanelFeedPosts.Name = "flowLayoutPanelFeedPosts";
             this.flowLayoutPanelFeedPosts.Size = new System.Drawing.Size(855, 353);
@@ -124,6 +127,7 @@
             // 
             // tabPagePosts
             // 
+            this.tabPagePosts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPagePosts.Location = new System.Drawing.Point(4, 25);
             this.tabPagePosts.Name = "tabPagePosts";
             this.tabPagePosts.Padding = new System.Windows.Forms.Padding(3);
@@ -134,6 +138,7 @@
             // 
             // tabPageFriends
             // 
+            this.tabPageFriends.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPageFriends.Controls.Add(this.labelFriendPosts);
             this.tabPageFriends.Controls.Add(this.labelFriendAbout);
             this.tabPageFriends.Controls.Add(this.listBoxFriendAbout);
@@ -256,6 +261,8 @@
             this.pictureBoxCoverPic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxCoverPic.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBoxCoverPic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxCoverPic.BackgroundImage")));
+            this.pictureBoxCoverPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxCoverPic.Location = new System.Drawing.Point(3, 0);
             this.pictureBoxCoverPic.Name = "pictureBoxCoverPic";
             this.pictureBoxCoverPic.Size = new System.Drawing.Size(873, 167);
@@ -278,14 +285,15 @@
             // buttonLogout
             // 
             this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLogout.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonLogout.BackColor = System.Drawing.Color.Transparent;
+            this.buttonLogout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonLogout.BackgroundImage")));
+            this.buttonLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonLogout.Enabled = false;
             this.buttonLogout.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonLogout.Location = new System.Drawing.Point(714, 25);
+            this.buttonLogout.Location = new System.Drawing.Point(789, 12);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(152, 27);
-            this.buttonLogout.TabIndex = 7;
-            this.buttonLogout.Text = "Logout";
+            this.buttonLogout.Size = new System.Drawing.Size(77, 65);
+            this.buttonLogout.TabIndex = 6;
             this.buttonLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonLogout.UseMnemonic = false;
             this.buttonLogout.UseVisualStyleBackColor = false;
@@ -294,6 +302,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(878, 601);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.labelUserName);
