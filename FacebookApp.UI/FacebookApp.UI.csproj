@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,14 @@
     <Compile Include="Forms\MainWin.designer.cs">
       <DependentUpon>MainWin.cs</DependentUpon>
     </Compile>
+    <Compile Include="PostBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PostBox.Designer.cs">
+      <DependentUpon>PostBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostsFeedGenerator.cs" />
+    <Compile Include="PostsStatistics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIManager.cs" />
@@ -68,6 +77,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostBox.resx">
+      <DependentUpon>PostBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
