@@ -85,9 +85,15 @@ namespace FacebookApp.UI
 
         private void insertPostImageViewItems()
         {
+            //this.listViewPost.FullRowSelect = true;
+            //this.listViewPost.GridLines = true;
             foreach (ListViewItem lvi in m_ListViewItemsCollection)
             {
-                this.listViewPost.Items.Add(lvi);
+                //this.listViewPost.Items.Add(lvi);
+                TextBox tB = new TextBox();
+                //tB.Text = lvi.SubItems[0].Text;
+                //this.flowLayoutPanelPost.Controls.Add(tB);
+                this.dataGridView1.Rows.Add(lvi.SubItems[0].Text);
             }
         }
 
@@ -104,6 +110,9 @@ namespace FacebookApp.UI
             ////return img;
         }
 
+        private void listViewPost_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

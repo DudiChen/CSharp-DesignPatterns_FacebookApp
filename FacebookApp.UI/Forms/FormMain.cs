@@ -39,6 +39,9 @@ namespace FacebookApp.UI
                 StringBuilder formHeader = new StringBuilder(r_LoggedInString);
                 formHeader.Append(m_LoggedInUser.Name);
                 this.Text = formHeader.ToString();
+                this.buttonLogin.BackColor = System.Drawing.SystemColors.Control;
+                this.buttonLogout.BackColor = System.Drawing.Color.Red;
+                toggleAllControllers(true);
                 this.labelUserName.Text = m_LoggedInUser.Name;
                 this.labelUserName.Visible = true;
                 this.pictureBoxProfilePic.Load(m_LoggedInUser.PictureNormalURL);
@@ -156,6 +159,8 @@ namespace FacebookApp.UI
             if (friend != null)
             {
                 this.pictureBoxFriendPic.Load(friend.PictureNormalURL);
+                this.labelFriendName.Text = friend.Name;
+                this.labelFriendName.Visible = true;
                 this.listBoxFriendAbout.Text = friend.About;
                 this.listBoxFriendAbout.Visible = true;
             }
@@ -163,6 +168,15 @@ namespace FacebookApp.UI
             //{
 
             //}
+        }
+
+        private void toggleAllControllers(bool i_ToggleMode)
+        {
+            this.pictureBoxProfilePic.Enabled = i_ToggleMode;
+            this.tabControl1.Enabled = i_ToggleMode;
+            this.buttonLogout.Enabled = i_ToggleMode;
+            this.labelUserName.Enabled = i_ToggleMode;
+            this.buttonLogin.Enabled = !i_ToggleMode;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

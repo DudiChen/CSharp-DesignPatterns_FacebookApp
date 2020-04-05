@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.pictureBoxProfilePic = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageNewsFeed = new System.Windows.Forms.TabPage();
@@ -41,7 +40,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBoxCoverPic = new System.Windows.Forms.PictureBox();
             this.labelUserName = new System.Windows.Forms.Label();
-            this.listBoxFeedPosts = new System.Windows.Forms.ListBox();
             this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBoxFriendPic = new System.Windows.Forms.PictureBox();
             this.labelFriendName = new System.Windows.Forms.Label();
@@ -50,6 +48,7 @@
             this.labelFriendAbout = new System.Windows.Forms.Label();
             this.labelFriendPosts = new System.Windows.Forms.Label();
             this.flowLayoutPanelFeedPosts = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageNewsFeed.SuspendLayout();
@@ -60,31 +59,25 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Image = ((System.Drawing.Image)(resources.GetObject("buttonLogin.Image")));
-            this.buttonLogin.Location = new System.Drawing.Point(7, 12);
+            this.buttonLogin.BackColor = System.Drawing.Color.Lime;
+            this.buttonLogin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonLogin.Location = new System.Drawing.Point(7, 25);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(63, 53);
+            this.buttonLogin.Size = new System.Drawing.Size(152, 27);
             this.buttonLogin.TabIndex = 0;
-            this.buttonLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonLogin.Text = "Login";
+            this.buttonLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonLogin.UseMnemonic = false;
-            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(803, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(63, 53);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // pictureBoxProfilePic
             // 
+            this.pictureBoxProfilePic.Enabled = false;
             this.pictureBoxProfilePic.Location = new System.Drawing.Point(7, 71);
             this.pictureBoxProfilePic.Name = "pictureBoxProfilePic";
             this.pictureBoxProfilePic.Size = new System.Drawing.Size(152, 137);
+            this.pictureBoxProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfilePic.TabIndex = 2;
             this.pictureBoxProfilePic.TabStop = false;
             // 
@@ -99,6 +92,7 @@
             this.tabControl1.Controls.Add(this.tabPagePhotos);
             this.tabControl1.Controls.Add(this.tabPagePostsStatistics);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Enabled = false;
             this.tabControl1.Location = new System.Drawing.Point(3, 214);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -108,7 +102,6 @@
             // tabPageNewsFeed
             // 
             this.tabPageNewsFeed.Controls.Add(this.flowLayoutPanelFeedPosts);
-            this.tabPageNewsFeed.Controls.Add(this.listBoxFeedPosts);
             this.tabPageNewsFeed.Location = new System.Drawing.Point(4, 25);
             this.tabPageNewsFeed.Name = "tabPageNewsFeed";
             this.tabPageNewsFeed.Padding = new System.Windows.Forms.Padding(3);
@@ -188,6 +181,7 @@
             // labelUserName
             // 
             this.labelUserName.AutoSize = true;
+            this.labelUserName.Enabled = false;
             this.labelUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUserName.Location = new System.Drawing.Point(165, 182);
             this.labelUserName.Name = "labelUserName";
@@ -197,29 +191,21 @@
             this.labelUserName.Visible = false;
             this.labelUserName.Click += new System.EventHandler(this.label1_Click);
             // 
-            // listBoxFeedPosts
-            // 
-            this.listBoxFeedPosts.FormattingEnabled = true;
-            this.listBoxFeedPosts.ItemHeight = 16;
-            this.listBoxFeedPosts.Location = new System.Drawing.Point(740, 3);
-            this.listBoxFeedPosts.Name = "listBoxFeedPosts";
-            this.listBoxFeedPosts.Size = new System.Drawing.Size(119, 260);
-            this.listBoxFeedPosts.TabIndex = 0;
-            // 
             // flowLayoutPanelFriends
             // 
             this.flowLayoutPanelFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(7, 7);
+            this.flowLayoutPanelFriends.AutoScroll = true;
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(7, 3);
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
-            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(250, 347);
+            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(227, 351);
             this.flowLayoutPanelFriends.TabIndex = 0;
             // 
             // pictureBoxFriendPic
             // 
-            this.pictureBoxFriendPic.Location = new System.Drawing.Point(263, 6);
+            this.pictureBoxFriendPic.Location = new System.Drawing.Point(240, 3);
             this.pictureBoxFriendPic.Name = "pictureBoxFriendPic";
-            this.pictureBoxFriendPic.Size = new System.Drawing.Size(135, 101);
+            this.pictureBoxFriendPic.Size = new System.Drawing.Size(135, 105);
             this.pictureBoxFriendPic.TabIndex = 1;
             this.pictureBoxFriendPic.TabStop = false;
             // 
@@ -227,11 +213,11 @@
             // 
             this.labelFriendName.AutoSize = true;
             this.labelFriendName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFriendName.Location = new System.Drawing.Point(404, 7);
+            this.labelFriendName.Location = new System.Drawing.Point(389, 7);
             this.labelFriendName.Name = "labelFriendName";
-            this.labelFriendName.Size = new System.Drawing.Size(112, 20);
+            this.labelFriendName.Size = new System.Drawing.Size(107, 20);
             this.labelFriendName.TabIndex = 2;
-            this.labelFriendName.Text = "Loretta Ipsum";
+            this.labelFriendName.Text = "Lorem Ipsum";
             this.labelFriendName.Visible = false;
             // 
             // listBox1
@@ -241,9 +227,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(263, 142);
+            this.listBox1.Location = new System.Drawing.Point(240, 142);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(596, 212);
+            this.listBox1.Size = new System.Drawing.Size(619, 212);
             this.listBox1.TabIndex = 4;
             this.listBox1.Visible = false;
             // 
@@ -253,16 +239,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxFriendAbout.FormattingEnabled = true;
             this.listBoxFriendAbout.ItemHeight = 16;
-            this.listBoxFriendAbout.Location = new System.Drawing.Point(404, 55);
+            this.listBoxFriendAbout.Location = new System.Drawing.Point(393, 56);
             this.listBoxFriendAbout.Name = "listBoxFriendAbout";
-            this.listBoxFriendAbout.Size = new System.Drawing.Size(455, 52);
+            this.listBoxFriendAbout.Size = new System.Drawing.Size(466, 52);
             this.listBoxFriendAbout.TabIndex = 6;
             this.listBoxFriendAbout.Visible = false;
             // 
             // labelFriendAbout
             // 
             this.labelFriendAbout.AutoSize = true;
-            this.labelFriendAbout.Location = new System.Drawing.Point(404, 35);
+            this.labelFriendAbout.Location = new System.Drawing.Point(390, 36);
             this.labelFriendAbout.Name = "labelFriendAbout";
             this.labelFriendAbout.Size = new System.Drawing.Size(49, 17);
             this.labelFriendAbout.TabIndex = 7;
@@ -279,24 +265,45 @@
             // 
             // flowLayoutPanelFeedPosts
             // 
+            this.flowLayoutPanelFeedPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelFeedPosts.AutoScroll = true;
+            this.flowLayoutPanelFeedPosts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanelFeedPosts.Location = new System.Drawing.Point(4, 4);
             this.flowLayoutPanelFeedPosts.Name = "flowLayoutPanelFeedPosts";
-            this.flowLayoutPanelFeedPosts.Size = new System.Drawing.Size(730, 353);
+            this.flowLayoutPanelFeedPosts.Size = new System.Drawing.Size(855, 353);
             this.flowLayoutPanelFeedPosts.TabIndex = 1;
+            // 
+            // buttonLogout
+            // 
+            this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLogout.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonLogout.Enabled = false;
+            this.buttonLogout.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonLogout.Location = new System.Drawing.Point(714, 25);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(152, 27);
+            this.buttonLogout.TabIndex = 7;
+            this.buttonLogout.Text = "Logout";
+            this.buttonLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonLogout.UseMnemonic = false;
+            this.buttonLogout.UseVisualStyleBackColor = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 601);
+            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pictureBoxProfilePic);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.pictureBoxCoverPic);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maor & Dudi\'s Facebook Application";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -313,7 +320,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonLogin;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBoxProfilePic;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageNewsFeed;
@@ -324,7 +330,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox pictureBoxCoverPic;
         private System.Windows.Forms.Label labelUserName;
-        private System.Windows.Forms.ListBox listBoxFeedPosts;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriends;
         private System.Windows.Forms.Label labelFriendName;
         private System.Windows.Forms.PictureBox pictureBoxFriendPic;
@@ -333,6 +338,7 @@
         private System.Windows.Forms.Label labelFriendPosts;
         private System.Windows.Forms.Label labelFriendAbout;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFeedPosts;
+        private System.Windows.Forms.Button buttonLogout;
     }
 }
 
