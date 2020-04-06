@@ -19,9 +19,7 @@ namespace FacebookApp.Logic
                 ListViewItem postHeader = new ListViewItem();
             }
 
-
             return result;
         }
-        
     }
 }

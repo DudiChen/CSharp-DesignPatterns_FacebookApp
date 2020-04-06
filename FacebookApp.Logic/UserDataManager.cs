@@ -9,6 +9,7 @@ namespace FacebookApp.Logic
 {
     public sealed class UserDataManager
     {
+        /// TODO: [UserDataManager] Review if any User Data Collection are not required and can be discarded.
         private static UserDataManager s_Instance = null;
         private static readonly object sr_CreationLock = new object();
         private readonly Dictionary<string, User> r_FriendsCollection;

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.pictureBoxProfilePic = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -44,39 +44,48 @@
             this.labelFriendPosts = new System.Windows.Forms.Label();
             this.labelFriendAbout = new System.Windows.Forms.Label();
             this.listBoxFriendAbout = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelFriendName = new System.Windows.Forms.Label();
             this.pictureBoxFriendPic = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePhotos = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelPhotosAlbums = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBoxPhotosPic = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanelPhotosAlbumPics = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePostsStatistics = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.chart_Likes_Time = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.grp_Stats = new System.Windows.Forms.GroupBox();
+            this.txt_PhotosInPosts = new System.Windows.Forms.TextBox();
+            this.txt_TotalLikes = new System.Windows.Forms.TextBox();
+            this.txt_LikesPerPost = new System.Windows.Forms.TextBox();
+            this.txt_PostsPerDay = new System.Windows.Forms.TextBox();
+            this.txt_LetterPerPost = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBoxCoverPic = new System.Windows.Forms.PictureBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.chart_Likes_Time = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.grp_Stats = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_LetterPerPost = new System.Windows.Forms.TextBox();
-            this.txt_PostsPerDay = new System.Windows.Forms.TextBox();
-            this.txt_LikesPerPost = new System.Windows.Forms.TextBox();
-            this.txt_TotalLikes = new System.Windows.Forms.TextBox();
-            this.txt_PhotosInPosts = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanelPosts = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelFriendsPosts = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelFriendsBirthday = new System.Windows.Forms.Label();
+            this.textBoxFriendsBirthday = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageNewsFeed.SuspendLayout();
+            this.tabPagePosts.SuspendLayout();
             this.tabPageFriends.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendPic)).BeginInit();
+            this.tabPagePhotos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhotosPic)).BeginInit();
             this.tabPagePostsStatistics.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_Likes_Time)).BeginInit();
             this.grp_Stats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -129,7 +138,7 @@
             this.tabPageNewsFeed.Location = new System.Drawing.Point(4, 25);
             this.tabPageNewsFeed.Name = "tabPageNewsFeed";
             this.tabPageNewsFeed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageNewsFeed.Size = new System.Drawing.Size(865, 360);
+            this.tabPageNewsFeed.Size = new System.Drawing.Size(1145, 392);
             this.tabPageNewsFeed.TabIndex = 0;
             this.tabPageNewsFeed.Text = "News Feed";
             this.tabPageNewsFeed.UseVisualStyleBackColor = true;
@@ -150,10 +159,11 @@
             // tabPagePosts
             // 
             this.tabPagePosts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPagePosts.Controls.Add(this.flowLayoutPanelPosts);
             this.tabPagePosts.Location = new System.Drawing.Point(4, 25);
             this.tabPagePosts.Name = "tabPagePosts";
             this.tabPagePosts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePosts.Size = new System.Drawing.Size(865, 360);
+            this.tabPagePosts.Size = new System.Drawing.Size(1145, 392);
             this.tabPagePosts.TabIndex = 1;
             this.tabPagePosts.Text = "Posts";
             this.tabPagePosts.UseVisualStyleBackColor = true;
@@ -161,17 +171,19 @@
             // tabPageFriends
             // 
             this.tabPageFriends.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPageFriends.Controls.Add(this.textBoxFriendsBirthday);
+            this.tabPageFriends.Controls.Add(this.labelFriendsBirthday);
+            this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriendsPosts);
             this.tabPageFriends.Controls.Add(this.labelFriendPosts);
             this.tabPageFriends.Controls.Add(this.labelFriendAbout);
             this.tabPageFriends.Controls.Add(this.listBoxFriendAbout);
-            this.tabPageFriends.Controls.Add(this.listBox1);
             this.tabPageFriends.Controls.Add(this.labelFriendName);
             this.tabPageFriends.Controls.Add(this.pictureBoxFriendPic);
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
             this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
             this.tabPageFriends.Name = "tabPageFriends";
             this.tabPageFriends.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFriends.Size = new System.Drawing.Size(865, 360);
+            this.tabPageFriends.Size = new System.Drawing.Size(1145, 392);
             this.tabPageFriends.TabIndex = 2;
             this.tabPageFriends.Text = "Friends";
             this.tabPageFriends.UseVisualStyleBackColor = true;
@@ -179,20 +191,26 @@
             // labelFriendPosts
             // 
             this.labelFriendPosts.AutoSize = true;
-            this.labelFriendPosts.Location = new System.Drawing.Point(263, 122);
+            this.labelFriendPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFriendPosts.Location = new System.Drawing.Point(240, 111);
             this.labelFriendPosts.Name = "labelFriendPosts";
             this.labelFriendPosts.Size = new System.Drawing.Size(47, 17);
             this.labelFriendPosts.TabIndex = 8;
             this.labelFriendPosts.Text = "Posts:";
+            this.labelFriendPosts.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.labelFriendPosts.Visible = false;
             // 
             // labelFriendAbout
             // 
             this.labelFriendAbout.AutoSize = true;
+            this.labelFriendAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFriendAbout.Location = new System.Drawing.Point(390, 36);
             this.labelFriendAbout.Name = "labelFriendAbout";
             this.labelFriendAbout.Size = new System.Drawing.Size(49, 17);
             this.labelFriendAbout.TabIndex = 7;
             this.labelFriendAbout.Text = "About:";
+            this.labelFriendAbout.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.labelFriendAbout.Visible = false;
             // 
             // listBoxFriendAbout
             // 
@@ -202,30 +220,17 @@
             this.listBoxFriendAbout.ItemHeight = 16;
             this.listBoxFriendAbout.Location = new System.Drawing.Point(393, 56);
             this.listBoxFriendAbout.Name = "listBoxFriendAbout";
-            this.listBoxFriendAbout.Size = new System.Drawing.Size(466, 52);
+            this.listBoxFriendAbout.Size = new System.Drawing.Size(746, 52);
             this.listBoxFriendAbout.TabIndex = 6;
             this.listBoxFriendAbout.Visible = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(240, 142);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(619, 212);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.Visible = false;
             // 
             // labelFriendName
             // 
             this.labelFriendName.AutoSize = true;
-            this.labelFriendName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFriendName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFriendName.Location = new System.Drawing.Point(389, 7);
             this.labelFriendName.Name = "labelFriendName";
-            this.labelFriendName.Size = new System.Drawing.Size(107, 20);
+            this.labelFriendName.Size = new System.Drawing.Size(112, 22);
             this.labelFriendName.TabIndex = 2;
             this.labelFriendName.Text = "Lorem Ipsum";
             this.labelFriendName.Visible = false;
@@ -237,26 +242,57 @@
             this.pictureBoxFriendPic.Size = new System.Drawing.Size(135, 105);
             this.pictureBoxFriendPic.TabIndex = 1;
             this.pictureBoxFriendPic.TabStop = false;
+            this.pictureBoxFriendPic.Visible = false;
             // 
             // flowLayoutPanelFriends
             // 
-            this.flowLayoutPanelFriends.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.flowLayoutPanelFriends.AutoScroll = true;
-            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(7, 3);
+            this.flowLayoutPanelFriends.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanelFriends.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
-            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(227, 351);
+            this.flowLayoutPanelFriends.Size = new System.Drawing.Size(231, 386);
             this.flowLayoutPanelFriends.TabIndex = 0;
             // 
             // tabPagePhotos
             // 
+            this.tabPagePhotos.Controls.Add(this.flowLayoutPanelPhotosAlbums);
+            this.tabPagePhotos.Controls.Add(this.pictureBoxPhotosPic);
+            this.tabPagePhotos.Controls.Add(this.flowLayoutPanelPhotosAlbumPics);
             this.tabPagePhotos.Location = new System.Drawing.Point(4, 25);
             this.tabPagePhotos.Name = "tabPagePhotos";
             this.tabPagePhotos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePhotos.Size = new System.Drawing.Size(865, 360);
+            this.tabPagePhotos.Size = new System.Drawing.Size(1145, 392);
             this.tabPagePhotos.TabIndex = 3;
             this.tabPagePhotos.Text = "Photos";
             this.tabPagePhotos.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanelPhotosAlbums
+            // 
+            this.flowLayoutPanelPhotosAlbums.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanelPhotosAlbums.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelPhotosAlbums.Name = "flowLayoutPanelPhotosAlbums";
+            this.flowLayoutPanelPhotosAlbums.Size = new System.Drawing.Size(218, 386);
+            this.flowLayoutPanelPhotosAlbums.TabIndex = 3;
+            // 
+            // pictureBoxPhotosPic
+            // 
+            this.pictureBoxPhotosPic.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxPhotosPic.Location = new System.Drawing.Point(654, 4);
+            this.pictureBoxPhotosPic.Name = "pictureBoxPhotosPic";
+            this.pictureBoxPhotosPic.Size = new System.Drawing.Size(485, 385);
+            this.pictureBoxPhotosPic.TabIndex = 2;
+            this.pictureBoxPhotosPic.TabStop = false;
+            // 
+            // flowLayoutPanelPhotosAlbumPics
+            // 
+            this.flowLayoutPanelPhotosAlbumPics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowLayoutPanelPhotosAlbumPics.Location = new System.Drawing.Point(227, 3);
+            this.flowLayoutPanelPhotosAlbumPics.Name = "flowLayoutPanelPhotosAlbumPics";
+            this.flowLayoutPanelPhotosAlbumPics.Size = new System.Drawing.Size(421, 386);
+            this.flowLayoutPanelPhotosAlbumPics.TabIndex = 1;
             // 
             // tabPagePostsStatistics
             // 
@@ -269,12 +305,213 @@
             this.tabPagePostsStatistics.Text = "PostsStatistics";
             this.tabPagePostsStatistics.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.chart_Likes_Time, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.grp_Stats, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1138, 392);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // chart_Likes_Time
+            // 
+            chartArea3.AxisX.LineWidth = 2;
+            chartArea3.AxisY.LineWidth = 2;
+            chartArea3.Name = "ChartArea1";
+            this.chart_Likes_Time.ChartAreas.Add(chartArea3);
+            this.chart_Likes_Time.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend3.Name = "Legend1";
+            this.chart_Likes_Time.Legends.Add(legend3);
+            this.chart_Likes_Time.Location = new System.Drawing.Point(3, 3);
+            this.chart_Likes_Time.Name = "chart_Likes_Time";
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.Legend = "Legend1";
+            series5.Name = "Likes";
+            series5.YValuesPerPoint = 2;
+            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series6.BorderWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.Legend = "Legend1";
+            series6.Name = "Posts";
+            this.chart_Likes_Time.Series.Add(series5);
+            this.chart_Likes_Time.Series.Add(series6);
+            this.chart_Likes_Time.Size = new System.Drawing.Size(563, 386);
+            this.chart_Likes_Time.TabIndex = 0;
+            this.chart_Likes_Time.Text = "chart1";
+            title3.Name = "Title1";
+            title3.Text = "Posts Compare Time of Day";
+            this.chart_Likes_Time.Titles.Add(title3);
+            // 
+            // grp_Stats
+            // 
+            this.grp_Stats.Controls.Add(this.txt_PhotosInPosts);
+            this.grp_Stats.Controls.Add(this.txt_TotalLikes);
+            this.grp_Stats.Controls.Add(this.txt_LikesPerPost);
+            this.grp_Stats.Controls.Add(this.txt_PostsPerDay);
+            this.grp_Stats.Controls.Add(this.txt_LetterPerPost);
+            this.grp_Stats.Controls.Add(this.label5);
+            this.grp_Stats.Controls.Add(this.label4);
+            this.grp_Stats.Controls.Add(this.label3);
+            this.grp_Stats.Controls.Add(this.label2);
+            this.grp_Stats.Controls.Add(this.label1);
+            this.grp_Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grp_Stats.Location = new System.Drawing.Point(572, 3);
+            this.grp_Stats.Name = "grp_Stats";
+            this.grp_Stats.Size = new System.Drawing.Size(563, 386);
+            this.grp_Stats.TabIndex = 1;
+            this.grp_Stats.TabStop = false;
+            this.grp_Stats.Text = "Statistics";
+            // 
+            // txt_PhotosInPosts
+            // 
+            this.txt_PhotosInPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_PhotosInPosts.Location = new System.Drawing.Point(374, 291);
+            this.txt_PhotosInPosts.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.txt_PhotosInPosts.Name = "txt_PhotosInPosts";
+            this.txt_PhotosInPosts.ReadOnly = true;
+            this.txt_PhotosInPosts.Size = new System.Drawing.Size(161, 22);
+            this.txt_PhotosInPosts.TabIndex = 9;
+            // 
+            // txt_TotalLikes
+            // 
+            this.txt_TotalLikes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_TotalLikes.Location = new System.Drawing.Point(374, 233);
+            this.txt_TotalLikes.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.txt_TotalLikes.Name = "txt_TotalLikes";
+            this.txt_TotalLikes.ReadOnly = true;
+            this.txt_TotalLikes.Size = new System.Drawing.Size(161, 22);
+            this.txt_TotalLikes.TabIndex = 8;
+            // 
+            // txt_LikesPerPost
+            // 
+            this.txt_LikesPerPost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_LikesPerPost.Location = new System.Drawing.Point(374, 166);
+            this.txt_LikesPerPost.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.txt_LikesPerPost.Name = "txt_LikesPerPost";
+            this.txt_LikesPerPost.ReadOnly = true;
+            this.txt_LikesPerPost.Size = new System.Drawing.Size(161, 22);
+            this.txt_LikesPerPost.TabIndex = 7;
+            // 
+            // txt_PostsPerDay
+            // 
+            this.txt_PostsPerDay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_PostsPerDay.Location = new System.Drawing.Point(374, 108);
+            this.txt_PostsPerDay.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.txt_PostsPerDay.Name = "txt_PostsPerDay";
+            this.txt_PostsPerDay.ReadOnly = true;
+            this.txt_PostsPerDay.Size = new System.Drawing.Size(161, 22);
+            this.txt_PostsPerDay.TabIndex = 6;
+            // 
+            // txt_LetterPerPost
+            // 
+            this.txt_LetterPerPost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_LetterPerPost.Location = new System.Drawing.Point(374, 50);
+            this.txt_LetterPerPost.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.txt_LetterPerPost.Name = "txt_LetterPerPost";
+            this.txt_LetterPerPost.ReadOnly = true;
+            this.txt_LetterPerPost.Size = new System.Drawing.Size(161, 22);
+            this.txt_LetterPerPost.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label5.Location = new System.Drawing.Point(22, 274);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.label5.Size = new System.Drawing.Size(328, 61);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Presentage of Post with Photos";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label4.Location = new System.Drawing.Point(22, 213);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.label4.Size = new System.Drawing.Size(328, 61);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Total Number of Likes";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label3.Location = new System.Drawing.Point(22, 152);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.label3.Size = new System.Drawing.Size(328, 61);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Avg. Number of Likes per Post";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label2.Location = new System.Drawing.Point(22, 91);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.label2.Size = new System.Drawing.Size(328, 61);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Avg. Posts per Day";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label1.Location = new System.Drawing.Point(22, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.label1.Size = new System.Drawing.Size(328, 61);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Avg. Number of Letters per Post";
+            // 
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(865, 360);
+            this.tabPage1.Size = new System.Drawing.Size(1145, 392);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -322,206 +559,46 @@
             this.buttonLogout.UseVisualStyleBackColor = false;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
-            // tableLayoutPanel1
+            // flowLayoutPanelPosts
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flowLayoutPanelPosts.AutoScroll = true;
+            this.flowLayoutPanelPosts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelPosts.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelPosts.Name = "flowLayoutPanelPosts";
+            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(1139, 386);
+            this.flowLayoutPanelPosts.TabIndex = 0;
+            // 
+            // flowLayoutPanelFriendsPosts
+            // 
+            this.flowLayoutPanelFriendsPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.chart_Likes_Time, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.grp_Stats, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1138, 392);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanelFriendsPosts.AutoScroll = true;
+            this.flowLayoutPanelFriendsPosts.Location = new System.Drawing.Point(240, 131);
+            this.flowLayoutPanelFriendsPosts.Name = "flowLayoutPanelFriendsPosts";
+            this.flowLayoutPanelFriendsPosts.Size = new System.Drawing.Size(905, 258);
+            this.flowLayoutPanelFriendsPosts.TabIndex = 9;
+            this.flowLayoutPanelFriendsPosts.Visible = false;
             // 
-            // chart_Likes_Time
+            // labelFriendsBirthday
             // 
-            chartArea2.AxisX.LineWidth = 2;
-            chartArea2.AxisY.LineWidth = 2;
-            chartArea2.Name = "ChartArea1";
-            this.chart_Likes_Time.ChartAreas.Add(chartArea2);
-            this.chart_Likes_Time.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart_Likes_Time.Legends.Add(legend2);
-            this.chart_Likes_Time.Location = new System.Drawing.Point(3, 3);
-            this.chart_Likes_Time.Name = "chart_Likes_Time";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Likes";
-            series3.YValuesPerPoint = 2;
-            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Posts";
-            this.chart_Likes_Time.Series.Add(series3);
-            this.chart_Likes_Time.Series.Add(series4);
-            this.chart_Likes_Time.Size = new System.Drawing.Size(563, 386);
-            this.chart_Likes_Time.TabIndex = 0;
-            this.chart_Likes_Time.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Posts Compare Time of Day";
-            this.chart_Likes_Time.Titles.Add(title2);
+            this.labelFriendsBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFriendsBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFriendsBirthday.Location = new System.Drawing.Point(840, 20);
+            this.labelFriendsBirthday.Name = "labelFriendsBirthday";
+            this.labelFriendsBirthday.Size = new System.Drawing.Size(71, 25);
+            this.labelFriendsBirthday.TabIndex = 10;
+            this.labelFriendsBirthday.Text = "Birthday:";
+            this.labelFriendsBirthday.Visible = false;
             // 
-            // grp_Stats
+            // textBoxFriendsBirthday
             // 
-            this.grp_Stats.Controls.Add(this.txt_PhotosInPosts);
-            this.grp_Stats.Controls.Add(this.txt_TotalLikes);
-            this.grp_Stats.Controls.Add(this.txt_LikesPerPost);
-            this.grp_Stats.Controls.Add(this.txt_PostsPerDay);
-            this.grp_Stats.Controls.Add(this.txt_LetterPerPost);
-            this.grp_Stats.Controls.Add(this.label5);
-            this.grp_Stats.Controls.Add(this.label4);
-            this.grp_Stats.Controls.Add(this.label3);
-            this.grp_Stats.Controls.Add(this.label2);
-            this.grp_Stats.Controls.Add(this.label1);
-            this.grp_Stats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grp_Stats.Location = new System.Drawing.Point(572, 3);
-            this.grp_Stats.Name = "grp_Stats";
-            this.grp_Stats.Size = new System.Drawing.Size(563, 386);
-            this.grp_Stats.TabIndex = 1;
-            this.grp_Stats.TabStop = false;
-            this.grp_Stats.Text = "Statistics";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(22, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.label1.Size = new System.Drawing.Size(328, 61);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Avg. Number of Letters per Post";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label2.Location = new System.Drawing.Point(22, 91);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.label2.Size = new System.Drawing.Size(328, 61);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Avg. Posts per Day";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label3.Location = new System.Drawing.Point(22, 152);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.label3.Size = new System.Drawing.Size(328, 61);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Avg. Number of Likes per Post";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label4.Location = new System.Drawing.Point(22, 213);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.label4.Size = new System.Drawing.Size(328, 61);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Total Number of Likes";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label5.Location = new System.Drawing.Point(22, 274);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.label5.Size = new System.Drawing.Size(328, 61);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Presentage of Post with Photos";
-            // 
-            // txt_LetterPerPost
-            // 
-            this.txt_LetterPerPost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_LetterPerPost.Location = new System.Drawing.Point(374, 50);
-            this.txt_LetterPerPost.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.txt_LetterPerPost.Name = "txt_LetterPerPost";
-            this.txt_LetterPerPost.ReadOnly = true;
-            this.txt_LetterPerPost.Size = new System.Drawing.Size(161, 22);
-            this.txt_LetterPerPost.TabIndex = 5;
-            // 
-            // txt_PostsPerDay
-            // 
-            this.txt_PostsPerDay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_PostsPerDay.Location = new System.Drawing.Point(374, 108);
-            this.txt_PostsPerDay.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.txt_PostsPerDay.Name = "txt_PostsPerDay";
-            this.txt_PostsPerDay.ReadOnly = true;
-            this.txt_PostsPerDay.Size = new System.Drawing.Size(161, 22);
-            this.txt_PostsPerDay.TabIndex = 6;
-            // 
-            // txt_LikesPerPost
-            // 
-            this.txt_LikesPerPost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_LikesPerPost.Location = new System.Drawing.Point(374, 166);
-            this.txt_LikesPerPost.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.txt_LikesPerPost.Name = "txt_LikesPerPost";
-            this.txt_LikesPerPost.ReadOnly = true;
-            this.txt_LikesPerPost.Size = new System.Drawing.Size(161, 22);
-            this.txt_LikesPerPost.TabIndex = 7;
-            // 
-            // txt_TotalLikes
-            // 
-            this.txt_TotalLikes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_TotalLikes.Location = new System.Drawing.Point(374, 233);
-            this.txt_TotalLikes.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.txt_TotalLikes.Name = "txt_TotalLikes";
-            this.txt_TotalLikes.ReadOnly = true;
-            this.txt_TotalLikes.Size = new System.Drawing.Size(161, 22);
-            this.txt_TotalLikes.TabIndex = 8;
-            // 
-            // txt_PhotosInPosts
-            // 
-            this.txt_PhotosInPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_PhotosInPosts.Location = new System.Drawing.Point(374, 291);
-            this.txt_PhotosInPosts.Margin = new System.Windows.Forms.Padding(20, 18, 20, 18);
-            this.txt_PhotosInPosts.Name = "txt_PhotosInPosts";
-            this.txt_PhotosInPosts.ReadOnly = true;
-            this.txt_PhotosInPosts.Size = new System.Drawing.Size(161, 22);
-            this.txt_PhotosInPosts.TabIndex = 9;
+            this.textBoxFriendsBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFriendsBirthday.Location = new System.Drawing.Point(917, 20);
+            this.textBoxFriendsBirthday.Name = "textBoxFriendsBirthday";
+            this.textBoxFriendsBirthday.Size = new System.Drawing.Size(142, 22);
+            this.textBoxFriendsBirthday.TabIndex = 11;
+            this.textBoxFriendsBirthday.Visible = false;
             // 
             // FormMain
             // 
@@ -542,15 +619,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPageNewsFeed.ResumeLayout(false);
+            this.tabPagePosts.ResumeLayout(false);
             this.tabPageFriends.ResumeLayout(false);
             this.tabPageFriends.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendPic)).EndInit();
+            this.tabPagePhotos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhotosPic)).EndInit();
             this.tabPagePostsStatistics.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart_Likes_Time)).EndInit();
             this.grp_Stats.ResumeLayout(false);
             this.grp_Stats.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,10 +649,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox pictureBoxCoverPic;
         private System.Windows.Forms.Label labelUserName;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriends;
         private System.Windows.Forms.Label labelFriendName;
         private System.Windows.Forms.PictureBox pictureBoxFriendPic;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBoxFriendAbout;
         private System.Windows.Forms.Label labelFriendPosts;
         private System.Windows.Forms.Label labelFriendAbout;
@@ -591,6 +669,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBoxPhotosPic;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPhotosAlbumPics;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriends;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPhotosAlbums;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPosts;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriendsPosts;
+        private System.Windows.Forms.TextBox textBoxFriendsBirthday;
+        private System.Windows.Forms.Label labelFriendsBirthday;
     }
 }
 
