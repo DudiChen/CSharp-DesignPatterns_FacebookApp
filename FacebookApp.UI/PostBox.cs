@@ -69,40 +69,6 @@ namespace FacebookApp.UI
             {
                 this.richTextBoxPost.AppendText(string.Format("{0}{1}{1}", m_Post.Description, Environment.NewLine));
             }
-
-            /// NOTE: This code was used with tryDownloadImage() to fetch images - if not useful, discard
-            //if (m_Post.PictureURL != null)
-            //{
-            //    ListViewItem lvi = new ListViewItem();
-            //    Image img;
-            //    if (tryDownloadImage(m_Post.PictureURL, out img))
-            //    {
-            //        ImageList imageList = new ImageList();
-            //        imageList.Images.Add(img);
-            //        //lvi.ImageList.Images.Add(img);
-            //        lvi.ImageList = imageList;
-            //        lvi.Tag = m_Post;
-            //        m_ListViewItemsCollection.AddLast(lvi);
-            //    }
-            //}
-        }
-
-        /// TODO: [tryDownloadImage] Not in use anymore - see if useful or discard code.
-        private bool tryDownloadImage(string i_ImageURL, out Image o_Image)
-        {
-
-            WebClient wc = new WebClient();
-            byte[] bytes = wc.DownloadData(i_ImageURL);
-            MemoryStream ms = new MemoryStream(bytes);
-            o_Image = System.Drawing.Image.FromStream(ms);
-            ms.Dispose();
-            return (o_Image != null);
-        }
-
-        /// TODO: [listViewPost_SelectedIndexChanged] Remove if not relevant anymore.
-        private void listViewPost_SelectedIndexChanged(object i_Sender, EventArgs e)
-        {
-
         }
 
         private void buttonPostLikes_Click(object i_Sender, EventArgs e)

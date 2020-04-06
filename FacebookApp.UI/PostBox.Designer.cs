@@ -52,7 +52,7 @@
             this.labelPostTimeAndFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPostTimeAndFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPostTimeAndFrom.Location = new System.Drawing.Point(72, 14);
+            this.labelPostTimeAndFrom.Location = new System.Drawing.Point(60, 14);
             this.labelPostTimeAndFrom.Name = "labelPostTimeAndFrom";
             this.labelPostTimeAndFrom.Size = new System.Drawing.Size(743, 27);
             this.labelPostTimeAndFrom.TabIndex = 1;
@@ -66,7 +66,7 @@
             this.richTextBoxPost.Location = new System.Drawing.Point(0, 44);
             this.richTextBoxPost.Name = "richTextBoxPost";
             this.richTextBoxPost.ReadOnly = true;
-            this.richTextBoxPost.Size = new System.Drawing.Size(502, 131);
+            this.richTextBoxPost.Size = new System.Drawing.Size(564, 131);
             this.richTextBoxPost.TabIndex = 2;
             this.richTextBoxPost.Text = "";
             // 
@@ -74,7 +74,7 @@
             // 
             this.buttonPostLikes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPostLikes.Location = new System.Drawing.Point(508, 14);
+            this.buttonPostLikes.Location = new System.Drawing.Point(565, 14);
             this.buttonPostLikes.Name = "buttonPostLikes";
             this.buttonPostLikes.Size = new System.Drawing.Size(112, 27);
             this.buttonPostLikes.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.buttonPostComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPostComments.Location = new System.Drawing.Point(644, 14);
+            this.buttonPostComments.Location = new System.Drawing.Point(703, 14);
             this.buttonPostComments.Name = "buttonPostComments";
             this.buttonPostComments.Size = new System.Drawing.Size(112, 27);
             this.buttonPostComments.TabIndex = 4;
@@ -96,9 +96,11 @@
             // 
             // richTextBoxLikes
             // 
-            this.richTextBoxLikes.Location = new System.Drawing.Point(508, 44);
+            this.richTextBoxLikes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxLikes.Location = new System.Drawing.Point(565, 44);
             this.richTextBoxLikes.Name = "richTextBoxLikes";
-            this.richTextBoxLikes.Size = new System.Drawing.Size(307, 131);
+            this.richTextBoxLikes.Size = new System.Drawing.Size(250, 131);
             this.richTextBoxLikes.TabIndex = 5;
             this.richTextBoxLikes.Text = "";
             // 
@@ -106,9 +108,9 @@
             // 
             this.richTextBoxComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxComments.Location = new System.Drawing.Point(508, 44);
+            this.richTextBoxComments.Location = new System.Drawing.Point(565, 44);
             this.richTextBoxComments.Name = "richTextBoxComments";
-            this.richTextBoxComments.Size = new System.Drawing.Size(307, 131);
+            this.richTextBoxComments.Size = new System.Drawing.Size(250, 131);
             this.richTextBoxComments.TabIndex = 6;
             this.richTextBoxComments.Text = "";
             // 

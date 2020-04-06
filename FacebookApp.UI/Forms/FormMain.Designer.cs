@@ -29,18 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.pictureBoxProfilePic = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageNewsFeed = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelFeedPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePosts = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanelPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageFriends = new System.Windows.Forms.TabPage();
+            this.textBoxFriendsBirthday = new System.Windows.Forms.TextBox();
+            this.labelFriendsBirthday = new System.Windows.Forms.Label();
+            this.flowLayoutPanelFriendsPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.labelFriendPosts = new System.Windows.Forms.Label();
             this.labelFriendAbout = new System.Windows.Forms.Label();
             this.listBoxFriendAbout = new System.Windows.Forms.ListBox();
@@ -69,10 +73,12 @@
             this.pictureBoxCoverPic = new System.Windows.Forms.PictureBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.flowLayoutPanelPosts = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanelFriendsPosts = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelFriendsBirthday = new System.Windows.Forms.Label();
-            this.textBoxFriendsBirthday = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelPostsPublish = new System.Windows.Forms.Label();
+            this.richTextBoxPostsPublish = new System.Windows.Forms.RichTextBox();
+            this.buttonPostsPublish = new System.Windows.Forms.Button();
+            this.textBoxHometown = new System.Windows.Forms.TextBox();
+            this.labelFriendsHometown = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageNewsFeed.SuspendLayout();
@@ -86,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart_Likes_Time)).BeginInit();
             this.grp_Stats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -159,6 +166,7 @@
             // tabPagePosts
             // 
             this.tabPagePosts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPagePosts.Controls.Add(this.panel1);
             this.tabPagePosts.Controls.Add(this.flowLayoutPanelPosts);
             this.tabPagePosts.Location = new System.Drawing.Point(4, 25);
             this.tabPagePosts.Name = "tabPagePosts";
@@ -168,9 +176,20 @@
             this.tabPagePosts.Text = "Posts";
             this.tabPagePosts.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanelPosts
+            // 
+            this.flowLayoutPanelPosts.AutoScroll = true;
+            this.flowLayoutPanelPosts.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanelPosts.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelPosts.Name = "flowLayoutPanelPosts";
+            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(859, 386);
+            this.flowLayoutPanelPosts.TabIndex = 0;
+            // 
             // tabPageFriends
             // 
             this.tabPageFriends.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPageFriends.Controls.Add(this.textBoxHometown);
+            this.tabPageFriends.Controls.Add(this.labelFriendsHometown);
             this.tabPageFriends.Controls.Add(this.textBoxFriendsBirthday);
             this.tabPageFriends.Controls.Add(this.labelFriendsBirthday);
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriendsPosts);
@@ -187,6 +206,40 @@
             this.tabPageFriends.TabIndex = 2;
             this.tabPageFriends.Text = "Friends";
             this.tabPageFriends.UseVisualStyleBackColor = true;
+            // 
+            // textBoxFriendsBirthday
+            // 
+            this.textBoxFriendsBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFriendsBirthday.Location = new System.Drawing.Point(997, 8);
+            this.textBoxFriendsBirthday.Name = "textBoxFriendsBirthday";
+            this.textBoxFriendsBirthday.ReadOnly = true;
+            this.textBoxFriendsBirthday.Size = new System.Drawing.Size(142, 22);
+            this.textBoxFriendsBirthday.TabIndex = 11;
+            this.textBoxFriendsBirthday.Visible = false;
+            // 
+            // labelFriendsBirthday
+            // 
+            this.labelFriendsBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFriendsBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFriendsBirthday.Location = new System.Drawing.Point(921, 8);
+            this.labelFriendsBirthday.Name = "labelFriendsBirthday";
+            this.labelFriendsBirthday.Size = new System.Drawing.Size(71, 25);
+            this.labelFriendsBirthday.TabIndex = 10;
+            this.labelFriendsBirthday.Text = "Birthday:";
+            this.labelFriendsBirthday.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelFriendsBirthday.Visible = false;
+            // 
+            // flowLayoutPanelFriendsPosts
+            // 
+            this.flowLayoutPanelFriendsPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelFriendsPosts.AutoScroll = true;
+            this.flowLayoutPanelFriendsPosts.Location = new System.Drawing.Point(240, 131);
+            this.flowLayoutPanelFriendsPosts.Name = "flowLayoutPanelFriendsPosts";
+            this.flowLayoutPanelFriendsPosts.Size = new System.Drawing.Size(905, 258);
+            this.flowLayoutPanelFriendsPosts.TabIndex = 9;
+            this.flowLayoutPanelFriendsPosts.Visible = false;
             // 
             // labelFriendPosts
             // 
@@ -326,35 +379,35 @@
             // 
             // chart_Likes_Time
             // 
-            chartArea3.AxisX.LineWidth = 2;
-            chartArea3.AxisY.LineWidth = 2;
-            chartArea3.Name = "ChartArea1";
-            this.chart_Likes_Time.ChartAreas.Add(chartArea3);
+            chartArea1.AxisX.LineWidth = 2;
+            chartArea1.AxisY.LineWidth = 2;
+            chartArea1.Name = "ChartArea1";
+            this.chart_Likes_Time.ChartAreas.Add(chartArea1);
             this.chart_Likes_Time.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chart_Likes_Time.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chart_Likes_Time.Legends.Add(legend1);
             this.chart_Likes_Time.Location = new System.Drawing.Point(3, 3);
             this.chart_Likes_Time.Name = "chart_Likes_Time";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series5.Legend = "Legend1";
-            series5.Name = "Likes";
-            series5.YValuesPerPoint = 2;
-            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            series6.BorderWidth = 2;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series6.Legend = "Legend1";
-            series6.Name = "Posts";
-            this.chart_Likes_Time.Series.Add(series5);
-            this.chart_Likes_Time.Series.Add(series6);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Likes";
+            series1.YValuesPerPoint = 2;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Posts";
+            this.chart_Likes_Time.Series.Add(series1);
+            this.chart_Likes_Time.Series.Add(series2);
             this.chart_Likes_Time.Size = new System.Drawing.Size(563, 386);
             this.chart_Likes_Time.TabIndex = 0;
             this.chart_Likes_Time.Text = "chart1";
-            title3.Name = "Title1";
-            title3.Text = "Posts Compare Time of Day";
-            this.chart_Likes_Time.Titles.Add(title3);
+            title1.Name = "Title1";
+            title1.Text = "Posts Compare Time of Day";
+            this.chart_Likes_Time.Titles.Add(title1);
             // 
             // grp_Stats
             // 
@@ -559,46 +612,67 @@
             this.buttonLogout.UseVisualStyleBackColor = false;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
-            // flowLayoutPanelPosts
+            // panel1
             // 
-            this.flowLayoutPanelPosts.AutoScroll = true;
-            this.flowLayoutPanelPosts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelPosts.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanelPosts.Name = "flowLayoutPanelPosts";
-            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(1139, 386);
-            this.flowLayoutPanelPosts.TabIndex = 0;
+            this.panel1.Controls.Add(this.buttonPostsPublish);
+            this.panel1.Controls.Add(this.richTextBoxPostsPublish);
+            this.panel1.Controls.Add(this.labelPostsPublish);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(868, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(274, 386);
+            this.panel1.TabIndex = 1;
             // 
-            // flowLayoutPanelFriendsPosts
+            // labelPostsPublish
             // 
-            this.flowLayoutPanelFriendsPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelFriendsPosts.AutoScroll = true;
-            this.flowLayoutPanelFriendsPosts.Location = new System.Drawing.Point(240, 131);
-            this.flowLayoutPanelFriendsPosts.Name = "flowLayoutPanelFriendsPosts";
-            this.flowLayoutPanelFriendsPosts.Size = new System.Drawing.Size(905, 258);
-            this.flowLayoutPanelFriendsPosts.TabIndex = 9;
-            this.flowLayoutPanelFriendsPosts.Visible = false;
+            this.labelPostsPublish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPostsPublish.Location = new System.Drawing.Point(18, 0);
+            this.labelPostsPublish.Name = "labelPostsPublish";
+            this.labelPostsPublish.Size = new System.Drawing.Size(241, 48);
+            this.labelPostsPublish.TabIndex = 0;
+            this.labelPostsPublish.Text = "What\'s on your mind?";
+            this.labelPostsPublish.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelFriendsBirthday
+            // richTextBoxPostsPublish
             // 
-            this.labelFriendsBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelFriendsBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFriendsBirthday.Location = new System.Drawing.Point(840, 20);
-            this.labelFriendsBirthday.Name = "labelFriendsBirthday";
-            this.labelFriendsBirthday.Size = new System.Drawing.Size(71, 25);
-            this.labelFriendsBirthday.TabIndex = 10;
-            this.labelFriendsBirthday.Text = "Birthday:";
-            this.labelFriendsBirthday.Visible = false;
+            this.richTextBoxPostsPublish.Location = new System.Drawing.Point(13, 50);
+            this.richTextBoxPostsPublish.Name = "richTextBoxPostsPublish";
+            this.richTextBoxPostsPublish.Size = new System.Drawing.Size(258, 165);
+            this.richTextBoxPostsPublish.TabIndex = 1;
+            this.richTextBoxPostsPublish.Text = "";
             // 
-            // textBoxFriendsBirthday
+            // buttonPostsPublish
             // 
-            this.textBoxFriendsBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFriendsBirthday.Location = new System.Drawing.Point(917, 20);
-            this.textBoxFriendsBirthday.Name = "textBoxFriendsBirthday";
-            this.textBoxFriendsBirthday.Size = new System.Drawing.Size(142, 22);
-            this.textBoxFriendsBirthday.TabIndex = 11;
-            this.textBoxFriendsBirthday.Visible = false;
+            this.buttonPostsPublish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPostsPublish.Location = new System.Drawing.Point(13, 221);
+            this.buttonPostsPublish.Name = "buttonPostsPublish";
+            this.buttonPostsPublish.Size = new System.Drawing.Size(258, 38);
+            this.buttonPostsPublish.TabIndex = 2;
+            this.buttonPostsPublish.Text = "Post";
+            this.buttonPostsPublish.UseVisualStyleBackColor = true;
+            this.buttonPostsPublish.Click += new System.EventHandler(this.buttonPostsPublish_Click);
+            // 
+            // textBoxHometown
+            // 
+            this.textBoxHometown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxHometown.Location = new System.Drawing.Point(754, 8);
+            this.textBoxHometown.Name = "textBoxHometown";
+            this.textBoxHometown.ReadOnly = true;
+            this.textBoxHometown.Size = new System.Drawing.Size(142, 22);
+            this.textBoxHometown.TabIndex = 13;
+            this.textBoxHometown.Visible = false;
+            // 
+            // labelFriendsHometown
+            // 
+            this.labelFriendsHometown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFriendsHometown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFriendsHometown.Location = new System.Drawing.Point(651, 7);
+            this.labelFriendsHometown.Name = "labelFriendsHometown";
+            this.labelFriendsHometown.Size = new System.Drawing.Size(97, 25);
+            this.labelFriendsHometown.TabIndex = 12;
+            this.labelFriendsHometown.Text = "Hometown:";
+            this.labelFriendsHometown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelFriendsHometown.Visible = false;
             // 
             // FormMain
             // 
@@ -631,6 +705,7 @@
             this.grp_Stats.ResumeLayout(false);
             this.grp_Stats.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,6 +752,12 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriendsPosts;
         private System.Windows.Forms.TextBox textBoxFriendsBirthday;
         private System.Windows.Forms.Label labelFriendsBirthday;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonPostsPublish;
+        private System.Windows.Forms.RichTextBox richTextBoxPostsPublish;
+        private System.Windows.Forms.Label labelPostsPublish;
+        private System.Windows.Forms.TextBox textBoxHometown;
+        private System.Windows.Forms.Label labelFriendsHometown;
     }
 }
 

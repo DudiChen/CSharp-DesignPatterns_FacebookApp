@@ -69,7 +69,6 @@
     <Compile Include="PostBox.Designer.cs">
       <DependentUpon>PostBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="PostsFeedGenerator.cs" />
     <Compile Include="PostsStatisticsGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

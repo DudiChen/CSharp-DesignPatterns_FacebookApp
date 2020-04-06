@@ -10,8 +10,6 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace FacebookApp.UI
 {
-    /// TODO: [PostsStatGen] Move all Dummy Data related Code to DummyDataGenerator e.g. calls for GetRandomUnsignedNumber.
-    /// TODO: [PostsStatGen] Make code more readable e.g. "time", "likes" - more meaningful names.
     public class PostsStatisticsGenerator
     {
         private User m_LoggedInUser;

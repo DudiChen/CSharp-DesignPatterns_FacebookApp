@@ -15,7 +15,6 @@ namespace FacebookApp.UI
     {
         private ApplicationSettings m_ApplicationSettings;
         private LoginManager m_LoginManager;
-        private UserDataManager m_UserDataManager;
         private User m_LoggedInUser;
         private readonly string r_DefaultFormHeader = "Maor & Dudi's Facebook Application";
         private readonly string r_LoggedInString = "Logged-In As: ";
@@ -24,6 +23,9 @@ namespace FacebookApp.UI
             Environment.NewLine);
         private readonly string r_MessageCoverPhotoUnavailable = string.Format(
             "User's Cover Photo is currently unavailable.{0}Using defualt Cover Image.",
+            Environment.NewLine);
+        private readonly string r_MessagePublishPostUnavailable = string.Format(
+            "Publishing New Posts is currently unavailable.{0}Please try again later.",
             Environment.NewLine);
         private readonly string r_MessageErrorOccuredTitle = "Error Occured";
         private bool m_IsPostsStatisticsPopulated = false;
@@ -35,10 +37,8 @@ namespace FacebookApp.UI
             tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
             m_ApplicationSettings = ApplicationSettings.Instance;
             m_LoginManager = LoginManager.Instance;
-            m_UserDataManager = UserDataManager.Instance;
         }
 
-        /// TODO: [buttonLogin_Click] See if at all possible to fetch User's Cover Picture.
         private void buttonLogin_Click(object i_Sender, EventArgs e)
         {
             m_LoginManager.Login();
@@ -69,7 +69,7 @@ namespace FacebookApp.UI
             }
             else if (this.tabControl1.SelectedTab.Name.Equals(tabPageFriends.Name))
             {
-                populateAndFetchUserFriends();
+                populateUserFriends();
             }
             else if (this.tabControl1.SelectedTab.Name.Equals(tabPagePhotos.Name))
             {
@@ -87,7 +87,6 @@ namespace FacebookApp.UI
 
         }
 
-        /// TODO: [picBoxFriend_Click] Need Clear of FlowLayout Controls when choosing another friend.
         private void picBoxFriend_Click(object i_Sender, EventArgs e)
         {
             PictureBox picBox = i_Sender as PictureBox;
@@ -102,20 +101,27 @@ namespace FacebookApp.UI
                 this.labelFriendAbout.Visible = true;
                 this.listBoxFriendAbout.Text = friend.About;
                 this.listBoxFriendAbout.Visible = true;
+                this.labelFriendsHometown.Visible = true;
+                this.textBoxHometown.Text = getUserHometown(friend);
+                this.textBoxHometown.Visible = true;
                 this.labelFriendsBirthday.Visible = true;
                 this.textBoxFriendsBirthday.Text = friend.Birthday;
                 this.textBoxFriendsBirthday.Visible = true;
                 this.labelFriendPosts.Visible = true;
 
+                int i = 0;
                 foreach (Post post in friend.Posts)
                 {
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelFriendsPosts.Controls.Add(postBox);
+                    i++;
+                    if (i == Configuration.k_MaxPostsShown) break;
                 }
 
                 flowLayoutPanelFriendsPosts.Visible = true;
             }
         }
+
 
         private void picBoxAlbum_Click(object i_Sender, EventArgs e)
         {
@@ -130,11 +136,6 @@ namespace FacebookApp.UI
                     picBox.Tag = photo;
                     picBox.Load(photo.PictureNormalURL);
                 }
-                //this.pictureBoxFriendPic.Load(friend.PictureNormalURL);
-                //this.labelFriendName.Text = friend.Name;
-                //this.labelFriendName.Visible = true;
-                //this.listBoxFriendAbout.Text = friend.About;
-                //this.listBoxFriendAbout.Visible = true;
             }
         }
 
@@ -168,14 +169,22 @@ namespace FacebookApp.UI
             this.buttonLogin.Enabled = !i_ToggleMode;
         }
 
+        private string getUserHometown(User i_User)
+        {
+            return i_User.Hometown == null ? string.Empty : i_User.Hometown.Name;
+        }
+
         private void populateNewsFeed()
         {
             if (this.flowLayoutPanelFeedPosts.Controls.Count == 0)
             {
+                int i = 0;
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
+                    i++;
+                    if (i == Configuration.k_MaxPostsShown) break;
                 }
             }
         }
@@ -184,21 +193,23 @@ namespace FacebookApp.UI
         {
             if (this.flowLayoutPanelPosts.Controls.Count == 0)
             {
+                int i = 0;
                 foreach (Post post in m_LoggedInUser.Posts)
                 {
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelPosts.Controls.Add(postBox);
+                    i++;
+                    if (i == Configuration.k_MaxPostsShown) break;
                 }
             }
         }
 
-        private void populateAndFetchUserFriends()
+        private void populateUserFriends()
         {
             if (this.flowLayoutPanelFriends.Controls.Count == 0)
             {
                 foreach (User friend in m_LoggedInUser.Friends)
                 {
-                    m_UserDataManager.AddUserFriend(friend);
                     EventHandler  picBoxFriendClickEventHandler = new EventHandler(this.picBoxFriend_Click);
                     PictureBox picBox = addPictureBoxToLayout(friend.Name, this.flowLayoutPanelFriends, picBoxFriendClickEventHandler);
                     picBox.Tag = friend;
@@ -207,7 +218,8 @@ namespace FacebookApp.UI
             }
         }
 
-        // FacebookWrapper Issue:
+        // FOR ASSIGNMENT CHECKER:
+        // Facebook API Issue Encountered:
         // 'Facebook.FacebookOAuthException' occurred in Facebook.dll
         // Additional information: (OAuthException - #100) (#100) Tried accessing nonexisting field (likes) on node type (Album)
         private void populateUserPhotos()
@@ -285,6 +297,32 @@ namespace FacebookApp.UI
             // Change MainForm Title back to defualt header
             // Enable buttonLogin, Disable buttonLogout
             // If LoginForm was completed close MainForm and Re-Activate LoginForm
+        }
+
+        private void buttonPostsPublish_Click(object i_Sender, EventArgs e)
+        {
+            publishNewPost();
+        }
+
+        // FOR ASSIGNMENT CHECKER:
+        // Facebook API Issue Encountered:
+        // 'Facebook.FacebookOAuthException' occurred in Facebook.dll
+        // Additional information: (OAuthException - #200) (#200) If posting to a group, requires app being installed in the group, 
+        private void publishNewPost()
+        {
+            if (!string.IsNullOrEmpty(this.richTextBoxPostsPublish.Text))
+            {
+                try
+                {
+                    m_LoggedInUser.PostStatus(this.richTextBoxPostsPublish.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(r_MessagePublishPostUnavailable, r_MessageErrorOccuredTitle,
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            this.richTextBoxPostsPublish.Text = string.Empty;
         }
     }
 }
