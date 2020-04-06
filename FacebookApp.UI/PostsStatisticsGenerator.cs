@@ -23,7 +23,7 @@ namespace FacebookApp.UI
         private TextBox txt_TotalLikes;
         static Random s_RandomGenerater = new Random();
 
-        public PostsStatisticsGenerator(User i_LoggedInUser, 
+        public PostsStatisticsGenerator(User i_LoggedInUser,
                                         Chart i_ChartPostsStatistics,
                                         TextBox i_TextBoxLettersPerPost,
                                         TextBox i_TextBoxPostsPerDay,
@@ -49,44 +49,49 @@ namespace FacebookApp.UI
 
         private void LoadChart_LikesPerTimeOfDay()
         {
-            DateTime time;
-            string timeAsString;
-            uint likes;
+            DateTime postsCreatedTime;
+            string createdTimeAsString;
+            uint postsNumberOfLikes;
 
             foreach (var post in m_LoggedInUser.Posts)
             {
-                // Cuz Facebook API doesn't allow us to get Like list
-                //time = (DateTime)post.CreatedTime;
-                //likes = (uint)post.LikedBy.Count;
+                postsCreatedTime = GetPostsCreatedTime(post);
+                postsNumberOfLikes = GetPostsNumberOfLikes(post);
 
-                time = GetRandomDateTime(new DateTime(2000, 01, 01, 10, 00, 00), DateTime.Now);
-                likes = GetRandomUnsignedNumber();
-                timeAsString = time.Hour < 10 ? "0" + time.Hour.ToString() : time.Hour.ToString();
-                timeAsString += ":";
-                timeAsString += time.Minute < 10 ? "0" + time.Minute.ToString() : time.Minute.ToString();
-                this.chart_Likes_Time.Series["Likes"].Points.AddXY(timeAsString, likes);
+                // Cast the CreatedTime's time of day to string: cuz the chart recives X axis values as strings
+                createdTimeAsString = postsCreatedTime.Hour < 10 ? "0" + postsCreatedTime.Hour.ToString() : postsCreatedTime.Hour.ToString();
+                createdTimeAsString += ":";
+                createdTimeAsString += postsCreatedTime.Minute < 10 ? "0" + postsCreatedTime.Minute.ToString() : postsCreatedTime.Minute.ToString();
+
+                this.chart_Likes_Time.Series["Likes"].Points.AddXY(createdTimeAsString, postsNumberOfLikes);
             }
 
+            // Sort the graph in ascending order by X axis - Time of Day
             this.chart_Likes_Time.Series["Likes"].Sort(PointSortOrder.Ascending, "X");
         }
 
         private void LoadChart_PostsPerTimeOfDay()
         {
-            string timeAsString;
-            uint[] postsPerHour = new uint[24];
-            for (int i = 0; i < 24; i++) postsPerHour[i] = 0;
+            string createdTimeAsString;
+            uint[] postsInHour = new uint[24];
+            // fill array with zeros
+            for (int i = 0; i < 24; i++) postsInHour[i] = 0;
 
             foreach (var post in m_LoggedInUser.Posts)
             {
-                postsPerHour[post.CreatedTime.Value.Hour]++;
+                // count how many posts user wrote in each hour of the day
+                postsInHour[post.CreatedTime.Value.Hour]++;
             }
 
-            for (int i = 0; i < postsPerHour.Length; i++)
+            for (int i = 0; i < postsInHour.Length; i++)
             {
-                timeAsString = i < 10 ? "0" + i + ":00" : i + ":00";
-                this.chart_Likes_Time.Series["Posts"].Points.AddXY(timeAsString, postsPerHour[i]);
+                // Cast time of day to string
+                createdTimeAsString = i < 10 ? "0" + i + ":00" : i + ":00";
+                this.chart_Likes_Time.Series["Posts"].Points.AddXY(createdTimeAsString, postsInHour[i]);
             }
+            // Sort the graph in ascending order by X axis - Time of Day
             this.chart_Likes_Time.Series["Posts"].Sort(PointSortOrder.Ascending, "X");
+            // Insert this graph as a secondary line, with a unique Y axis to the main chart control
             CreateSecondYAxisScale(this.chart_Likes_Time, "Posts");
         }
 
@@ -99,101 +104,142 @@ namespace FacebookApp.UI
             this.txt_TotalLikes.Text = TotalNumberOfLikes() + "";
         }
 
+        #region Logic Methods
+        private DateTime GetPostsCreatedTime(Post i_Post)
+        {
+            DateTime result;
+            try
+            {
+                // if Facebook allow, get post's created time,
+                result = (DateTime)i_Post.CreatedTime;
+            }
+            catch (Exception)
+            {
+                // if not, insert Random Time between 01/01/2000 10:00 to now,
+                result = DummyDataGenerator.GetRandomDateTime(new DateTime(2000, 01, 01, 10, 00, 00), DateTime.Now);
+            }
+            return result;
+        }
+
+        private uint GetPostsNumberOfLikes(Post i_Post)
+        {
+            uint result;
+            try
+            {
+                // if Facebook allow, get post's number of likes
+                result = (uint)i_Post.LikedBy.Count;
+            }
+            catch (Exception)
+            {
+                // else, insert a random number between 0 to 150
+                result = DummyDataGenerator.GetRandomUnsignedNumber(150);
+            }
+            return result;
+        }
+
         private double AvgNumberOfLettersInPosts()
         {
-            return DummyDataGenerator.AvgNumberOfLettersInPosts(m_LoggedInUser.Posts);
-
-            //double result = 0;
-
-            //foreach (var post in m_LoggedInUser.Posts)
-            //{
-            //    if (post.Message != null)
-            //        result += post.Message.Length;
-            //}
-            //result /= m_LoggedInUser.Posts.Count;
-
-            //return result;
+            double result = 0;
+            try
+            {
+                foreach (var post in m_LoggedInUser.Posts)
+                {
+                    // Add the Length of all the user's posts
+                    if (post.Message != null)
+                        result += post.Message.Length;
+                }
+                // divide by the number of posts he wrote
+                result /= m_LoggedInUser.Posts.Count;
+            }
+            catch (Exception)
+            {
+                result = DummyDataGenerator.AvgNumberOfLettersInPosts(m_LoggedInUser.Posts);
+            }
+            return result;
         }
 
         private double AvgLikesPerPost()
         {
-            return DummyDataGenerator.AvgLikesPerPost(m_LoggedInUser.Posts);
+            double result = 0;
 
-            //double result = 0;
-
-            //foreach (var post in m_LoggedInUser.Posts)
-            //{
-            //    // Doesnt let see the like list
-            //    //result += post.LikedBy.Count;
-            //    result += GetRandomUnsignedNumber(250);
-            //}
-            //result /= m_LoggedInUser.Posts.Count;
-
-            //return result;
+            try
+            {
+                foreach (var post in m_LoggedInUser.Posts)
+                {
+                    result += post.LikedBy.Count;
+                    result += DummyDataGenerator.GetRandomUnsignedNumber(250);
+                }
+                result /= m_LoggedInUser.Posts.Count;
+            }
+            catch (Exception)
+            {
+                result = DummyDataGenerator.AvgLikesPerPost(m_LoggedInUser.Posts);
+            }
+            return result;
         }
 
         private double AvgPostsPerDay()
         {
-            return DummyDataGenerator.AvgPostsPerDay(m_LoggedInUser.Posts);
+            double result = 0;
+            DateTime userCreatedDate = new DateTime(0);
 
-            //double result = 0;
-            //DateTime createdUser = new DateTime(0);
-
-            ///*foreach (var album in m_LoggedInUser.Albums)
-            //{
-            //    if (album.Name == "Profile Pictures")
-            //        createdUser = album.CreatedTime.Value;
-            //}*/
-            //result = s_RandomGenerater.NextDouble();
-            //if (createdUser.Ticks != 0)
-            //{
-            //    result = m_LoggedInUser.Albums.Count / (DateTime.Now - createdUser).Days;
-            //}
-
-            //return result;
+            try
+            {
+                // we cant get when the user created the account,
+                // but we can see when the album "Profile Pictures" was created,
+                foreach (var album in m_LoggedInUser.Albums)
+                {
+                    if (album.Name == "Profile Pictures")
+                        userCreatedDate = album.CreatedTime.Value;
+                }
+                result = m_LoggedInUser.Albums.Count / (DateTime.Now - userCreatedDate).Days;
+            }
+            catch (Exception)
+            {
+                result = DummyDataGenerator.AvgPostsPerDay(m_LoggedInUser.Posts);
+            }
+            return result;
         }
 
         private double PresentageOfPostsWithPhotos()
         {
-            return DummyDataGenerator.PresentageOfPostsWithPhotos(m_LoggedInUser.Posts);
+            double result = 0;
+            try
+            {
+                foreach (var post in m_LoggedInUser.Posts)
+                {
+                    if (post.PictureURL != null)
+                        result++;
+                }
+                result /= (m_LoggedInUser.Posts.Count) * 100;
+            }
+            catch (Exception)
+            {
+                result = DummyDataGenerator.PresentageOfPostsWithPhotos(m_LoggedInUser.Posts);
+            }
 
-            //double result = 0;
-            //foreach (var post in m_LoggedInUser.Posts)
-            //{
-            //    if (post.PictureURL != null)
-            //        result++;
-            //}
-            //return result / (m_LoggedInUser.Posts.Count) * 100;
+            return result;
         }
 
         private double TotalNumberOfLikes()
         {
-            return DummyDataGenerator.TotalNumberOfLikes(m_LoggedInUser.Posts);
-
-            //double result = 0;
-            //foreach (var post in m_LoggedInUser.Posts)
-            //{
-            //    //result += post.LikedBy.Count;
-            //    result += GetRandomUnsignedNumber(150);
-            //}
-            //return result;
+            double result = 0;
+            try
+            {
+                foreach (var post in m_LoggedInUser.Posts)
+                {
+                    result += post.LikedBy.Count;
+                }
+            }
+            catch (Exception)
+            {
+                result = DummyDataGenerator.TotalNumberOfLikes(m_LoggedInUser.Posts);
+            }
+            return result;
         }
+        #endregion
 
-        private static DateTime GetRandomDateTime(DateTime i_From, DateTime i_To)
-        {
-            return DummyDataGenerator.GetRandomDateTime(i_From, i_To);
-
-            //TimeSpan range = new TimeSpan(i_To.Ticks - i_From.Ticks);
-            //return (i_From + new TimeSpan((long)(range.Ticks * s_RandomGenerater.NextDouble())));
-        }
-
-        private static uint GetRandomUnsignedNumber(int i_Capacity = 150)
-        {
-            return DummyDataGenerator.GetRandomUnsignedNumber(i_Capacity);
-
-            //return (uint)(s_RandomGenerater.Next(0, i_Capacity + 1));
-        }
-
+        #region Graph Maintenance
         private void CreateSecondYAxisScale(Chart i_Chart, string i_Series)
         {
             // Set custom chart area position
@@ -218,7 +264,6 @@ namespace FacebookApp.UI
             areaSeries.AxisY.MajorTickMark.Enabled = false;
             areaSeries.AxisY.LabelStyle.Enabled = false;
             areaSeries.AxisY.IsStartedFromZero = i_Area.AxisY.IsStartedFromZero;
-
 
             i_Series.ChartArea = areaSeries.Name;
 
@@ -255,7 +300,7 @@ namespace FacebookApp.UI
             // Adjust area position
             areaAxis.Position.X -= i_AxisOffset;
             areaAxis.InnerPlotPosition.X += i_LabelsSize;
-
         }
+        #endregion
     }
 }
