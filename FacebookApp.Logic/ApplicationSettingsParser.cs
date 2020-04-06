@@ -6,11 +6,10 @@ using System.Text;
 
 namespace FacebookApp.Logic
 {
-    /// //////////////////////////////////////////////////////
-    /// ///// !!! NEED TO EDIT BEFORE SUBMITION !!! //////////
+    /// !!! NEED TO EDIT BEFORE SUBMITION !!! 
     /// TODO: [AppSettingsParser] Need to make some changes for personal touch.
     /// TODO: [AppSettingsParser] Needs testing.
-    /// //////////////////////////////////////////////////////
+    
 
     internal class ApplicationSettingsParser
     {

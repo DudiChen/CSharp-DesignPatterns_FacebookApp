@@ -40,8 +40,6 @@ namespace FacebookApp.UI
                 StringBuilder formHeader = new StringBuilder(r_LoggedInString);
                 formHeader.Append(m_LoggedInUser.Name);
                 this.Text = formHeader.ToString();
-                //this.buttonLogin.BackColor = System.Drawing.SystemColors.Control;
-                //this.buttonLogout.BackColor = System.Drawing.Color.Red;
                 toggleAllControllers(true);
                 this.labelUserName.Text = m_LoggedInUser.Name;
                 this.labelUserName.Visible = true;
