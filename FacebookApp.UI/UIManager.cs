@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Text;
+﻿using System.Windows.Forms;
 using FacebookApp.Logic;
-using System.Windows.Forms;
 
 namespace FacebookApp.UI
 {
-    class UIManager
+    public class UIManager
     {
         private ApplicationSettings m_ApplicationSettings;
         private LoginManager m_LoginManager;

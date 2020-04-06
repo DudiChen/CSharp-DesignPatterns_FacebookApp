@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FacebookApp.Logic;
 using System.Drawing;
-using System.Net.Mime;
-using FacebookWrapper.ObjectModel;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using FacebookApp.Logic;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.UI
 {
@@ -19,15 +16,15 @@ namespace FacebookApp.UI
         private TextBox txt_LikesPerPost;
         private TextBox txt_PhotosInPosts;
         private TextBox txt_TotalLikes;
-        static Random s_RandomGenerater = new Random();
 
-        public PostsStatisticsGenerator(User i_LoggedInUser,
-                                        Chart i_ChartPostsStatistics,
-                                        TextBox i_TextBoxLettersPerPost,
-                                        TextBox i_TextBoxPostsPerDay,
-                                        TextBox i_TextBoxLikesPerPost,
-                                        TextBox i_TextBoxPhotosInPosts,
-                                        TextBox i_TextBoxTotalLikes)
+        public PostsStatisticsGenerator(
+            User i_LoggedInUser,
+            Chart i_ChartPostsStatistics,
+            TextBox i_TextBoxLettersPerPost,
+            TextBox i_TextBoxPostsPerDay,
+            TextBox i_TextBoxLikesPerPost,
+            TextBox i_TextBoxPhotosInPosts,
+            TextBox i_TextBoxTotalLikes)
         {
             m_LoggedInUser = i_LoggedInUser;
             chart_Likes_Time = i_ChartPostsStatistics;
@@ -72,8 +69,12 @@ namespace FacebookApp.UI
         {
             string createdTimeAsString;
             uint[] postsInHour = new uint[24];
+
             // fill array with zeros
-            for (int i = 0; i < 24; i++) postsInHour[i] = 0;
+            for (int i = 0; i < 24; i++)
+            {
+                postsInHour[i] = 0;
+            }
 
             foreach (var post in m_LoggedInUser.Posts)
             {
@@ -95,11 +96,11 @@ namespace FacebookApp.UI
 
         private void LoadGroup_Stats()
         {
-            this.txt_LetterPerPost.Text = AvgNumberOfLettersInPosts() + "";
-            this.txt_PostsPerDay.Text = AvgPostsPerDay() + "";
-            this.txt_LikesPerPost.Text = AvgLikesPerPost() + "";
-            this.txt_PhotosInPosts.Text = PresentageOfPostsWithPhotos() + "%";
-            this.txt_TotalLikes.Text = TotalNumberOfLikes() + "";
+            this.txt_LetterPerPost.Text = string.Format("{0}", AvgNumberOfLettersInPosts());
+            this.txt_PostsPerDay.Text = string.Format("{0}", AvgPostsPerDay());
+            this.txt_LikesPerPost.Text = string.Format("{0}", AvgLikesPerPost());
+            this.txt_PhotosInPosts.Text = string.Format("{0}%", PresentageOfPostsWithPhotos());
+            this.txt_TotalLikes.Text = string.Format("{0}", TotalNumberOfLikes());
         }
 
         #region Logic Methods
@@ -116,6 +117,7 @@ namespace FacebookApp.UI
                 // if not, insert Random Time between 01/01/2000 10:00 to now,
                 result = DummyDataGenerator.GetRandomDateTime(new DateTime(2000, 01, 01, 10, 00, 00), DateTime.Now);
             }
+
             return result;
         }
 
@@ -132,6 +134,7 @@ namespace FacebookApp.UI
                 // else, insert a random number between 0 to 150
                 result = DummyDataGenerator.GetRandomUnsignedNumber(150);
             }
+
             return result;
         }
 
@@ -144,7 +147,9 @@ namespace FacebookApp.UI
                 {
                     // Add the Length of all the user's posts
                     if (post.Message != null)
+                    {
                         result += post.Message.Length;
+                    }
                 }
                 // divide by the number of posts he wrote
                 result /= m_LoggedInUser.Posts.Count;
@@ -153,6 +158,7 @@ namespace FacebookApp.UI
             {
                 result = DummyDataGenerator.AvgNumberOfLettersInPosts(m_LoggedInUser.Posts);
             }
+
             return result;
         }
 
@@ -167,12 +173,14 @@ namespace FacebookApp.UI
                     result += post.LikedBy.Count;
                     result += DummyDataGenerator.GetRandomUnsignedNumber(250);
                 }
+
                 result /= m_LoggedInUser.Posts.Count;
             }
             catch (Exception)
             {
                 result = DummyDataGenerator.AvgLikesPerPost(m_LoggedInUser.Posts);
             }
+
             return result;
         }
 
@@ -187,15 +195,19 @@ namespace FacebookApp.UI
                 // but we can see when the album "Profile Pictures" was created,
                 foreach (var album in m_LoggedInUser.Albums)
                 {
-                    if (album.Name == "Profile Pictures")
+                    if(album.Name == "Profile Pictures")
+                    {
                         userCreatedDate = album.CreatedTime.Value;
+                    }
                 }
+
                 result = m_LoggedInUser.Albums.Count / (DateTime.Now - userCreatedDate).Days;
             }
             catch (Exception)
             {
                 result = DummyDataGenerator.AvgPostsPerDay(m_LoggedInUser.Posts);
             }
+
             return result;
         }
 
@@ -207,9 +219,12 @@ namespace FacebookApp.UI
                 foreach (var post in m_LoggedInUser.Posts)
                 {
                     if (post.PictureURL != null)
+                    {
                         result++;
+                    }
                 }
-                result /= (m_LoggedInUser.Posts.Count) * 100;
+
+                result /= m_LoggedInUser.Posts.Count * 100;
             }
             catch (Exception)
             {
@@ -233,6 +248,7 @@ namespace FacebookApp.UI
             {
                 result = DummyDataGenerator.TotalNumberOfLikes(m_LoggedInUser.Posts);
             }
+
             return result;
         }
         #endregion
@@ -247,7 +263,13 @@ namespace FacebookApp.UI
             // Create extra Y axis for second
             CreateYAxis(i_Chart, i_Chart.ChartAreas["ChartArea1"], i_Chart.Series[i_Series], 13, 8);
         }
-        public void CreateYAxis(Chart i_Chart, ChartArea i_Area, Series i_Series, float i_AxisOffset, float i_LabelsSize)
+
+        public void CreateYAxis(
+            Chart i_Chart, 
+            ChartArea i_Area, 
+            Series i_Series, 
+            float i_AxisOffset, 
+            float i_LabelsSize)
         {
             // Create new chart area for original series
             ChartArea areaSeries = i_Chart.ChartAreas.Add("ChartArea_" + i_Series.Name);
@@ -262,7 +284,6 @@ namespace FacebookApp.UI
             areaSeries.AxisY.MajorTickMark.Enabled = false;
             areaSeries.AxisY.LabelStyle.Enabled = false;
             areaSeries.AxisY.IsStartedFromZero = i_Area.AxisY.IsStartedFromZero;
-
             i_Series.ChartArea = areaSeries.Name;
 
             // Create new chart area for axis

@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Net;
-using System.IO;
-using System.Net.Mime;
 using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
@@ -15,14 +7,16 @@ namespace FacebookApp.UI
 {
     public partial class PostBox : UserControl
     {
-        private Post m_Post;
         private readonly string r_MessageLikesUnavailable = string.Format(
-        "Posts Likes are currently unavailable.{0}Please try again later.",
-        Environment.NewLine);
+            "Posts Likes are currently unavailable.{0}Please try again later.",
+            Environment.NewLine);
+
         private readonly string r_MessageCommentsUnavailable = string.Format(
             "Posts Comments are currently unavailable.{0}Please try again later.",
             Environment.NewLine);
+
         private readonly string r_MessageErrorOccuredTitle = "Error Occured";
+        private Post m_Post;
         private string m_FromName = string.Empty;
 
         public PostBox(Post i_Post)
@@ -86,8 +80,11 @@ namespace FacebookApp.UI
             }
             catch (Exception)
             {
-                MessageBox.Show(r_MessageLikesUnavailable, r_MessageErrorOccuredTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    r_MessageLikesUnavailable, 
+                    r_MessageErrorOccuredTitle,
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
             }
             
             this.richTextBoxLikes.Visible = true;
@@ -103,18 +100,23 @@ namespace FacebookApp.UI
                     foreach (Comment comment in m_Post.Comments)
                     {
                         string createTimeString = formatDateTime(comment.CreatedTime);
-                        this.richTextBoxLikes.AppendText(string.Format("{0} {1}:{2}{3}{2}",
-                            createTimeString,
-                            comment.From.Name,
-                            Environment.NewLine,
-                            comment.Message));
+                        this.richTextBoxLikes.AppendText(
+                            string.Format(
+                                "{0} {1}:{2}{3}{2}",
+                                createTimeString,
+                                comment.From.Name,
+                                Environment.NewLine,
+                                comment.Message));
                     }
                 }
             }
-            catch(Exception exception)
+            catch (Exception)
             {
-                MessageBox.Show(r_MessageCommentsUnavailable, r_MessageErrorOccuredTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    r_MessageCommentsUnavailable, 
+                    r_MessageErrorOccuredTitle,
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
             }
             
             this.richTextBoxLikes.Visible = true;

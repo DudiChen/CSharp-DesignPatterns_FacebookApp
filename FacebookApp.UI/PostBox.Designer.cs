@@ -1,6 +1,6 @@
 ﻿namespace FacebookApp.UI
 {
-    partial class PostBox
+    public partial class PostBox
     {
         /// <summary> 
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -68,7 +69,7 @@
             this.richTextBoxPost.ReadOnly = true;
             this.richTextBoxPost.Size = new System.Drawing.Size(564, 131);
             this.richTextBoxPost.TabIndex = 2;
-            this.richTextBoxPost.Text = "";
+            this.richTextBoxPost.Text = string.Empty;
             // 
             // buttonPostLikes
             // 
@@ -102,7 +103,7 @@
             this.richTextBoxLikes.Name = "richTextBoxLikes";
             this.richTextBoxLikes.Size = new System.Drawing.Size(250, 131);
             this.richTextBoxLikes.TabIndex = 5;
-            this.richTextBoxLikes.Text = "";
+            this.richTextBoxLikes.Text = string.Empty;
             // 
             // richTextBoxComments
             // 
@@ -112,7 +113,7 @@
             this.richTextBoxComments.Name = "richTextBoxComments";
             this.richTextBoxComments.Size = new System.Drawing.Size(250, 131);
             this.richTextBoxComments.TabIndex = 6;
-            this.richTextBoxComments.Text = "";
+            this.richTextBoxComments.Text = string.Empty;
             // 
             // PostBox
             // 

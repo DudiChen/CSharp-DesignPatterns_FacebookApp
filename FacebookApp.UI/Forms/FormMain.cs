@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FacebookApp.Logic;
 using FacebookWrapper.ObjectModel;
@@ -13,23 +8,26 @@ namespace FacebookApp.UI
 {
     public partial class FormMain : Form
     {
-        private ApplicationSettings m_ApplicationSettings;
-        private LoginManager m_LoginManager;
-        private User m_LoggedInUser;
         private readonly string r_DefaultFormHeader = "Maor & Dudi's Facebook Application";
         private readonly string r_LoggedInString = "Logged-In As: ";
         private readonly string r_MessageAlbumsUnavailable = string.Format(
             "Albums are currently unavailable.{0}Please try again later.",
             Environment.NewLine);
+
         private readonly string r_MessageCoverPhotoUnavailable = string.Format(
             "User's Cover Photo is currently unavailable.{0}Using defualt Cover Image.",
             Environment.NewLine);
+
         private readonly string r_MessagePublishPostUnavailable = string.Format(
             "Publishing New Posts is currently unavailable.{0}Please try again later.",
             Environment.NewLine);
+
+        private readonly string r_MessageLogoutSuccessful = "You have logged-out successfully!";
         private readonly string r_MessageErrorOccuredTitle = "Error Occured";
+        private ApplicationSettings m_ApplicationSettings;
+        private LoginManager m_LoginManager;
+        private User m_LoggedInUser;
         private bool m_IsPostsStatisticsPopulated = false;
-        private bool m_IsFriendsPostsPopulated = false;
 
         public FormMain()
         {
@@ -45,15 +43,14 @@ namespace FacebookApp.UI
             if (m_LoginManager.IsLoggedIn)
             {
                 m_LoggedInUser = m_LoginManager.LoggedInUser;
-                StringBuilder formHeader = new StringBuilder(r_LoggedInString);
-                formHeader.Append(m_LoggedInUser.Name);
-                this.Text = formHeader.ToString();
-                toggleAllControllers(true);
+                string formHeader = string.Format("{0}{1}", r_LoggedInString, m_LoggedInUser.Name);
+                this.Text = formHeader;
+                toggleAllMainFormControls(true);
                 this.labelUserName.Text = m_LoggedInUser.Name;
-                this.labelUserName.Visible = true;
                 this.pictureBoxProfilePic.Load(m_LoggedInUser.PictureNormalURL);
                 loadUserCoverPictureBox();
                 populateNewsFeed();
+                showAllMainFormControls(true);
             }
         }
 
@@ -79,12 +76,10 @@ namespace FacebookApp.UI
             {
                 populatePostsStatistics();
             }
-            /// TODO: [Extra Feature] Add 2nd Extra Feature.
         }
 
         private void label1_Click(object i_Sender, EventArgs e)
         {
-
         }
 
         private void picBoxFriend_Click(object i_Sender, EventArgs e)
@@ -94,20 +89,7 @@ namespace FacebookApp.UI
             if (friend != null)
             {
                 this.flowLayoutPanelFriendsPosts.Controls.Clear();
-                this.pictureBoxFriendPic.Load(friend.PictureNormalURL);
-                this.pictureBoxFriendPic.Visible = true;
-                this.labelFriendName.Text = friend.Name;
-                this.labelFriendName.Visible = true;
-                this.labelFriendAbout.Visible = true;
-                this.listBoxFriendAbout.Text = friend.About;
-                this.listBoxFriendAbout.Visible = true;
-                this.labelFriendsHometown.Visible = true;
-                this.textBoxHometown.Text = getUserHometown(friend);
-                this.textBoxHometown.Visible = true;
-                this.labelFriendsBirthday.Visible = true;
-                this.textBoxFriendsBirthday.Text = friend.Birthday;
-                this.textBoxFriendsBirthday.Visible = true;
-                this.labelFriendPosts.Visible = true;
+                picBoxFriendClickSetControlsAttributes(friend);
 
                 int i = 0;
                 foreach (Post post in friend.Posts)
@@ -115,13 +97,38 @@ namespace FacebookApp.UI
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelFriendsPosts.Controls.Add(postBox);
                     i++;
-                    if (i == Configuration.k_MaxPostsShown) break;
+                    if (i == Configuration.k_MaxPostsShown)
+                    {
+                        break;
+                    }
                 }
 
-                flowLayoutPanelFriendsPosts.Visible = true;
+                picBoxFriendClickShowControls(true);
             }
         }
 
+        private void picBoxFriendClickSetControlsAttributes(User i_Friend)
+        {
+            this.pictureBoxFriendPic.Load(i_Friend.PictureNormalURL);
+            this.labelFriendName.Text = i_Friend.Name;
+            this.listBoxFriendAbout.Text = i_Friend.About;
+            this.textBoxHometown.Text = getUserHometown(i_Friend);
+            this.textBoxFriendsBirthday.Text = i_Friend.Birthday;
+        }
+
+        private void picBoxFriendClickShowControls(bool i_ToggleMode)
+        {
+            this.pictureBoxFriendPic.Visible = i_ToggleMode;
+            this.labelFriendName.Visible = i_ToggleMode;
+            this.labelFriendAbout.Visible = i_ToggleMode;
+            this.listBoxFriendAbout.Visible = i_ToggleMode;
+            this.labelFriendsHometown.Visible = i_ToggleMode;
+            this.textBoxHometown.Visible = i_ToggleMode;
+            this.labelFriendsBirthday.Visible = i_ToggleMode;
+            this.textBoxFriendsBirthday.Visible = i_ToggleMode;
+            this.labelFriendPosts.Visible = i_ToggleMode;
+            flowLayoutPanelFriendsPosts.Visible = i_ToggleMode;
+        }
 
         private void picBoxAlbum_Click(object i_Sender, EventArgs e)
         {
@@ -160,13 +167,25 @@ namespace FacebookApp.UI
             e.Graphics.DrawString(picBox.Name, Font, Brushes.Black, locationToDraw);
         }
 
-        private void toggleAllControllers(bool i_ToggleMode)
+        private void toggleAllMainFormControls(bool i_ToggleMode)
         {
             this.pictureBoxProfilePic.Enabled = i_ToggleMode;
             this.tabControl1.Enabled = i_ToggleMode;
             this.buttonLogout.Enabled = i_ToggleMode;
             this.labelUserName.Enabled = i_ToggleMode;
             this.buttonLogin.Enabled = !i_ToggleMode;
+            this.checkBoxRememberMe.Enabled = !i_ToggleMode;
+        }
+
+        private void showAllMainFormControls(bool i_ToggleMode)
+        {
+            this.pictureBoxProfilePic.Visible = i_ToggleMode;
+            this.labelUserName.Visible = i_ToggleMode;
+            this.tabControl1.Visible = i_ToggleMode;
+            this.buttonLogout.Visible = i_ToggleMode;
+            this.labelUserName.Visible = i_ToggleMode;
+            this.buttonLogin.Visible = !i_ToggleMode;
+            this.checkBoxRememberMe.Visible = !i_ToggleMode;
         }
 
         private string getUserHometown(User i_User)
@@ -184,7 +203,10 @@ namespace FacebookApp.UI
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                     i++;
-                    if (i == Configuration.k_MaxPostsShown) break;
+                    if (i == Configuration.k_MaxPostsShown)
+                    {
+                        break;
+                    }
                 }
             }
         }
@@ -199,7 +221,10 @@ namespace FacebookApp.UI
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelPosts.Controls.Add(postBox);
                     i++;
-                    if (i == Configuration.k_MaxPostsShown) break;
+                    if (i == Configuration.k_MaxPostsShown)
+                    {
+                        break;
+                    }
                 }
             }
         }
@@ -210,18 +235,22 @@ namespace FacebookApp.UI
             {
                 foreach (User friend in m_LoggedInUser.Friends)
                 {
-                    EventHandler  picBoxFriendClickEventHandler = new EventHandler(this.picBoxFriend_Click);
+                    EventHandler picBoxFriendClickEventHandler = new EventHandler(this.picBoxFriend_Click);
                     PictureBox picBox = addPictureBoxToLayout(friend.Name, this.flowLayoutPanelFriends, picBoxFriendClickEventHandler);
                     picBox.Tag = friend;
                     picBox.Load(friend.PictureNormalURL);
                 }
+
+                flowLayoutPanelFriends.Visible = true;
             }
         }
 
-        // FOR ASSIGNMENT CHECKER:
-        // Facebook API Issue Encountered:
-        // 'Facebook.FacebookOAuthException' occurred in Facebook.dll
-        // Additional information: (OAuthException - #100) (#100) Tried accessing nonexisting field (likes) on node type (Album)
+        /// <summary>
+        /// FOR ASSIGNMENT CHECKER:
+        /// Facebook API Issue Encountered:
+        /// Facebook.FacebookOAuthException' occurred in Facebook.dll
+        /// Additional information: (OAuthException - #100) (#100) Tried accessing nonexisting field (likes) on node type (Album)
+        /// </summary>
         private void populateUserPhotos()
         {
             if (this.flowLayoutPanelPhotosAlbums.Controls.Count == 0)
@@ -238,8 +267,11 @@ namespace FacebookApp.UI
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show(r_MessageAlbumsUnavailable, r_MessageErrorOccuredTitle,
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        r_MessageAlbumsUnavailable, 
+                        r_MessageErrorOccuredTitle,
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Error);
                 }
             }
         }
@@ -278,25 +310,43 @@ namespace FacebookApp.UI
         {
             try
             {
-                if (!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
+                if(!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
+                {
                     this.pictureBoxCoverPic.Load(m_LoggedInUser.Cover.SourceURL);
+                }
             }
             catch (Exception)
             {
-                MessageBox.Show(r_MessageCoverPhotoUnavailable, r_MessageErrorOccuredTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    r_MessageCoverPhotoUnavailable, 
+                    r_MessageErrorOccuredTitle,
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
             }
         }
         
-        /// TODO: Add buttonLogout_Click functionality.
         private void buttonLogout_Click(object i_Sender, EventArgs e)
         {
-            // Save LastAccessToken if RememberMe == true
-            // Save Application Settings
-            // Clear All User Data
-            // Change MainForm Title back to defualt header
-            // Enable buttonLogin, Disable buttonLogout
-            // If LoginForm was completed close MainForm and Re-Activate LoginForm
+            logoutUser();
+        }
+
+        private void logoutUser()
+        {
+            ApplicationSettings.Instance.SaveApplicationSettings();
+            FacebookWrapper.FacebookService.Logout(logoutSuccessful);
+        }
+
+        private void logoutSuccessful()
+        {
+            this.Text = r_DefaultFormHeader;
+            toggleAllMainFormControls(false);
+            MessageBox.Show(
+                r_MessageLogoutSuccessful, 
+                "Logout",
+                MessageBoxButtons.OK, 
+                MessageBoxIcon.None);
+            toggleAllMainFormControls(false);
+            showAllMainFormControls(false);
         }
 
         private void buttonPostsPublish_Click(object i_Sender, EventArgs e)
@@ -304,10 +354,17 @@ namespace FacebookApp.UI
             publishNewPost();
         }
 
-        // FOR ASSIGNMENT CHECKER:
-        // Facebook API Issue Encountered:
-        // 'Facebook.FacebookOAuthException' occurred in Facebook.dll
-        // Additional information: (OAuthException - #200) (#200) If posting to a group, requires app being installed in the group, 
+        private void checkBoxRememberMe_CheckedChanged(object i_Sender, EventArgs e)
+        {
+            m_ApplicationSettings.RememberUser = checkBoxRememberMe.Checked;
+        }
+
+        /// <summary>
+        /// FOR ASSIGNMENT CHECKER:
+        /// Facebook API Issue Encountered:
+        /// 'Facebook.FacebookOAuthException' occurred in Facebook.dll
+        /// Additional information: (OAuthException - #200) (#200) If posting to a group, requires app being installed in the group, 
+        /// </summary>
         private void publishNewPost()
         {
             if (!string.IsNullOrEmpty(this.richTextBoxPostsPublish.Text))
@@ -318,10 +375,14 @@ namespace FacebookApp.UI
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show(r_MessagePublishPostUnavailable, r_MessageErrorOccuredTitle,
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        r_MessagePublishPostUnavailable, 
+                        r_MessageErrorOccuredTitle, 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Error);
                 }
             }
+
             this.richTextBoxPostsPublish.Text = string.Empty;
         }
     }

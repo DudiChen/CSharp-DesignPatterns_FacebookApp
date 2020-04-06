@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -8,13 +6,13 @@ namespace FacebookApp.Logic
 {
     public sealed class LoginManager
     {
-        private static LoginManager s_Instance = null;
         private static readonly object sr_CreateLock = new object();
-        private LoginResult m_LoginResult;
-        private User m_LoggedInUser;
         private static readonly string sr_FailedLoginMsg = "Error: Login Attempt Failed... Please Try Again...";
         private static readonly string sr_InvalidAccessTokenMsg = "Error: Invalid Access Token... Please Perform Login Again...";
-
+        private static LoginManager s_Instance = null;
+        private LoginResult m_LoginResult;
+        private User m_LoggedInUser;
+        
         private LoginManager()
         {
             m_LoginResult = null;
@@ -40,7 +38,6 @@ namespace FacebookApp.Logic
             }
         }
 
-
         private void storeLoginData(LoginResult result)
         {
             m_LoginResult = result;
@@ -53,6 +50,7 @@ namespace FacebookApp.Logic
             {
                 return m_LoginResult;
             }
+
             set
             {
                 m_LoginResult = value;
@@ -65,6 +63,7 @@ namespace FacebookApp.Logic
             {
                 return m_LoggedInUser;
             }
+
             set
             {
                 m_LoggedInUser = value;
@@ -84,8 +83,11 @@ namespace FacebookApp.Logic
             LoginResult result;
             try
             {
-                result = FacebookService.Login(Configuration.sr_AppID, Configuration.sr_UserPermissions);
-                if (!string.IsNullOrEmpty(result.AccessToken)) storeLoginData(result);
+                result = FacebookService.Login(Configuration.sr_ApplicationID, Configuration.sr_UserPermissions);
+                if (!string.IsNullOrEmpty(result.AccessToken))
+                {
+                    storeLoginData(result);
+                }
             }
             catch (Exception)
             {
@@ -99,15 +101,15 @@ namespace FacebookApp.Logic
             try
             {
                 result = FacebookService.Connect(i_AccessToken);
-                if(!string.IsNullOrEmpty(result.AccessToken)) storeLoginData(result);
+                if (!string.IsNullOrEmpty(result.AccessToken))
+                {
+                    storeLoginData(result);
+                }
             }
             catch (Exception)
             {
                 throw new Exception(sr_InvalidAccessTokenMsg);
             }
-            
-            
         }
-        
     }
 }
