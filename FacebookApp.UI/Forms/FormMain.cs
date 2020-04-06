@@ -30,6 +30,7 @@ namespace FacebookApp.UI
             m_UserDataManager = UserDataManager.Instance;
         }
 
+        /// TODO: [buttonLogin_Click] See if at all possible to fetch User's Cover Picture.
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             m_LoginManager.Login();
@@ -53,8 +54,6 @@ namespace FacebookApp.UI
             }
         }
 
-        
-
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -64,7 +63,7 @@ namespace FacebookApp.UI
             }
             else if (this.tabControl1.SelectedTab.Name.Equals(tabPagePosts.Name))
             {
-                
+                /// TODO: [tabControl1_SelectedIndexChanged] Add NewsFeed's functionality to User's Posts. 
             }
             else if (this.tabControl1.SelectedTab.Name.Equals(tabPageFriends.Name))
             {
@@ -72,18 +71,52 @@ namespace FacebookApp.UI
             }
             else if (this.tabControl1.SelectedTab.Name.Equals(tabPagePhotos.Name))
             {
-
+                /// TODO: [tabControl1_SelectedIndexChanged] Add Albums display in Photos Tab.
             }
             else if (this.tabControl1.SelectedTab.Name.Equals(tabPagePostsStatistics.Name))
             {
-
+                generatePostsStatistics();
             }
+            /// TODO: [Extra Feature] Add 2nd Extra Feature.
         }
-
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        /// TODO: [picBoxFriend_Click] Add proper display of Selected Friend Posts / Profile.
+        private void picBoxFriend_Click(object i_Sender, EventArgs e)
+        {
+            PictureBox picBox = i_Sender as PictureBox;
+            User friend = m_UserDataManager.GetUserFriendByName(picBox.Name);
+            if (friend != null)
+            {
+                this.pictureBoxFriendPic.Load(friend.PictureNormalURL);
+                this.labelFriendName.Text = friend.Name;
+                this.labelFriendName.Visible = true;
+                this.listBoxFriendAbout.Text = friend.About;
+                this.listBoxFriendAbout.Visible = true;
+            }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toggleAllControllers(bool i_ToggleMode)
+        {
+            this.pictureBoxProfilePic.Enabled = i_ToggleMode;
+            this.tabControl1.Enabled = i_ToggleMode;
+            this.buttonLogout.Enabled = i_ToggleMode;
+            this.labelUserName.Enabled = i_ToggleMode;
+            this.buttonLogin.Enabled = !i_ToggleMode;
         }
 
         private void populateNewsFeed()
@@ -94,37 +127,7 @@ namespace FacebookApp.UI
                 {
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
-                    //this.listViewFeedPosts.Items.Add
                 }
-
-            //if (this.listBoxFeedPosts.Items.Count == 0)
-            //{
-            //    foreach (Post post in m_LoggedInUser.NewsFeed)
-            //    {
-                    //if (post.Message != null || post.Description != null)
-                    //{
-                    //    StringBuilder postFromHeader = new StringBuilder();
-                    //    postFromHeader.AppendFormat("[{0:dd/MM/yyyy H:mm:ss}] ", post.CreatedTime);
-                    //    if (post.From != null && !string.IsNullOrEmpty(post.From.Name))
-                    //    {
-                    //        postFromHeader.AppendFormat("{0}", post.From.Name);
-                    //        //this.listBoxFeedPosts.Items.Add(string.Format("From: {0}", post.From.Name));
-                    //        this.listBoxFeedPosts.Items.Add(postFromHeader.ToString());
-                    //    }
-
-                    //    if (post.Message != null)
-                    //    {
-                    //        this.listBoxFeedPosts.Items.Add(post.Message);
-                    //    }
-
-                    //    if (post.Description != null)
-                    //    {
-                    //        this.listBoxFeedPosts.Items.Add(post.Description);
-                    //    }
-
-                    //    this.listBoxFeedPosts.Items.Add(string.Format("{0}", Environment.NewLine));
-                //    }
-                //}
             }
         }
 
@@ -152,39 +155,21 @@ namespace FacebookApp.UI
             return picBox;
         }
 
-        private void picBoxFriend_Click(object i_Sender, EventArgs e)
+        private void generatePostsStatistics()
         {
-            PictureBox picBox = i_Sender as PictureBox;
-            User friend = m_UserDataManager.GetUserFriendByName(picBox.Name);
-            if (friend != null)
-            {
-                this.pictureBoxFriendPic.Load(friend.PictureNormalURL);
-                this.labelFriendName.Text = friend.Name;
-                this.labelFriendName.Visible = true;
-                this.listBoxFriendAbout.Text = friend.About;
-                this.listBoxFriendAbout.Visible = true;
-            }
-            //if (m_LoggedInUser.Friends.Contains())
-            //{
-
-            //}
+            PostsStatisticsGenerator postsStatsGenerator = new PostsStatisticsGenerator(
+                m_LoggedInUser, 
+                this.chart_Likes_Time, 
+                this.txt_LetterPerPost,
+                this.txt_PostsPerDay,
+                this.txt_LikesPerPost,
+                this.txt_PhotosInPosts,
+                this.txt_TotalLikes);
+            postsStatsGenerator.GenerateStatistics();
         }
-
-        private void toggleAllControllers(bool i_ToggleMode)
-        {
-            this.pictureBoxProfilePic.Enabled = i_ToggleMode;
-            this.tabControl1.Enabled = i_ToggleMode;
-            this.buttonLogout.Enabled = i_ToggleMode;
-            this.labelUserName.Enabled = i_ToggleMode;
-            this.buttonLogin.Enabled = !i_ToggleMode;
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        
+        /// TODO: Add buttonLogout_Click functionality.
+        private void buttonLogout_Click(object sender, EventArgs e)
         {
 
         }

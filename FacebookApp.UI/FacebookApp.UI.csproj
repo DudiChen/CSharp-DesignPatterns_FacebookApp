@@ -63,10 +63,6 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainWin.cs" />
-    <Compile Include="Forms\MainWin.designer.cs">
-      <DependentUpon>MainWin.cs</DependentUpon>
-    </Compile>
     <Compile Include="PostBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,7 +70,7 @@
       <DependentUpon>PostBox.cs</DependentUpon>
     </Compile>
     <Compile Include="PostsFeedGenerator.cs" />
-    <Compile Include="PostsStatistics.cs" />
+    <Compile Include="PostsStatisticsGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIManager.cs" />
@@ -83,9 +79,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainWin.resx">
-      <DependentUpon>MainWin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PostBox.resx">
       <DependentUpon>PostBox.cs</DependentUpon>

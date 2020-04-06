@@ -7,6 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.Logic
 {
+    /// TODO: [PostsFeedGenerator] Verify if Class required or can be removed.
     public static class PostsFeedGenerator
     {
         public static ListView CreateFeed(LinkedList<Post> i_PostsCollection)

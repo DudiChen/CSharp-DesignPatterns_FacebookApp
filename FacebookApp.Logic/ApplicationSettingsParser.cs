@@ -6,12 +6,12 @@ using System.Text;
 
 namespace FacebookApp.Logic
 {
-    /// <summary>
     /// //////////////////////////////////////////////////////
     /// ///// !!! NEED TO EDIT BEFORE SUBMITION !!! //////////
+    /// TODO: [AppSettingsParser] Need to make some changes for personal touch.
+    /// TODO: [AppSettingsParser] Needs testing.
     /// //////////////////////////////////////////////////////
-    /// //////////////////////////////////////////////////////
-    /// </summary>
+
     internal class ApplicationSettingsParser
     {
         public static ApplicationSettings Desirialize(Stream i_Stream)

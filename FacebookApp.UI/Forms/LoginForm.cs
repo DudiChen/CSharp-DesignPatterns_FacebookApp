@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace FacebookApp.UI.Forms
 {
+    /// TODO: [LoginForm] If time permits; Move Login to dedicated LoginForm.
     public partial class LoginForm : Form
     {
         public LoginForm()

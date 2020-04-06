@@ -24,7 +24,7 @@ namespace FacebookApp.UI
             m_Post = i_Post;
             loadImage(i_Post.From.PictureSmallURL);
             setTimeAndFromHeader(i_Post.CreatedTime, i_Post.From.Name);
-            insertContent();
+            insertPostContent();
         }
 
         private void loadImage(string i_ImageURL)
@@ -45,28 +45,19 @@ namespace FacebookApp.UI
             this.labelPostTimeAndFrom.Text = timeAndFromHeader.ToString();
         }
 
-        private void insertContent()
-        {
-            createPostImageViewItems();
-            insertPostImageViewItems();
-        }
-
-        private void createPostImageViewItems()
+        private void insertPostContent()
         {
             if (m_Post.Message != null)
             {
-                ListViewItem lvi = new ListViewItem(m_Post.Message);
-                lvi.Tag = m_Post;
-                m_ListViewItemsCollection.AddLast(lvi);
+                this.richTextBoxPost.AppendText(string.Format("{0}{1}{1}", m_Post.Message, Environment.NewLine));
             }
 
             if (m_Post.Description != null)
             {
-                ListViewItem lvi = new ListViewItem(m_Post.Description);
-                lvi.Tag = m_Post;
-                m_ListViewItemsCollection.AddLast(lvi);
+                this.richTextBoxPost.AppendText(string.Format("{0}{1}{1}", m_Post.Description, Environment.NewLine));
             }
 
+            /// NOTE: This code was used with tryDownloadImage() to fetch images - if not useful, discard
             //if (m_Post.PictureURL != null)
             //{
             //    ListViewItem lvi = new ListViewItem();
@@ -83,36 +74,65 @@ namespace FacebookApp.UI
             //}
         }
 
-        private void insertPostImageViewItems()
-        {
-            //this.listViewPost.FullRowSelect = true;
-            //this.listViewPost.GridLines = true;
-            foreach (ListViewItem lvi in m_ListViewItemsCollection)
-            {
-                //this.listViewPost.Items.Add(lvi);
-                TextBox tB = new TextBox();
-                //tB.Text = lvi.SubItems[0].Text;
-                //this.flowLayoutPanelPost.Controls.Add(tB);
-                this.dataGridView1.Rows.Add(lvi.SubItems[0].Text);
-            }
-        }
-
+        /// TODO: [tryDownloadImage] Not in use anymore - see if useful or discard code.
         private bool tryDownloadImage(string i_ImageURL, out Image o_Image)
         {
 
             WebClient wc = new WebClient();
             byte[] bytes = wc.DownloadData(i_ImageURL);
             MemoryStream ms = new MemoryStream(bytes);
-            ////Image img = System.Drawing.Image.FromStream(ms);
             o_Image = System.Drawing.Image.FromStream(ms);
             ms.Dispose();
             return (o_Image != null);
-            ////return img;
         }
 
+        /// TODO: [listViewPost_SelectedIndexChanged] Remove if not relevant anymore.
         private void listViewPost_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonPostLikes_Click(object sender, EventArgs e)
+        {
+            this.richTextBoxComments.Visible = false;
+            if (m_Post.LikedBy.Count > 0)
+            {
+                foreach (User userLiked in m_Post.LikedBy)
+                {
+                    this.richTextBoxLikes.AppendText(string.Format("{0}{1}", userLiked.Name, Environment.NewLine));
+                }
+            }
+            this.richTextBoxLikes.Visible = true;
+        }
+
+        private void buttonPostComments_Click(object sender, EventArgs e)
+        {
+            this.richTextBoxLikes.Visible = false;
+            if (m_Post.Comments.Count > 0)
+            {
+                foreach (Comment comment in m_Post.Comments)
+                {
+                    string createTimeString = formatDateTime(comment.CreatedTime);
+                    this.richTextBoxLikes.AppendText(string.Format("{0} {1}:{2}{3}{2}", 
+                        createTimeString, 
+                        comment.From.Name, 
+                        Environment.NewLine,
+                        comment.Message));
+                }
+            }
+            this.richTextBoxLikes.Visible = true;
+        }
+
+        private string formatDateTime(DateTime? i_dateTime)
+        {
+            if (i_dateTime != null)
+            {
+                return string.Format("[{0:dd/MM/yyyy H:mm:ss}]", i_dateTime);
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 }

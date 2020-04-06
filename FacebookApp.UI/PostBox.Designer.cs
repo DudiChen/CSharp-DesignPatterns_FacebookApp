@@ -30,10 +30,12 @@
         {
             this.pictureBoxPostProfilePic = new System.Windows.Forms.PictureBox();
             this.labelPostTimeAndFrom = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnPost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.richTextBoxPost = new System.Windows.Forms.RichTextBox();
+            this.buttonPostLikes = new System.Windows.Forms.Button();
+            this.buttonPostComments = new System.Windows.Forms.Button();
+            this.richTextBoxLikes = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxComments = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostProfilePic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxPostProfilePic
@@ -52,53 +54,78 @@
             this.labelPostTimeAndFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPostTimeAndFrom.Location = new System.Drawing.Point(72, 14);
             this.labelPostTimeAndFrom.Name = "labelPostTimeAndFrom";
-            this.labelPostTimeAndFrom.Size = new System.Drawing.Size(592, 27);
+            this.labelPostTimeAndFrom.Size = new System.Drawing.Size(743, 27);
             this.labelPostTimeAndFrom.TabIndex = 1;
             this.labelPostTimeAndFrom.Text = "label1";
             // 
-            // dataGridView1
+            // richTextBoxPost
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.richTextBoxPost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnPost});
-            this.dataGridView1.Location = new System.Drawing.Point(4, 48);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(660, 103);
-            this.dataGridView1.TabIndex = 2;
+            this.richTextBoxPost.Location = new System.Drawing.Point(0, 44);
+            this.richTextBoxPost.Name = "richTextBoxPost";
+            this.richTextBoxPost.ReadOnly = true;
+            this.richTextBoxPost.Size = new System.Drawing.Size(502, 131);
+            this.richTextBoxPost.TabIndex = 2;
+            this.richTextBoxPost.Text = "";
             // 
-            // ColumnPost
+            // buttonPostLikes
             // 
-            this.ColumnPost.HeaderText = "";
-            this.ColumnPost.Name = "ColumnPost";
-            this.ColumnPost.ReadOnly = true;
-            this.ColumnPost.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnPost.Width = 5;
+            this.buttonPostLikes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPostLikes.Location = new System.Drawing.Point(508, 14);
+            this.buttonPostLikes.Name = "buttonPostLikes";
+            this.buttonPostLikes.Size = new System.Drawing.Size(112, 27);
+            this.buttonPostLikes.TabIndex = 3;
+            this.buttonPostLikes.Text = "Likes";
+            this.buttonPostLikes.UseVisualStyleBackColor = true;
+            this.buttonPostLikes.Click += new System.EventHandler(this.buttonPostLikes_Click);
+            // 
+            // buttonPostComments
+            // 
+            this.buttonPostComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPostComments.Location = new System.Drawing.Point(644, 14);
+            this.buttonPostComments.Name = "buttonPostComments";
+            this.buttonPostComments.Size = new System.Drawing.Size(112, 27);
+            this.buttonPostComments.TabIndex = 4;
+            this.buttonPostComments.Text = "Comments";
+            this.buttonPostComments.UseVisualStyleBackColor = true;
+            this.buttonPostComments.Click += new System.EventHandler(this.buttonPostComments_Click);
+            // 
+            // richTextBoxLikes
+            // 
+            this.richTextBoxLikes.Location = new System.Drawing.Point(508, 44);
+            this.richTextBoxLikes.Name = "richTextBoxLikes";
+            this.richTextBoxLikes.Size = new System.Drawing.Size(307, 131);
+            this.richTextBoxLikes.TabIndex = 5;
+            this.richTextBoxLikes.Text = "";
+            // 
+            // richTextBoxComments
+            // 
+            this.richTextBoxComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxComments.Location = new System.Drawing.Point(508, 44);
+            this.richTextBoxComments.Name = "richTextBoxComments";
+            this.richTextBoxComments.Size = new System.Drawing.Size(307, 131);
+            this.richTextBoxComments.TabIndex = 6;
+            this.richTextBoxComments.Text = "";
             // 
             // PostBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.richTextBoxComments);
+            this.Controls.Add(this.richTextBoxLikes);
+            this.Controls.Add(this.buttonPostComments);
+            this.Controls.Add(this.buttonPostLikes);
+            this.Controls.Add(this.richTextBoxPost);
             this.Controls.Add(this.labelPostTimeAndFrom);
             this.Controls.Add(this.pictureBoxPostProfilePic);
             this.Name = "PostBox";
-            this.Size = new System.Drawing.Size(667, 154);
+            this.Size = new System.Drawing.Size(818, 175);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostProfilePic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -107,7 +134,10 @@
 
         private System.Windows.Forms.PictureBox pictureBoxPostProfilePic;
         private System.Windows.Forms.Label labelPostTimeAndFrom;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPost;
+        private System.Windows.Forms.RichTextBox richTextBoxPost;
+        private System.Windows.Forms.Button buttonPostLikes;
+        private System.Windows.Forms.Button buttonPostComments;
+        private System.Windows.Forms.RichTextBox richTextBoxLikes;
+        private System.Windows.Forms.RichTextBox richTextBoxComments;
     }
 }

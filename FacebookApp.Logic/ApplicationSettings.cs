@@ -5,6 +5,9 @@ using System.Text;
 
 namespace FacebookApp.Logic
 {
+    /// TODO: [ApplicationSettings] Still need testing.
+    /// TODO: [ApplicationSettings] Move LastAccessToken & RememberMe Features to LoginManager class.
+    /// TODO: [ApplicationSettings] Need enable LastAccessToken & RememberMe Features
     public sealed class ApplicationSettings
     {
         private static ApplicationSettings s_Instance = null;
@@ -16,7 +19,7 @@ namespace FacebookApp.Logic
         private ApplicationSettings()
         {
             m_LastAccessToken = string.Empty;
-            m_RememberUser = true;
+            m_RememberUser = false;
         }
 
         public static ApplicationSettings Instance

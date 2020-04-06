@@ -11,7 +11,7 @@ namespace FacebookApp.Logic
         public static readonly string[] sr_UserPermissions =
             {
                 "public_profile", "user_gender", "user_birthday", "user_age_range", "user_likes", "user_photos",
-                "user_videos", "user_friends", "user_location", "user_tagged_places", "user_posts"
+                "user_posts", "user_friends", "user_location", "user_tagged_places"
             };
 
         //public string AppID
