@@ -17,11 +17,13 @@ namespace FacebookApp.UI
         private LoginManager m_LoginManager;
         private UserDataManager m_UserDataManager;
         private User m_LoggedInUser;
-        private TabPage m_LastSelectedTab;
         private readonly string r_DefaultFormHeader = "Maor & Dudi's Facebook Application";
         private readonly string r_LoggedInString = "Logged-In As: ";
         private readonly string r_MessageAlbumsUnavailable = string.Format(
             "Albums are currently unavailable.{0}Please try again later.",
+            Environment.NewLine);
+        private readonly string r_MessageCoverPhotoUnavailable = string.Format(
+            "User's Cover Photo is currently unavailable.{0}Using defualt Cover Image.",
             Environment.NewLine);
         private readonly string r_MessageErrorOccuredTitle = "Error Occured";
         private bool m_IsPostsStatisticsPopulated = false;
@@ -50,11 +52,8 @@ namespace FacebookApp.UI
                 this.labelUserName.Text = m_LoggedInUser.Name;
                 this.labelUserName.Visible = true;
                 this.pictureBoxProfilePic.Load(m_LoggedInUser.PictureNormalURL);
-                //this.pictureBoxCoverPic.Load(???);
-                //toggleButtons(true);
-                m_LastSelectedTab = tabPageNewsFeed;
+                loadUserCoverPictureBox();
                 populateNewsFeed();
-                
             }
         }
 
@@ -92,14 +91,10 @@ namespace FacebookApp.UI
         private void picBoxFriend_Click(object i_Sender, EventArgs e)
         {
             PictureBox picBox = i_Sender as PictureBox;
-            //User friend = m_UserDataManager.GetUserFriendByName(picBox.Name);
             User friend = picBox.Tag as User;
             if (friend != null)
             {
-                if (m_IsFriendsPostsPopulated)
-                {
-                    this.flowLayoutPanelFriendsPosts.Controls.Clear();
-                }
+                this.flowLayoutPanelFriendsPosts.Controls.Clear();
                 this.pictureBoxFriendPic.Load(friend.PictureNormalURL);
                 this.pictureBoxFriendPic.Visible = true;
                 this.labelFriendName.Text = friend.Name;
@@ -119,7 +114,6 @@ namespace FacebookApp.UI
                 }
 
                 flowLayoutPanelFriendsPosts.Visible = true;
-                m_IsPostsStatisticsPopulated = true;
             }
         }
 
@@ -127,7 +121,6 @@ namespace FacebookApp.UI
         {
             PictureBox picBoxSender = i_Sender as PictureBox;
             Album album = picBoxSender.Tag as Album;
-            //User friend = m_UserDataManager.GetUserFriendByName(picBox.Name);
             if (album != null)
             {
                 foreach (Photo photo in album.Photos)
@@ -153,16 +146,6 @@ namespace FacebookApp.UI
             {
                 this.pictureBoxPhotosPic.Load(photo.PictureNormalURL);
             }
-        }
-
-        private void richTextBox1_TextChanged(object i_Sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object i_Sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox_Paint(object i_Sender, PaintEventArgs e)
@@ -227,7 +210,6 @@ namespace FacebookApp.UI
         // FacebookWrapper Issue:
         // 'Facebook.FacebookOAuthException' occurred in Facebook.dll
         // Additional information: (OAuthException - #100) (#100) Tried accessing nonexisting field (likes) on node type (Album)
-        // There for dummy data had to be used.
         private void populateUserPhotos()
         {
             if (this.flowLayoutPanelPhotosAlbums.Controls.Count == 0)
@@ -247,11 +229,7 @@ namespace FacebookApp.UI
                     MessageBox.Show(r_MessageAlbumsUnavailable, r_MessageErrorOccuredTitle,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
             }
-
-
-
         }
 
         private PictureBox addPictureBoxToLayout(string i_PicName, Panel i_DestPanel, EventHandler i_EventHandler)
@@ -263,7 +241,6 @@ namespace FacebookApp.UI
             picBox.Size = new System.Drawing.Size(75, 75);
             picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             picBox.Visible = true;
-            // picBox.Click += new System.EventHandler(this.picBoxFriend_Click);
             i_DestPanel.Controls.Add(picBox);
             return picBox;
         }
@@ -282,6 +259,20 @@ namespace FacebookApp.UI
                     this.txt_TotalLikes);
                 postsStatsGenerator.GenerateStatistics();
                 m_IsPostsStatisticsPopulated = true;
+            }
+        }
+
+        private void loadUserCoverPictureBox()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
+                    this.pictureBoxCoverPic.Load(m_LoggedInUser.Cover.SourceURL);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(r_MessageCoverPhotoUnavailable, r_MessageErrorOccuredTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         
