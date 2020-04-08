@@ -88,8 +88,10 @@ namespace FacebookApp.UI
                 createdTimeAsString = i < 10 ? "0" + i + ":00" : i + ":00";
                 this.chart_Likes_Time.Series["Posts"].Points.AddXY(createdTimeAsString, postsInHour[i]);
             }
+
             // Sort the graph in ascending order by X axis - Time of Day
             this.chart_Likes_Time.Series["Posts"].Sort(PointSortOrder.Ascending, "X");
+
             // Insert this graph as a secondary line, with a unique Y axis to the main chart control
             CreateSecondYAxisScale(this.chart_Likes_Time, "Posts");
         }
@@ -151,6 +153,7 @@ namespace FacebookApp.UI
                         result += post.Message.Length;
                     }
                 }
+
                 // divide by the number of posts he wrote
                 result /= m_LoggedInUser.Posts.Count;
             }

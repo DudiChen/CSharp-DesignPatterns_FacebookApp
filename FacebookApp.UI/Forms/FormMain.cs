@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 using FacebookApp.Logic;
 using FacebookWrapper.ObjectModel;
@@ -76,10 +77,35 @@ namespace FacebookApp.UI
             {
                 populatePostsStatistics();
             }
+            else if (this.tabControl1.SelectedTab.Name.Equals(tabPageBirthdayWisher.Name))
+            {
+                populateBirthdayWisher();
+            }
         }
 
         private void label1_Click(object i_Sender, EventArgs e)
         {
+        }
+
+        private void picBoxFriendBirthDay_Click(object i_Sender, EventArgs e)
+        {
+            PictureBox picBox = i_Sender as PictureBox;
+            User friend = picBox.Tag as User;
+
+            if (friend != null)
+            {
+                txtBox_BirthdayWish.Enabled = true;
+                btn_PostBirthdayWish.Enabled = true;
+
+                // will replace the @id to a tag in facebook
+                txtBox_BirthdayWish.Text = string.Format(
+                    "Happy Birthday @{0}!!!{1}I hope this year brings you the best life has to offer,{1}Thank you for being a fantastic friend!{1} Yours,{1}{2}.",
+                    friend.Id, 
+                    Environment.NewLine, 
+                    m_LoggedInUser.FirstName);
+                
+                btn_PostBirthdayWish.Tag = friend;
+            }
         }
 
         private void picBoxFriend_Click(object i_Sender, EventArgs e)
@@ -268,10 +294,34 @@ namespace FacebookApp.UI
                 catch (Exception)
                 {
                     MessageBox.Show(
-                        r_MessageAlbumsUnavailable, 
+                        r_MessageAlbumsUnavailable,
                         r_MessageErrorOccuredTitle,
-                        MessageBoxButtons.OK, 
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void populateBirthdayWisher()
+        {
+            if (this.flowLayoutPanelFreindsW8Birthday.Controls.Count == 0)
+            {
+                // Birthday Format from Facebook is: MM/DD/YYYY
+                string todayDate = string.Format("{0:MM/dd}", DateTime.Now);
+
+                foreach (User friend in m_LoggedInUser.Friends)
+                {
+                    // in real scenrio i will only show the friends with birtday today,
+                    // but because we only have 2 friends to show, i will not filter them
+                    //if (friend.Birthday.Contains(todayDate))
+                    //{
+                    EventHandler picBoxFriendClickEventHandler = new EventHandler(this.picBoxFriendBirthDay_Click);
+                    PictureBox picBox = addPictureBoxToLayout(friend.Name, this.flowLayoutPanelFreindsW8Birthday, picBoxFriendClickEventHandler);
+                    picBox.Tag = friend;
+                    picBox.Load(friend.PictureNormalURL);
+                    //User: design.patterns
+                    //Pass: design.patterns20b20
+                    //}
                 }
             }
         }
@@ -310,7 +360,7 @@ namespace FacebookApp.UI
         {
             try
             {
-                if(!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
+                if (!string.IsNullOrEmpty(m_LoggedInUser.Cover.SourceURL))
                 {
                     this.pictureBoxCoverPic.Load(m_LoggedInUser.Cover.SourceURL);
                 }
@@ -318,13 +368,13 @@ namespace FacebookApp.UI
             catch (Exception)
             {
                 MessageBox.Show(
-                    r_MessageCoverPhotoUnavailable, 
+                    r_MessageCoverPhotoUnavailable,
                     r_MessageErrorOccuredTitle,
-                    MessageBoxButtons.OK, 
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
-        
+
         private void buttonLogout_Click(object i_Sender, EventArgs e)
         {
             logoutUser();
@@ -341,9 +391,9 @@ namespace FacebookApp.UI
             this.Text = r_DefaultFormHeader;
             toggleAllMainFormControls(false);
             MessageBox.Show(
-                r_MessageLogoutSuccessful, 
+                r_MessageLogoutSuccessful,
                 "Logout",
-                MessageBoxButtons.OK, 
+                MessageBoxButtons.OK,
                 MessageBoxIcon.None);
             toggleAllMainFormControls(false);
             showAllMainFormControls(false);
@@ -357,6 +407,17 @@ namespace FacebookApp.UI
         private void checkBoxRememberMe_CheckedChanged(object i_Sender, EventArgs e)
         {
             m_ApplicationSettings.RememberUser = checkBoxRememberMe.Checked;
+        }
+
+        private void btn_PostBirthdayWish_Click(object sender, EventArgs e)
+        {
+            User birthdayFriend = btn_PostBirthdayWish.Tag as User;
+            Post birthdayWish = new Post();
+
+            // Facebook Wrapper gives me no way to edit post's message 
+            //birthdayWish.Message = txtBox_BirthdayWish;
+            // and doesnt allow me any other way to post on wall
+            birthdayFriend.WallPosts.Add(birthdayWish);
         }
 
         /// <summary>
@@ -376,14 +437,18 @@ namespace FacebookApp.UI
                 catch (Exception)
                 {
                     MessageBox.Show(
-                        r_MessagePublishPostUnavailable, 
-                        r_MessageErrorOccuredTitle, 
-                        MessageBoxButtons.OK, 
+                        r_MessagePublishPostUnavailable,
+                        r_MessageErrorOccuredTitle,
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
 
             this.richTextBoxPostsPublish.Text = string.Empty;
+        }
+
+        private void flowLayoutPanelFreindsW8Birthday_Paint(object sender, PaintEventArgs e)
+        {
         }
     }
 }

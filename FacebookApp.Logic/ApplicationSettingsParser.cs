@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-
 namespace FacebookApp.Logic
 {
     internal class ApplicationSettingsParser
