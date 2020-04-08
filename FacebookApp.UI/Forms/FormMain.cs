@@ -123,7 +123,7 @@ namespace FacebookApp.UI
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelFriendsPosts.Controls.Add(postBox);
                     i++;
-                    if (i == Configuration.k_MaxPostsShown)
+                    if (i == m_ApplicationSettings.MaxPostsShown)
                     {
                         break;
                     }
@@ -229,7 +229,7 @@ namespace FacebookApp.UI
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                     i++;
-                    if (i == Configuration.k_MaxPostsShown)
+                    if (i == m_ApplicationSettings.MaxPostsShown)
                     {
                         break;
                     }
@@ -247,7 +247,7 @@ namespace FacebookApp.UI
                     PostBox postBox = new PostBox(post);
                     this.flowLayoutPanelPosts.Controls.Add(postBox);
                     i++;
-                    if (i == Configuration.k_MaxPostsShown)
+                    if (i == m_ApplicationSettings.MaxPostsShown)
                     {
                         break;
                     }

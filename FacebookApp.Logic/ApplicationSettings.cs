@@ -8,6 +8,15 @@ namespace FacebookApp.Logic
         private static readonly object sr_CreateLock = new object();
         private static readonly string sr_AppSettingsConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\ApplicationSettings.xml";
         private static ApplicationSettings s_Instance = null;
+        private readonly int r_MaxPostsShown = 15;
+        private readonly string r_ApplicationID = "1089225541443714";
+        private readonly string[] r_UserPermissions =
+            {
+                "public_profile", "user_gender", "user_birthday", "user_hometown", "user_age_range", "user_likes",
+                "user_photos", "user_posts", "user_friends", "user_location", "user_tagged_places", "publish_to_groups",
+                "groups_access_member_info", "publish_pages"
+            };
+
         private bool m_RememberUser;
         private string m_LastAccessToken;
 
@@ -55,6 +64,30 @@ namespace FacebookApp.Logic
                 }
 
                 return s_Instance;
+            }
+        }
+
+        public int MaxPostsShown
+        {
+            get
+            {
+                return r_MaxPostsShown;
+            }
+        }
+
+        public string ApplicationID
+        {
+            get
+            {
+                return r_ApplicationID;
+            }
+        }
+
+        public string[] UserPermissions
+        {
+            get
+            {
+                return r_UserPermissions;
             }
         }
 

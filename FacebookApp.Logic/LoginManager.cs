@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mime;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -10,6 +11,7 @@ namespace FacebookApp.Logic
         private static readonly string sr_FailedLoginMsg = "Error: Login Attempt Failed... Please Try Again...";
         private static readonly string sr_InvalidAccessTokenMsg = "Error: Invalid Access Token... Please Perform Login Again...";
         private static LoginManager s_Instance = null;
+        private ApplicationSettings m_ApplicationSettings;
         private LoginResult m_LoginResult;
         private User m_LoggedInUser;
         
@@ -17,6 +19,7 @@ namespace FacebookApp.Logic
         {
             m_LoginResult = null;
             m_LoggedInUser = null;
+            m_ApplicationSettings = ApplicationSettings.Instance;
         }
 
         public static LoginManager Instance
@@ -38,10 +41,10 @@ namespace FacebookApp.Logic
             }
         }
 
-        private void storeLoginData(LoginResult result)
+        private void storeLoginData(LoginResult i_LoginResult)
         {
-            m_LoginResult = result;
-            m_LoggedInUser = result.LoggedInUser;
+            m_LoginResult = i_LoginResult;
+            m_LoggedInUser = i_LoginResult.LoggedInUser;
         }
 
         public LoginResult LogginResult
@@ -83,7 +86,7 @@ namespace FacebookApp.Logic
             LoginResult result;
             try
             {
-                result = FacebookService.Login(Configuration.sr_ApplicationID, Configuration.sr_UserPermissions);
+                result = FacebookService.Login(m_ApplicationSettings.ApplicationID, m_ApplicationSettings.UserPermissions);
                 if (!string.IsNullOrEmpty(result.AccessToken))
                 {
                     storeLoginData(result);
@@ -97,10 +100,9 @@ namespace FacebookApp.Logic
 
         public void Connect(string i_AccessToken)
         {
-            LoginResult result;
             try
             {
-                result = FacebookService.Connect(i_AccessToken);
+                LoginResult result = FacebookService.Connect(i_AccessToken);
                 if (!string.IsNullOrEmpty(result.AccessToken))
                 {
                     storeLoginData(result);

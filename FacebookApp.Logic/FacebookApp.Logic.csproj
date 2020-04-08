@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="ApplicationSettings.cs" />
     <Compile Include="ApplicationSettingsParser.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="DummyDataGenerator.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

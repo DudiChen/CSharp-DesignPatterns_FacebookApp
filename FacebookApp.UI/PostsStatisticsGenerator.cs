@@ -267,7 +267,7 @@ namespace FacebookApp.UI
             CreateYAxis(i_Chart, i_Chart.ChartAreas["ChartArea1"], i_Chart.Series[i_Series], 13, 8);
         }
 
-        public void CreateYAxis(
+        private void CreateYAxis(
             Chart i_Chart, 
             ChartArea i_Area, 
             Series i_Series, 
