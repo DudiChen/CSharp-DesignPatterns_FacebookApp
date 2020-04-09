@@ -33,7 +33,7 @@ namespace FacebookApp.UI
         public FormMain()
         {
             InitializeComponent();
-            tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
+            tabControlFormMain.SelectedIndexChanged += new EventHandler(tabControlFormMain_SelectedIndexChanged);
             m_ApplicationSettings = ApplicationSettings.Instance;
             m_LoginManager = LoginManager.Instance;
             m_LoginManager.LogoutSuccessful += new EventHandler(loginManager_LogoutSuccessful);
@@ -56,29 +56,29 @@ namespace FacebookApp.UI
             }
         }
 
-        private void tabControl1_SelectedIndexChanged(object i_Sender, EventArgs e)
+        private void tabControlFormMain_SelectedIndexChanged(object i_Sender, EventArgs e)
         {
-            if (this.tabControl1.SelectedTab.Name.Equals(tabPageNewsFeed.Name))
+            if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageNewsFeed.Name))
             {
                 populateNewsFeed();
             }
-            else if (this.tabControl1.SelectedTab.Name.Equals(tabPagePosts.Name))
+            else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePosts.Name))
             {
                 populateUserPosts();
             }
-            else if (this.tabControl1.SelectedTab.Name.Equals(tabPageFriends.Name))
+            else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageFriends.Name))
             {
                 populateUserFriends();
             }
-            else if (this.tabControl1.SelectedTab.Name.Equals(tabPagePhotos.Name))
+            else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePhotos.Name))
             {
                 populateUserPhotos();
             }
-            else if (this.tabControl1.SelectedTab.Name.Equals(tabPagePostsStatistics.Name))
+            else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePostsStatistics.Name))
             {
                 populatePostsStatistics();
             }
-            else if (this.tabControl1.SelectedTab.Name.Equals(tabPageBirthdayWisher.Name))
+            else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageBirthdayWisher.Name))
             {
                 populateBirthdayWisher();
             }
@@ -197,7 +197,7 @@ namespace FacebookApp.UI
         private void toggleAllMainFormControls(bool i_ToggleMode)
         {
             this.pictureBoxProfilePic.Enabled = i_ToggleMode;
-            this.tabControl1.Enabled = i_ToggleMode;
+            this.tabControlFormMain.Enabled = i_ToggleMode;
             this.buttonLogout.Enabled = i_ToggleMode;
             this.labelUserName.Enabled = i_ToggleMode;
             this.buttonLogin.Enabled = !i_ToggleMode;
@@ -208,7 +208,7 @@ namespace FacebookApp.UI
         {
             this.pictureBoxProfilePic.Visible = i_ToggleMode;
             this.labelUserName.Visible = i_ToggleMode;
-            this.tabControl1.Visible = i_ToggleMode;
+            this.tabControlFormMain.Visible = i_ToggleMode;
             this.buttonLogout.Visible = i_ToggleMode;
             this.labelUserName.Visible = i_ToggleMode;
             this.buttonLogin.Visible = !i_ToggleMode;

@@ -79,7 +79,7 @@
             this.flowLayoutPanelPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageNewsFeed = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelFeedPosts = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlFormMain = new System.Windows.Forms.TabControl();
             this.tabPageBirthdayWisher = new System.Windows.Forms.TabPage();
             this.btn_PostBirthdayWish = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -100,7 +100,7 @@
             this.tabPagePosts.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPageNewsFeed.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControlFormMain.SuspendLayout();
             this.tabPageBirthdayWisher.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -699,25 +699,25 @@
             this.flowLayoutPanelFeedPosts.Size = new System.Drawing.Size(1125, 374);
             this.flowLayoutPanelFeedPosts.TabIndex = 1;
             // 
-            // tabControl1
+            // tabControlFormMain
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControlFormMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPageNewsFeed);
-            this.tabControl1.Controls.Add(this.tabPagePosts);
-            this.tabControl1.Controls.Add(this.tabPageFriends);
-            this.tabControl1.Controls.Add(this.tabPagePhotos);
-            this.tabControl1.Controls.Add(this.tabPagePostsStatistics);
-            this.tabControl1.Controls.Add(this.tabPageBirthdayWisher);
-            this.tabControl1.Enabled = false;
-            this.tabControl1.Location = new System.Drawing.Point(7, 214);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1139, 407);
-            this.tabControl1.TabIndex = 3;
-            this.tabControl1.Visible = false;
+            this.tabControlFormMain.Controls.Add(this.tabPageNewsFeed);
+            this.tabControlFormMain.Controls.Add(this.tabPagePosts);
+            this.tabControlFormMain.Controls.Add(this.tabPageFriends);
+            this.tabControlFormMain.Controls.Add(this.tabPagePhotos);
+            this.tabControlFormMain.Controls.Add(this.tabPagePostsStatistics);
+            this.tabControlFormMain.Controls.Add(this.tabPageBirthdayWisher);
+            this.tabControlFormMain.Enabled = false;
+            this.tabControlFormMain.Location = new System.Drawing.Point(7, 214);
+            this.tabControlFormMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControlFormMain.Name = "tabControlFormMain";
+            this.tabControlFormMain.SelectedIndex = 0;
+            this.tabControlFormMain.Size = new System.Drawing.Size(1139, 407);
+            this.tabControlFormMain.TabIndex = 3;
+            this.tabControlFormMain.Visible = false;
             // 
             // tabPageBirthdayWisher
             // 
@@ -814,7 +814,7 @@
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.labelUserName);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlFormMain);
             this.Controls.Add(this.pictureBoxProfilePic);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.pictureBoxCoverPic);
@@ -838,7 +838,7 @@
             this.tabPagePosts.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tabPageNewsFeed.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlFormMain.ResumeLayout(false);
             this.tabPageBirthdayWisher.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -892,7 +892,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPosts;
         private System.Windows.Forms.TabPage tabPageNewsFeed;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFeedPosts;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlFormMain;
         private System.Windows.Forms.TabPage tabPageBirthdayWisher;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label6;
