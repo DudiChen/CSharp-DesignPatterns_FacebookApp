@@ -11,15 +11,15 @@ namespace FacebookApp.Logic
         private static readonly string sr_FailedLoginMsg = "Error: Login Attempt Failed... Please Try Again...";
         private static readonly string sr_InvalidAccessTokenMsg = "Error: Invalid Access Token... Please Perform Login Again...";
         private static LoginManager s_Instance = null;
-        private ApplicationSettings m_ApplicationSettings;
+        private readonly ApplicationSettings r_ApplicationSettings;
         private LoginResult m_LoginResult;
         private User m_LoggedInUser;
-        
+
         private LoginManager()
         {
             m_LoginResult = null;
             m_LoggedInUser = null;
-            m_ApplicationSettings = ApplicationSettings.Instance;
+            r_ApplicationSettings = ApplicationSettings.Instance;
         }
 
         public static LoginManager Instance
@@ -45,19 +45,6 @@ namespace FacebookApp.Logic
         {
             m_LoginResult = i_LoginResult;
             m_LoggedInUser = i_LoginResult.LoggedInUser;
-        }
-
-        public LoginResult LogginResult
-        {
-            get
-            {
-                return m_LoginResult;
-            }
-
-            set
-            {
-                m_LoginResult = value;
-            }
         }
 
         public User LoggedInUser
@@ -86,7 +73,7 @@ namespace FacebookApp.Logic
             LoginResult result;
             try
             {
-                result = FacebookService.Login(m_ApplicationSettings.ApplicationID, m_ApplicationSettings.UserPermissions);
+                result = FacebookService.Login(r_ApplicationSettings.ApplicationID, r_ApplicationSettings.UserPermissions);
                 if (!string.IsNullOrEmpty(result.AccessToken))
                 {
                     storeLoginData(result);
@@ -96,6 +83,16 @@ namespace FacebookApp.Logic
             {
                 throw new Exception(sr_FailedLoginMsg);
             }
+        }
+
+        public void Logout()
+        {
+            FacebookWrapper.FacebookService.Logout(logoutSuccessful);
+        }
+
+        private void logoutSuccessful()
+        {
+            onLogoutSuccessful(EventArgs.Empty);
         }
 
         public void Connect(string i_AccessToken)
@@ -113,5 +110,16 @@ namespace FacebookApp.Logic
                 throw new Exception(sr_InvalidAccessTokenMsg);
             }
         }
+
+        private void onLogoutSuccessful(EventArgs e)
+        {
+            EventHandler handler = LogoutSuccessful;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        public event EventHandler LogoutSuccessful;
     }
 }

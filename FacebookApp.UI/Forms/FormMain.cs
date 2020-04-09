@@ -36,6 +36,7 @@ namespace FacebookApp.UI
             tabControl1.SelectedIndexChanged += new EventHandler(tabControl1_SelectedIndexChanged);
             m_ApplicationSettings = ApplicationSettings.Instance;
             m_LoginManager = LoginManager.Instance;
+            m_LoginManager.LogoutSuccessful += new EventHandler(loginManager_LogoutSuccessful);
         }
 
         private void buttonLogin_Click(object i_Sender, EventArgs e)
@@ -383,10 +384,10 @@ namespace FacebookApp.UI
         private void logoutUser()
         {
             ApplicationSettings.Instance.SaveApplicationSettings();
-            FacebookWrapper.FacebookService.Logout(logoutSuccessful);
+            m_LoginManager.Logout();
         }
 
-        private void logoutSuccessful()
+        private void loginManager_LogoutSuccessful(object i_Sender, EventArgs e)
         {
             this.Text = r_DefaultFormHeader;
             toggleAllMainFormControls(false);
