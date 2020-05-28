@@ -7,131 +7,47 @@ namespace FacebookApp.UI
 {
     public partial class PostBox : UserControl
     {
-        private readonly string r_MessageLikesUnavailable = string.Format(
+        #region Fields
+
+        #region Const
+        private static readonly string r_MessageLikesUnavailable = string.Format(
             "Posts Likes are currently unavailable.{0}Please try again later.",
             Environment.NewLine);
 
-        private readonly string r_MessageCommentsUnavailable = string.Format(
+        private static readonly string r_MessageCommentsUnavailable = string.Format(
             "Posts Comments are currently unavailable.{0}Please try again later.",
             Environment.NewLine);
 
-        private readonly string r_MessageErrorOccuredTitle = "Error Occured";
-        private Post m_Post;
-        private string m_FromName = string.Empty;
+        private static readonly string r_MessageErrorOccuredTitle = "Error Occured";
+        #endregion
 
-        public PostBox(Post i_Post)
+        //private System.Windows.Forms.PictureBox m_Picture;
+        //private System.Windows.Forms.Label m_Headline;
+        //private System.Windows.Forms.RichTextBox m_Content;
+        //private System.Windows.Forms.Button m_Likes;
+        //private System.Windows.Forms.Button m_Comments;
+        private System.Windows.Forms.RichTextBox m_TxtboxLikesComments;
+        //private System.Windows.Forms.BindingSource m_BinddingDataPost;
+
+        #endregion
+
+        #region Properties
+
+        //public PictureBox Picture { get => m_Picture; set => m_Picture = value; }
+        //public Label Headline { get => m_Headline; set => m_Headline = value; }
+        //public RichTextBox Content { get => m_Content; set => m_Content = value; }
+        //public Button Likes { get => m_Likes; set => m_Likes = value; }
+        //public Button Comments { get => m_Comments; set => m_Comments = value; }
+        //public BindingSource BinddingDataPost { get => m_BinddingDataPost; set => m_BinddingDataPost = value; }
+        public RichTextBox TxtboxLikesComments { get => m_TxtboxLikesComments; set => m_TxtboxLikesComments = value; }
+
+        #endregion
+
+        #region Constructor
+        public PostBox()
         {
-            InitializeComponent();
-            m_Post = i_Post;
-
-            if (i_Post.From != null)
-            {
-                m_FromName = i_Post.From.Name;
-                loadImage(i_Post.From.PictureSmallURL);
-            }
-            
-            setTimeAndFromHeader(i_Post.CreatedTime, m_FromName);
-            insertPostContent();
+            this.components = new System.ComponentModel.Container();
         }
-
-        private void loadImage(string i_ImageURL)
-        {
-            this.pictureBoxPostProfilePic.Load(i_ImageURL);
-        }
-
-        private void setTimeAndFromHeader(DateTime? i_TimePosted, string i_FromPosted)
-        {
-            StringBuilder timeAndFromHeader = new StringBuilder();
-            if (i_TimePosted != null)
-            {
-                timeAndFromHeader.AppendFormat("[{0:dd/MM/yyyy H:mm:ss}] ", i_TimePosted);
-            }
-
-            timeAndFromHeader.AppendFormat("{0}", i_FromPosted);
-
-            this.labelPostTimeAndFrom.Text = timeAndFromHeader.ToString();
-        }
-
-        private void insertPostContent()
-        {
-            if (m_Post.Message != null)
-            {
-                this.richTextBoxPost.AppendText(string.Format("{0}{1}{1}", m_Post.Message, Environment.NewLine));
-            }
-
-            if (m_Post.Description != null)
-            {
-                this.richTextBoxPost.AppendText(string.Format("{0}{1}{1}", m_Post.Description, Environment.NewLine));
-            }
-        }
-
-        private void buttonPostLikes_Click(object i_Sender, EventArgs e)
-        {
-            this.richTextBoxComments.Visible = false;
-            try
-            {
-                if (m_Post.LikedBy.Count > 0)
-                {
-                    foreach (User userLiked in m_Post.LikedBy)
-                    {
-                        this.richTextBoxLikes.AppendText(string.Format("{0}{1}", userLiked.Name, Environment.NewLine));
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(
-                    r_MessageLikesUnavailable, 
-                    r_MessageErrorOccuredTitle,
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error);
-            }
-            
-            this.richTextBoxLikes.Visible = true;
-        }
-
-        private void buttonPostComments_Click(object i_Sender, EventArgs e)
-        {
-            this.richTextBoxLikes.Visible = false;
-            try
-            {
-                if (m_Post.Comments.Count > 0)
-                {
-                    foreach (Comment comment in m_Post.Comments)
-                    {
-                        string createTimeString = formatDateTime(comment.CreatedTime);
-                        this.richTextBoxLikes.AppendText(
-                            string.Format(
-                                "{0} {1}:{2}{3}{2}",
-                                createTimeString,
-                                comment.From.Name,
-                                Environment.NewLine,
-                                comment.Message));
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(
-                    r_MessageCommentsUnavailable, 
-                    r_MessageErrorOccuredTitle,
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error);
-            }
-            
-            this.richTextBoxLikes.Visible = true;
-        }
-
-        private string formatDateTime(DateTime? i_dateTime)
-        {
-            if (i_dateTime != null)
-            {
-                return string.Format("[{0:dd/MM/yyyy H:mm:ss}]", i_dateTime);
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
+        #endregion
     }
 }

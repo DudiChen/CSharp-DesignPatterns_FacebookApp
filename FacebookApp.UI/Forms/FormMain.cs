@@ -121,7 +121,8 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in friend.Posts)
                 {
-                    PostBox postBox = new PostBox(post);
+                    //CHECK Builder
+                    PostBox postBox = PostBoxComposer.Generate(post);
                     this.flowLayoutPanelFriendsPosts.Controls.Add(postBox);
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
@@ -227,7 +228,8 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
-                    PostBox postBox = new PostBox(post);
+                    //CHECK Builder
+                    PostBox postBox = PostBoxComposer.Generate(post);
                     this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
@@ -245,7 +247,8 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.Posts)
                 {
-                    PostBox postBox = new PostBox(post);
+                    //CHECK Builder
+                    PostBox postBox = PostBoxComposer.Generate(post);
                     this.flowLayoutPanelPosts.Controls.Add(postBox);
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
