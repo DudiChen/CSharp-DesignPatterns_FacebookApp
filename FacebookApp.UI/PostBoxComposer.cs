@@ -51,6 +51,26 @@ namespace FacebookApp.UI
 
             return result;
         }
+
+        /// <summary>
+        /// Generate a PostBox using Builder Pattern - Modified to 'Friends tab' where i_Post.From = null
+        /// for... facebook reasons...
+        /// </summary>
+        /// <param name="i_Post"></param>
+        /// <returns></returns>
+        public static PostBox Generate(Post i_Post, string i_FromName, string i_FromURL)
+        {
+            PostBox result = new PostBox();
+            CreateView(ref result);
+            result.Controls.Add(CreatePicture(i_Post, i_FromURL));
+            result.Controls.Add(CreateHeadline(i_Post, i_FromName));
+            result.Controls.Add(CreateContent(i_Post));
+            result.Controls.Add(CreateLikeCommentsTextbox(ref result, i_Post));
+            result.Controls.Add(CreateLikes(i_Post, result.TxtboxLikesComments));
+            result.Controls.Add(CreateComments(i_Post, result.TxtboxLikesComments));
+
+            return result;
+        }
         #endregion
 
         #region Private Methods
@@ -67,6 +87,24 @@ namespace FacebookApp.UI
             result.TabIndex = 0;
             result.TabStop = false;
             ((System.ComponentModel.ISupportInitialize)(result)).BeginInit();
+            result.Load(i_Post.From.PictureSmallURL);
+
+            return result;
+        }
+
+        private static PictureBox CreatePicture(Post i_Post, string i_URL)
+        {
+            PictureBox result = new PictureBox();
+
+            result.Location = new System.Drawing.Point(3, 3);
+            result.Margin = new System.Windows.Forms.Padding(2);
+            result.Name = "m_Pic";
+            result.Size = new System.Drawing.Size(38, 30);
+            result.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            result.TabIndex = 0;
+            result.TabStop = false;
+            ((System.ComponentModel.ISupportInitialize)(result)).BeginInit();
+            result.Load(i_URL);
 
             return result;
         }
@@ -82,7 +120,23 @@ namespace FacebookApp.UI
             result.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             result.Name = "m_Headline";
             result.Size = new System.Drawing.Size(379, 22);
-            result.Text = CreateHeadline_Value(i_Post.CreatedTime, i_Post.From.Name);
+            result.Text = CreateHeadline_Value(i_Post.CreatedTime, i_Post.From.Name);   // This line throw Exception when asking posts from 'Friends' tab
+
+            return result;
+        }
+
+        private static Label CreateHeadline(Post i_Post, string i_Name)
+        {
+            Label result = new Label();
+
+            result.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            result.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            result.Location = new System.Drawing.Point(45, 11);
+            result.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            result.Name = "m_Headline";
+            result.Size = new System.Drawing.Size(379, 22);
+            result.Text = CreateHeadline_Value(i_Post.CreatedTime, i_Name);   // This line throw Exception when asking posts from 'Friends' tab
 
             return result;
         }
