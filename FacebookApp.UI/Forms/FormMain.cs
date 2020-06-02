@@ -129,7 +129,8 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in friend.Posts)
                 {
-                    PostBox postBox = new PostBox(post);
+                    //CHECK Builder
+                    PostBox postBox = PostBoxComposer.Generate(post, friend.Name, friend.PictureSmallURL);
                     this.flowLayoutPanelFriendsPosts.Controls.Add(postBox);
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
@@ -235,9 +236,10 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
-                    //// PostBox postBox = new PostBox(post);
+                    //CHECK Builder
+                    PostBox postBox = PostBoxComposer.Generate(post);
                     //// this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
-                    flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(new PostBox(post))));
+                    flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(postBox)));
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
                     {
@@ -254,9 +256,10 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.Posts)
                 {
-                    ////PostBox postBox = new PostBox(post);
-                    ////this.flowLayoutPanelPosts.Controls.Add(postBox);
-                    flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Add(new PostBox(post))));
+                    //CHECK Builder
+                    PostBox postBox = PostBoxComposer.Generate(post);
+                    //// this.flowLayoutPanelPosts.Controls.Add(postBox);
+                    flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Add(postBox)));
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
                     {
