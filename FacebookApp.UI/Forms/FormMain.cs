@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using FacebookApp.Logic;
 using FacebookWrapper.ObjectModel;
@@ -51,7 +52,8 @@ namespace FacebookApp.UI
                 this.labelUserName.Text = m_LoggedInUser.Name;
                 this.pictureBoxProfilePic.Load(m_LoggedInUser.PictureNormalURL);
                 loadUserCoverPictureBox();
-                populateNewsFeed();
+                //populateNewsFeed();
+                new Thread(populateNewsFeed).Start();
                 showAllMainFormControls(true);
             }
         }
@@ -60,27 +62,33 @@ namespace FacebookApp.UI
         {
             if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageNewsFeed.Name))
             {
-                populateNewsFeed();
+                ////populateNewsFeed();
+                new Thread(populateNewsFeed).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePosts.Name))
             {
-                populateUserPosts();
+                ////populateUserPosts();
+                new Thread(populateUserPosts).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageFriends.Name))
             {
-                populateUserFriends();
+                ////populateUserFriends();
+                new Thread(populateUserFriends).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePhotos.Name))
             {
-                populateUserPhotos();
+                ////populateUserPhotos();
+                new Thread(populateUserPhotos).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePostsStatistics.Name))
             {
-                populatePostsStatistics();
+                //// populatePostsStatistics();
+                new Thread(populatePostsStatistics).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageBirthdayWisher.Name))
             {
-                populateBirthdayWisher();
+                ////populateBirthdayWisher();
+                new Thread(populateBirthdayWisher).Start();
             }
         }
 
@@ -227,8 +235,9 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
-                    PostBox postBox = new PostBox(post);
-                    this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
+                    //// PostBox postBox = new PostBox(post);
+                    //// this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
+                    flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(new PostBox(post))));
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
                     {
@@ -245,8 +254,9 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.Posts)
                 {
-                    PostBox postBox = new PostBox(post);
-                    this.flowLayoutPanelPosts.Controls.Add(postBox);
+                    ////PostBox postBox = new PostBox(post);
+                    ////this.flowLayoutPanelPosts.Controls.Add(postBox);
+                    flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Add(new PostBox(post))));
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
                     {
@@ -268,7 +278,7 @@ namespace FacebookApp.UI
                     picBox.Load(friend.PictureNormalURL);
                 }
 
-                flowLayoutPanelFriends.Visible = true;
+                ////flowLayoutPanelFriends.Visible = true;
             }
         }
 
@@ -336,7 +346,8 @@ namespace FacebookApp.UI
             picBox.Size = new System.Drawing.Size(75, 75);
             picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             picBox.Visible = true;
-            i_DestPanel.Controls.Add(picBox);
+            ////i_DestPanel.Controls.Add(picBox);
+            i_DestPanel.Invoke(new Action(() => i_DestPanel.Controls.Add(picBox)));
             return picBox;
         }
 
@@ -344,15 +355,26 @@ namespace FacebookApp.UI
         {
             if (!m_IsPostsStatisticsPopulated)
             {
-                PostsStatisticsGenerator postsStatsGenerator = new PostsStatisticsGenerator(
-                    m_LoggedInUser,
+                ////PostsStatisticsGenerator postsStatsGenerator = new PostsStatisticsGenerator(
+                ////    m_LoggedInUser,
+                ////    this.chart_Likes_Time,
+                ////    this.txt_LetterPerPost,
+                ////    this.txt_PostsPerDay,
+                ////    this.txt_LikesPerPost,
+                ////    this.txt_PhotosInPosts,
+                ////    this.txt_TotalLikes);
+                ////postsStatsGenerator.GenerateStatistics();
+
+                IFormsPostStatsGeneratorAdapter postsStatsGenerator = new PostsStatsGeneratorAdapter(
+                    m_LoggedInUser.Posts,
                     this.chart_Likes_Time,
                     this.txt_LetterPerPost,
                     this.txt_PostsPerDay,
                     this.txt_LikesPerPost,
                     this.txt_PhotosInPosts,
                     this.txt_TotalLikes);
-                postsStatsGenerator.GenerateStatistics();
+                postsStatsGenerator.GeneratePostsStatistics();
+
                 m_IsPostsStatisticsPopulated = true;
             }
         }
