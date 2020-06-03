@@ -122,7 +122,7 @@ namespace FacebookApp.UI
                 foreach (Post post in friend.Posts)
                 {
                     //CHECK Builder
-                    PostBox postBox = PostBoxComposer.Generate(post, friend.Name, friend.PictureSmallURL);
+                    PostBox postBox = PostBoxComposer.Generate(post, friend);
                     this.flowLayoutPanelFriendsPosts.Controls.Add(postBox);
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)

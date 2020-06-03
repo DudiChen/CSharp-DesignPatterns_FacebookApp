@@ -58,12 +58,12 @@ namespace FacebookApp.UI
         /// </summary>
         /// <param name="i_Post"></param>
         /// <returns></returns>
-        public static PostBox Generate(Post i_Post, string i_FromName, string i_FromURL)
+        public static PostBox Generate(Post i_Post, User i_From)
         {
             PostBox result = new PostBox();
             CreateView(ref result);
-            result.Controls.Add(CreatePicture(i_Post, i_FromURL));
-            result.Controls.Add(CreateHeadline(i_Post, i_FromName));
+            result.Controls.Add(CreatePicture(i_Post, i_From.PictureSmallURL));
+            result.Controls.Add(CreateHeadline(i_Post, i_From.Name));
             result.Controls.Add(CreateContent(i_Post));
             result.Controls.Add(CreateLikeCommentsTextbox(ref result, i_Post));
             result.Controls.Add(CreateLikes(i_Post, result.TxtboxLikesComments));
