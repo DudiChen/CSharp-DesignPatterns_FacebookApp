@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using System.Text;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
 using System.Windows.Forms;
 using FacebookApp.Logic;
@@ -239,7 +239,11 @@ namespace FacebookApp.UI
                     //CHECK Builder
                     PostBox postBox = PostBoxComposer.Generate(post);
                     //// this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
-                    flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(postBox)));
+                    //flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(postBox)));
+                    flowLayoutPanelFeedPosts.Invoke(new Action(() => {
+                        this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
+                        this.flowLayoutPanelFeedPosts.SetFlowBreak(postBox, true);
+                    }));
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
                     {
@@ -368,19 +372,103 @@ namespace FacebookApp.UI
                 ////    this.txt_TotalLikes);
                 ////postsStatsGenerator.GenerateStatistics();
 
-                IFormsPostStatsGeneratorAdapter postsStatsGenerator = new PostsStatsGeneratorAdapter(
-                    m_LoggedInUser.Posts,
-                    this.chart_Likes_Time,
-                    this.txt_LetterPerPost,
-                    this.txt_PostsPerDay,
-                    this.txt_LikesPerPost,
-                    this.txt_PhotosInPosts,
-                    this.txt_TotalLikes);
-                postsStatsGenerator.GeneratePostsStatistics();
+                PostsStatsGeneratorAdapter postStatsAdapter = new PostsStatsGeneratorAdapter(m_LoggedInUser.Posts);
+                this.chart_Likes_Time.Invoke(new Action(() => {
+                    this.chart_Likes_Time.Series.Clear();
+                    this.chart_Likes_Time.Series.Add(postStatsAdapter.PostsPerTimeOfDay());
+                    this.chart_Likes_Time.Series.Add(postStatsAdapter.LikesPerTimeOfDay());
+                    // Insert this graph as a secondary line, with a unique Y axis to the main chart control
+                    createSecondYAxisScale(this.chart_Likes_Time, "Posts");
+                }));
+
+                this.Invoke(new Action(() =>
+                {
+                    this.txt_LetterPerPost.Text = postStatsAdapter.AvgLettersPerPost();
+                    this.txt_LetterPerPost.Text = postStatsAdapter.AvgLettersPerPost();
+                    this.txt_PostsPerDay.Text = postStatsAdapter.PostsPerDay();
+                    this.txt_LikesPerPost.Text = postStatsAdapter.LikesPerPost();
+                    this.txt_PhotosInPosts.Text = postStatsAdapter.PhotosPerPosts();
+                    this.txt_TotalLikes.Text = postStatsAdapter.TotalNumberOfLikes();
+                }));
 
                 m_IsPostsStatisticsPopulated = true;
             }
         }
+
+        #region Chart Maintenense 
+        private void createSecondYAxisScale(Chart i_Chart, string i_Series)
+        {
+            // Set custom chart area position
+            i_Chart.ChartAreas["ChartArea1"].Position = new ElementPosition(25, 10, 68, 85);
+            //// //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas["ChartArea1"].Position = new ElementPosition(25, 10, 68, 85)));
+            i_Chart.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 90, 90);
+            //// //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 90, 90)));
+
+            // Create extra Y axis for second
+            createYAxis(i_Chart, i_Chart.ChartAreas["ChartArea1"], i_Chart.Series[i_Series], 13, 8);
+            //// i_Chart.Invoke(new Action(() => createYAxis(i_Chart, i_Chart.ChartAreas["ChartArea1"], i_Chart.Series[i_Series], 13, 8)));
+        }
+
+        private void createYAxis(
+            Chart i_Chart,
+            ChartArea i_Area,
+            Series i_Series,
+            float i_AxisOffset,
+            float i_LabelsSize)
+        {
+            // Create new chart area for original series
+            ChartArea areaSeries = i_Chart.ChartAreas.Add("ChartArea_" + i_Series.Name);
+            //// //// string chartAreaName = string.Format("ChartArea_{0}", i_Series.Name);
+            //// //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas.Add(chartAreaName)));
+            //// //// ChartArea areaSeries = i_Chart.ChartAreas[chartAreaName];
+            areaSeries.BackColor = Color.Transparent;
+            areaSeries.BorderColor = Color.Transparent;
+            areaSeries.Position.FromRectangleF(i_Area.Position.ToRectangleF());
+            areaSeries.InnerPlotPosition.FromRectangleF(i_Area.InnerPlotPosition.ToRectangleF());
+            areaSeries.AxisX.MajorGrid.Enabled = false;
+            areaSeries.AxisX.MajorTickMark.Enabled = false;
+            areaSeries.AxisX.LabelStyle.Enabled = false;
+            areaSeries.AxisY.MajorGrid.Enabled = false;
+            areaSeries.AxisY.MajorTickMark.Enabled = false;
+            areaSeries.AxisY.LabelStyle.Enabled = false;
+            areaSeries.AxisY.IsStartedFromZero = i_Area.AxisY.IsStartedFromZero;
+            i_Series.ChartArea = areaSeries.Name;
+
+            // Create new chart area for axis
+            ChartArea areaAxis = i_Chart.ChartAreas.Add("AxisY_" + i_Series.ChartArea);
+            areaAxis.BackColor = Color.Transparent;
+            areaAxis.BorderColor = Color.Transparent;
+            areaAxis.Position.FromRectangleF(i_Chart.ChartAreas[i_Series.ChartArea].Position.ToRectangleF());
+            areaAxis.InnerPlotPosition.FromRectangleF(i_Chart.ChartAreas[i_Series.ChartArea].InnerPlotPosition.ToRectangleF());
+
+            // Create a copy of specified series
+            Series seriesCopy = i_Chart.Series.Add(i_Series.Name + "_Copy");
+            seriesCopy.ChartType = i_Series.ChartType;
+            foreach (DataPoint point in i_Series.Points)
+            {
+                seriesCopy.Points.AddXY(point.XValue, point.YValues[0]);
+            }
+
+            // Hide copied series
+            seriesCopy.IsVisibleInLegend = false;
+            seriesCopy.Color = Color.Transparent;
+            seriesCopy.BorderColor = Color.Transparent;
+            seriesCopy.ChartArea = areaAxis.Name;
+
+            // Disable drid lines & tickmarks
+            areaAxis.AxisX.LineWidth = 0;
+            areaAxis.AxisX.MajorGrid.Enabled = false;
+            areaAxis.AxisX.MajorTickMark.Enabled = false;
+            areaAxis.AxisX.LabelStyle.Enabled = false;
+            areaAxis.AxisY.MajorGrid.Enabled = false;
+            areaAxis.AxisY.IsStartedFromZero = i_Area.AxisY.IsStartedFromZero;
+            areaAxis.AxisY.LabelStyle.Font = i_Area.AxisY.LabelStyle.Font;
+
+            // Adjust area position
+            areaAxis.Position.X -= i_AxisOffset;
+            areaAxis.InnerPlotPosition.X += i_LabelsSize;
+        }
+        #endregion
 
         private void loadUserCoverPictureBox()
         {

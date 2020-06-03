@@ -33,6 +33,7 @@ namespace FacebookApp.UI
         #endregion
 
         #region Public Methods
+
         /// <summary>
         /// Generate a PostBox using Builder Pattern
         /// </summary>
@@ -71,6 +72,7 @@ namespace FacebookApp.UI
 
             return result;
         }
+        
         #endregion
 
         #region Private Methods
@@ -259,7 +261,8 @@ namespace FacebookApp.UI
             i_View.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             i_View.Margin = new System.Windows.Forms.Padding(2);
             i_View.Name = "PostBox";
-            i_View.Size = new System.Drawing.Size(614, 142);
+            i_View.Size = new System.Drawing.Size(614, 142);            
+            i_View.Dock = DockStyle.Bottom;
             i_View.ResumeLayout(false);
         } 
 
@@ -305,6 +308,7 @@ namespace FacebookApp.UI
                 return string.Empty;
             }
         }
+        
         #endregion
 
         #endregion
