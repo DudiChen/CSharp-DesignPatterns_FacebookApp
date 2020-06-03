@@ -1,4 +1,4 @@
-﻿using System;
+﻿        using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -7,6 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.UI
 {
+    //// TODO: This Class should be removed after validating replacement by FacebookApp.Logic.PostsStatsGenerator & FacebookApp.UI.PostsStatsGeneratorAdapter
     public class PostsStatisticsGenerator
     {
         private User m_LoggedInUser;
@@ -40,6 +41,7 @@ namespace FacebookApp.UI
             LoadChart_LikesPerTimeOfDay();
             LoadChart_PostsPerTimeOfDay();
             LoadGroup_Stats();
+            //// chart_Likes_Time.Invoke(new Action(() => LoadGroup_Stats()));
         }
 
         private void LoadChart_LikesPerTimeOfDay()
@@ -59,10 +61,14 @@ namespace FacebookApp.UI
                 createdTimeAsString += postsCreatedTime.Minute < 10 ? "0" + postsCreatedTime.Minute.ToString() : postsCreatedTime.Minute.ToString();
 
                 this.chart_Likes_Time.Series["Likes"].Points.AddXY(createdTimeAsString, postsNumberOfLikes);
+                ////chart_Likes_Time.Invoke(
+                ////    new Action(() => chart_Likes_Time.Series["Likes"].Points.AddXY(createdTimeAsString, postsNumberOfLikes)));
             }
 
             // Sort the graph in ascending order by X axis - Time of Day
             this.chart_Likes_Time.Series["Likes"].Sort(PointSortOrder.Ascending, "X");
+            ////chart_Likes_Time.Invoke(
+            ////    new Action(() => this.chart_Likes_Time.Series["Likes"].Sort(PointSortOrder.Ascending, "X")));
         }
 
         private void LoadChart_PostsPerTimeOfDay()
@@ -87,13 +93,16 @@ namespace FacebookApp.UI
                 // Cast time of day to string
                 createdTimeAsString = i < 10 ? "0" + i + ":00" : i + ":00";
                 this.chart_Likes_Time.Series["Posts"].Points.AddXY(createdTimeAsString, postsInHour[i]);
+                //// chart_Likes_Time.Invoke(new Action(() => chart_Likes_Time.Series["Posts"].Points.AddXY(createdTimeAsString, postsInHour[i])));
             }
 
             // Sort the graph in ascending order by X axis - Time of Day
             this.chart_Likes_Time.Series["Posts"].Sort(PointSortOrder.Ascending, "X");
+            //// chart_Likes_Time.Invoke(new Action(() => chart_Likes_Time.Series["Posts"].Sort(PointSortOrder.Ascending, "X")));
 
             // Insert this graph as a secondary line, with a unique Y axis to the main chart control
             CreateSecondYAxisScale(this.chart_Likes_Time, "Posts");
+            //// chart_Likes_Time.Invoke(new Action(() => CreateSecondYAxisScale(this.chart_Likes_Time, "Posts")));
         }
 
         private void LoadGroup_Stats()
@@ -261,10 +270,13 @@ namespace FacebookApp.UI
         {
             // Set custom chart area position
             i_Chart.ChartAreas["ChartArea1"].Position = new ElementPosition(25, 10, 68, 85);
+            //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas["ChartArea1"].Position = new ElementPosition(25, 10, 68, 85)));
             i_Chart.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 90, 90);
+            //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 90, 90)));
 
             // Create extra Y axis for second
             CreateYAxis(i_Chart, i_Chart.ChartAreas["ChartArea1"], i_Chart.Series[i_Series], 13, 8);
+            //// i_Chart.Invoke(new Action(() => CreateYAxis(i_Chart, i_Chart.ChartAreas["ChartArea1"], i_Chart.Series[i_Series], 13, 8)));
         }
 
         private void CreateYAxis(
@@ -276,6 +288,9 @@ namespace FacebookApp.UI
         {
             // Create new chart area for original series
             ChartArea areaSeries = i_Chart.ChartAreas.Add("ChartArea_" + i_Series.Name);
+            //// //// string chartAreaName = string.Format("ChartArea_{0}", i_Series.Name);
+            //// //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas.Add(chartAreaName)));
+            //// //// ChartArea areaSeries = i_Chart.ChartAreas[chartAreaName];
             areaSeries.BackColor = Color.Transparent;
             areaSeries.BorderColor = Color.Transparent;
             areaSeries.Position.FromRectangleF(i_Area.Position.ToRectangleF());

@@ -30,11 +30,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.pictureBoxProfilePic = new System.Windows.Forms.PictureBox();
             this.pictureBoxCoverPic = new System.Windows.Forms.PictureBox();
@@ -228,36 +228,36 @@
             // 
             // chart_Likes_Time
             // 
-            chartArea2.AxisX.LineWidth = 2;
-            chartArea2.AxisY.LineWidth = 2;
-            chartArea2.Name = "ChartArea1";
-            this.chart_Likes_Time.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.LineWidth = 2;
+            chartArea1.AxisY.LineWidth = 2;
+            chartArea1.Name = "ChartArea1";
+            this.chart_Likes_Time.ChartAreas.Add(chartArea1);
             this.chart_Likes_Time.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart_Likes_Time.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chart_Likes_Time.Legends.Add(legend1);
             this.chart_Likes_Time.Location = new System.Drawing.Point(3, 2);
             this.chart_Likes_Time.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart_Likes_Time.Name = "chart_Likes_Time";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Likes";
-            series3.YValuesPerPoint = 2;
-            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Posts";
-            this.chart_Likes_Time.Series.Add(series3);
-            this.chart_Likes_Time.Series.Add(series4);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Likes";
+            series1.YValuesPerPoint = 2;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Posts";
+            this.chart_Likes_Time.Series.Add(series1);
+            this.chart_Likes_Time.Series.Add(series2);
             this.chart_Likes_Time.Size = new System.Drawing.Size(556, 374);
             this.chart_Likes_Time.TabIndex = 0;
             this.chart_Likes_Time.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Posts Compare Time of Day";
-            this.chart_Likes_Time.Titles.Add(title2);
+            title1.Name = "Title1";
+            title1.Text = "Posts Compare Time of Day";
+            this.chart_Likes_Time.Titles.Add(title1);
             // 
             // grp_Stats
             // 
@@ -605,7 +605,6 @@
             this.flowLayoutPanelFriends.Name = "flowLayoutPanelFriends";
             this.flowLayoutPanelFriends.Size = new System.Drawing.Size(231, 374);
             this.flowLayoutPanelFriends.TabIndex = 0;
-            this.flowLayoutPanelFriends.Visible = false;
             // 
             // tabPagePosts
             // 
@@ -652,7 +651,7 @@
             this.richTextBoxPostsPublish.Name = "richTextBoxPostsPublish";
             this.richTextBoxPostsPublish.Size = new System.Drawing.Size(257, 165);
             this.richTextBoxPostsPublish.TabIndex = 1;
-            this.richTextBoxPostsPublish.Text = string.Empty;
+            this.richTextBoxPostsPublish.Text = "";
             // 
             // labelPostsPublish
             // 
@@ -761,11 +760,11 @@
             // 
             this.txtBox_BirthdayWish.Enabled = false;
             this.txtBox_BirthdayWish.Location = new System.Drawing.Point(277, 81);
-            this.txtBox_BirthdayWish.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBox_BirthdayWish.Margin = new System.Windows.Forms.Padding(4);
             this.txtBox_BirthdayWish.Name = "txtBox_BirthdayWish";
             this.txtBox_BirthdayWish.Size = new System.Drawing.Size(843, 117);
             this.txtBox_BirthdayWish.TabIndex = 4;
-            this.txtBox_BirthdayWish.Text = string.Empty;
+            this.txtBox_BirthdayWish.Text = "";
             // 
             // tableLayoutPanel2
             // 
@@ -775,7 +774,7 @@
             this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanelFreindsW8Birthday, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -799,7 +798,7 @@
             // 
             this.flowLayoutPanelFreindsW8Birthday.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelFreindsW8Birthday.Location = new System.Drawing.Point(4, 60);
-            this.flowLayoutPanelFreindsW8Birthday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanelFreindsW8Birthday.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelFreindsW8Birthday.Name = "flowLayoutPanelFreindsW8Birthday";
             this.flowLayoutPanelFreindsW8Birthday.Size = new System.Drawing.Size(259, 310);
             this.flowLayoutPanelFreindsW8Birthday.TabIndex = 3;

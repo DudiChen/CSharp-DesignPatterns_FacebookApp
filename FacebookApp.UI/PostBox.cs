@@ -39,7 +39,17 @@ namespace FacebookApp.UI
         //public Button Likes { get => m_Likes; set => m_Likes = value; }
         //public Button Comments { get => m_Comments; set => m_Comments = value; }
         //public BindingSource BinddingDataPost { get => m_BinddingDataPost; set => m_BinddingDataPost = value; }
-        public RichTextBox TxtboxLikesComments { get => m_TxtboxLikesComments; set => m_TxtboxLikesComments = value; }
+        public RichTextBox TxtboxLikesComments
+        {
+            get
+            {
+                return m_TxtboxLikesComments;
+            }
+            set
+            {
+                m_TxtboxLikesComments = value;
+            }
+        }
 
         #endregion
 
