@@ -237,6 +237,8 @@ namespace FacebookApp.UI
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
                     //CHECK Builder
+                    // for Dudi - look here: the PostBoxProxy made everything SOO slower, i think maybe i did it wrong
+                    //PostBox postBox = PostBoxComposer.GenerateLazyPostBox(post);
                     PostBox postBox = PostBoxComposer.Generate(post);
                     //// this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                     //flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(postBox)));

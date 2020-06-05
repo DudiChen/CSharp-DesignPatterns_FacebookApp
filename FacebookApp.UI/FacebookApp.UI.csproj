@@ -65,6 +65,9 @@
       <DependentUpon>PostBox.cs</DependentUpon>
     </Compile>
     <Compile Include="PostBoxComposer.cs" />
+    <Compile Include="PostBoxProxy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="PostsStatisticsGenerator.cs" />
     <Compile Include="PostsStatsGeneratorAdapter.cs" />
     <Compile Include="Program.cs" />

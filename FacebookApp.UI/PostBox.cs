@@ -56,7 +56,7 @@ namespace FacebookApp.UI
         #region Constructor
         public PostBox()
         {
-            this.components = new System.ComponentModel.Container();
+            
         }
         #endregion
     }

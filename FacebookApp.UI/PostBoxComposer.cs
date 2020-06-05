@@ -9,21 +9,6 @@ namespace FacebookApp.UI
 {
     public class PostBoxComposer
     {
-        #region Fields
-
-        #region Const
-        private static readonly string r_MessageLikesUnavailable = string.Format(
-            "Posts Likes are currently unavailable.{0}Please try again later.",
-            Environment.NewLine);
-
-        private static readonly string r_MessageCommentsUnavailable = string.Format(
-            "Posts Comments are currently unavailable.{0}Please try again later.",
-            Environment.NewLine);
-
-        private static readonly string r_MessageErrorOccuredTitle = "Error Occured";
-        #endregion
-
-        #endregion
 
         #region Constructor
         private PostBoxComposer()
@@ -43,12 +28,12 @@ namespace FacebookApp.UI
         {
             PostBox result = new PostBox();
             CreateView(ref result);
-            result.Controls.Add(CreatePicture(i_Post));
-            result.Controls.Add(CreateHeadline(i_Post));
-            result.Controls.Add(CreateContent(i_Post));
-            result.Controls.Add(CreateLikeCommentsTextbox(ref result, i_Post));
-            result.Controls.Add(CreateLikes(i_Post, result.TxtboxLikesComments));
-            result.Controls.Add(CreateComments(i_Post, result.TxtboxLikesComments));
+            result.Controls.Add(PictureBoxBuilder.CreatePicture(i_Post));
+            result.Controls.Add(HeadlinerBuilder.CreateHeadline(i_Post));
+            result.Controls.Add(ContenBoxtBuilder.CreateContent(i_Post));
+            result.Controls.Add(LikesCommentsListBuilder.CreateLikeCommentsTextbox(ref result, i_Post));
+            result.Controls.Add(LikesButtonBuilder.CreateLikes(i_Post, result.TxtboxLikesComments));
+            result.Controls.Add(CommentButtonBuilder.CreateComments(i_Post, result.TxtboxLikesComments));
 
             return result;
         }
@@ -63,21 +48,69 @@ namespace FacebookApp.UI
         {
             PostBox result = new PostBox();
             CreateView(ref result);
-            result.Controls.Add(CreatePicture(i_Post, i_From.PictureSmallURL));
-            result.Controls.Add(CreateHeadline(i_Post, i_From.Name));
-            result.Controls.Add(CreateContent(i_Post));
-            result.Controls.Add(CreateLikeCommentsTextbox(ref result, i_Post));
-            result.Controls.Add(CreateLikes(i_Post, result.TxtboxLikesComments));
-            result.Controls.Add(CreateComments(i_Post, result.TxtboxLikesComments));
+            result.Controls.Add(PictureBoxBuilder.CreatePicture(i_Post, i_From.PictureSmallURL));
+            result.Controls.Add(HeadlinerBuilder.CreateHeadline(i_Post, i_From.Name));
+            result.Controls.Add(ContenBoxtBuilder.CreateContent(i_Post));
+            result.Controls.Add(LikesCommentsListBuilder.CreateLikeCommentsTextbox(ref result, i_Post));
+            result.Controls.Add(LikesButtonBuilder.CreateLikes(i_Post, result.TxtboxLikesComments));
+            result.Controls.Add(CommentButtonBuilder.CreateComments(i_Post, result.TxtboxLikesComments));
 
             return result;
         }
         
+        /// <summary>
+        /// Generate a PostBox of kind "Proxy" - for lazy loading posts
+        /// </summary>
+        /// <param name="i_Post"></param>
+        /// <returns></returns>
+        public static PostBoxProxy GenerateLazyPostBox(Post i_Post)
+        {
+            PostBoxProxy result = new PostBoxProxy();
+            result.Paint += new PaintEventHandler((sender, e) =>
+            {
+                CreateView(ref result);
+                result.Controls.Add(PictureBoxBuilder.CreatePicture(i_Post));
+                result.Controls.Add(HeadlinerBuilder.CreateHeadline(i_Post));
+                result.Controls.Add(ContenBoxtBuilder.CreateContent(i_Post));
+                result.Controls.Add(LikesCommentsListBuilder.CreateLikeCommentsTextbox(ref result, i_Post));
+                result.Controls.Add(LikesButtonBuilder.CreateLikes(i_Post, result.TxtboxLikesComments));
+                result.Controls.Add(CommentButtonBuilder.CreateComments(i_Post, result.TxtboxLikesComments));
+            });
+            return result;
+        }
         #endregion
 
         #region Private Methods
+        private static void CreateView(ref PostBox i_View)
+        {
+            i_View.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            i_View.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            i_View.Margin = new System.Windows.Forms.Padding(2);
+            i_View.Name = "PostBox";
+            i_View.Size = new System.Drawing.Size(614, 142);            
+            i_View.Dock = DockStyle.Bottom;
+            i_View.ResumeLayout(false);
+        }
 
-        private static PictureBox CreatePicture(Post i_Post)
+        private static void CreateView(ref PostBoxProxy i_View)
+        {
+            i_View.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            i_View.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            i_View.Margin = new System.Windows.Forms.Padding(2);
+            i_View.Name = "PostBox";
+            i_View.Size = new System.Drawing.Size(614, 142);
+            i_View.Dock = DockStyle.Bottom;
+            i_View.ResumeLayout(false);
+        }
+        #endregion
+
+    }
+
+    #region Builders
+
+    internal class PictureBoxBuilder
+    {
+        internal static PictureBox CreatePicture(Post i_Post)
         {
             PictureBox result = new PictureBox();
 
@@ -94,7 +127,7 @@ namespace FacebookApp.UI
             return result;
         }
 
-        private static PictureBox CreatePicture(Post i_Post, string i_URL)
+        internal static PictureBox CreatePicture(Post i_Post, string i_URL)
         {
             PictureBox result = new PictureBox();
 
@@ -110,8 +143,11 @@ namespace FacebookApp.UI
 
             return result;
         }
+    }
 
-        private static Label CreateHeadline(Post i_Post)
+    internal class  HeadlinerBuilder
+    {
+        internal static Label CreateHeadline(Post i_Post)
         {
             Label result = new Label();
 
@@ -127,7 +163,7 @@ namespace FacebookApp.UI
             return result;
         }
 
-        private static Label CreateHeadline(Post i_Post, string i_Name)
+        internal static Label CreateHeadline(Post i_Post, string i_Name)
         {
             Label result = new Label();
 
@@ -143,7 +179,23 @@ namespace FacebookApp.UI
             return result;
         }
 
-        private static RichTextBox CreateContent(Post i_Post)
+        private static string CreateHeadline_Value(DateTime? i_TimePosted, string i_FromPosted)
+        {
+            StringBuilder timeAndFromHeader = new StringBuilder();
+            if (i_TimePosted != null)
+            {
+                timeAndFromHeader.AppendFormat("[{0:dd/MM/yyyy H:mm:ss}] ", i_TimePosted);
+            }
+
+            timeAndFromHeader.AppendFormat("{0}", i_FromPosted);
+
+            return timeAndFromHeader.ToString();
+        }
+    }
+
+    internal class ContenBoxtBuilder
+    {
+        internal static RichTextBox CreateContent(Post i_Post)
         {
             RichTextBox result = new RichTextBox();
 
@@ -161,7 +213,27 @@ namespace FacebookApp.UI
             return result;
         }
 
-        private static RichTextBox CreateLikeCommentsTextbox(ref PostBox i_View, Post i_Post)
+        private static string CreateContent_Value(Post i_Post)
+        {
+            string result = string.Empty;
+
+            if (i_Post.Message != null)
+            {
+                result += string.Format("{0}{1}{1}", i_Post.Message, Environment.NewLine);
+            }
+
+            if (i_Post.Description != null)
+            {
+                result += string.Format("{0}{1}{1}", i_Post.Description, Environment.NewLine);
+            }
+
+            return result;
+        }
+    }
+
+    internal class LikesCommentsListBuilder
+    {
+        internal static RichTextBox CreateLikeCommentsTextbox(ref PostBox i_View, Post i_Post)
         {
             RichTextBox result = new RichTextBox();
 
@@ -178,7 +250,32 @@ namespace FacebookApp.UI
             return result;
         }
 
-        private static Button CreateLikes(Post i_Post, RichTextBox i_ControlToFil)
+        internal static RichTextBox CreateLikeCommentsTextbox(ref PostBoxProxy i_View, Post i_Post)
+        {
+            RichTextBox result = new RichTextBox();
+
+            result.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            result.Location = new System.Drawing.Point(424, 36);
+            result.Margin = new System.Windows.Forms.Padding(2);
+            result.Name = "m_TxtboxLikesComments";
+            result.Size = new System.Drawing.Size(188, 107);
+            result.TabIndex = 5;
+            result.Text = "";
+
+            i_View.TxtboxLikesComments = result;
+            return result;
+        }
+    }
+
+    internal class LikesButtonBuilder
+    {
+        private static readonly string r_MessageErrorOccuredTitle = "Error Occured";
+        private static readonly string r_MessageLikesUnavailable = string.Format(
+            "Posts Likes are currently unavailable.{0}Please try again later.",
+            Environment.NewLine);
+
+        internal static Button CreateLikes(Post i_Post, RichTextBox i_ControlToFil)
         {
             Button result = new Button();
 
@@ -196,7 +293,7 @@ namespace FacebookApp.UI
                 try
                 {
                     i_ControlToFil.Clear();
-                    foreach(User user in i_Post.LikedBy)
+                    foreach (User user in i_Post.LikedBy)
                     {
                         i_ControlToFil.AppendText(string.Format("{0}{1}", user.Name, Environment.NewLine));
                     }
@@ -212,8 +309,16 @@ namespace FacebookApp.UI
             });
             return result;
         }
+    }
 
-        private static Button CreateComments(Post i_Post, RichTextBox i_ControlToFill)
+    internal class CommentButtonBuilder
+    {
+        private static readonly string r_MessageErrorOccuredTitle = "Error Occured";
+        private static readonly string r_MessageCommentsUnavailable = string.Format(
+            "Posts Comments are currently unavailable.{0}Please try again later.",
+            Environment.NewLine);
+
+        internal static Button CreateComments(Post i_Post, RichTextBox i_ControlToFill)
         {
             Button result = new Button();
 
@@ -255,48 +360,6 @@ namespace FacebookApp.UI
             return result;
         }
 
-        private static void CreateView(ref PostBox i_View)
-        {
-            i_View.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            i_View.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            i_View.Margin = new System.Windows.Forms.Padding(2);
-            i_View.Name = "PostBox";
-            i_View.Size = new System.Drawing.Size(614, 142);            
-            i_View.Dock = DockStyle.Bottom;
-            i_View.ResumeLayout(false);
-        } 
-
-        #region Helpers
-        private static string CreateHeadline_Value(DateTime? i_TimePosted, string i_FromPosted)
-        {
-            StringBuilder timeAndFromHeader = new StringBuilder();
-            if (i_TimePosted != null)
-            {
-                timeAndFromHeader.AppendFormat("[{0:dd/MM/yyyy H:mm:ss}] ", i_TimePosted);
-            }
-
-            timeAndFromHeader.AppendFormat("{0}", i_FromPosted);
-
-            return timeAndFromHeader.ToString();
-        }
-
-        private static string CreateContent_Value(Post i_Post)
-        {
-            string result = string.Empty;
-
-            if (i_Post.Message != null)
-            {
-                result += string.Format("{0}{1}{1}", i_Post.Message, Environment.NewLine);
-            }
-
-            if (i_Post.Description != null)
-            {
-                result += string.Format("{0}{1}{1}", i_Post.Description, Environment.NewLine);
-            }
-
-            return result;
-        }
-
         private static string CreateComments_Value(DateTime? i_dateTime)
         {
             if (i_dateTime != null)
@@ -308,10 +371,7 @@ namespace FacebookApp.UI
                 return string.Empty;
             }
         }
-        
-        #endregion
-
-        #endregion
-
     }
+
+    #endregion
 }
