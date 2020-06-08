@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using FacebookApp.Logic;
 using FacebookWrapper.ObjectModel;
+using FacebookApp.UI.Builders;
 
 namespace FacebookApp.UI
 {
@@ -30,6 +31,7 @@ namespace FacebookApp.UI
         private LoginManager m_LoginManager;
         private User m_LoggedInUser;
         private bool m_IsPostsStatisticsPopulated = false;
+        private PostBoxComposer m_PostBoxComposer;
 
         public FormMain()
         {
@@ -38,6 +40,7 @@ namespace FacebookApp.UI
             m_ApplicationSettings = ApplicationSettings.Instance;
             m_LoginManager = LoginManager.Instance;
             m_LoginManager.LogoutSuccessful += new EventHandler(loginManager_LogoutSuccessful);
+            m_PostBoxComposer = new PostBoxComposer();
         }
 
         private void buttonLogin_Click(object i_Sender, EventArgs e)
@@ -130,7 +133,9 @@ namespace FacebookApp.UI
                 foreach (Post post in friend.Posts)
                 {
                     //CHECK Builder
-                    PostBox postBox = PostBoxComposer.Generate(post, friend);
+                    PostBox postBox = composePostBox(post, friend);
+
+                    //PostBox postBox = m_PostBoxComposer.Generate(post, friend);
                     this.flowLayoutPanelFriendsPosts.Controls.Add(postBox);
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
@@ -237,9 +242,10 @@ namespace FacebookApp.UI
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
                     //CHECK Builder
-                    // for Dudi - look here: the PostBoxProxy made everything SOO slower, i think maybe i did it wrong
-                    //PostBox postBox = PostBoxComposer.GenerateLazyPostBox(post);
-                    PostBox postBox = PostBoxComposer.Generate(post);
+                    // TODO: for Dudi - look here: the PostBoxProxy made everything SOO slower, i think maybe i did it wrong
+                    //PostBox postBox = m_PostBoxComposer.GenerateLazyPostBox(post);
+                    PostBox postBox = composePostBox(post, post.From);
+                    //PostBox postBox = m_PostBoxComposer.Generate(post);
                     //// this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                     //flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(postBox)));
                     flowLayoutPanelFeedPosts.Invoke(new Action(() => {
@@ -263,7 +269,8 @@ namespace FacebookApp.UI
                 foreach (Post post in m_LoggedInUser.Posts)
                 {
                     //CHECK Builder
-                    PostBox postBox = PostBoxComposer.Generate(post);
+                    PostBox postBox = composePostBox(post, post.From);
+                    //PostBox postBox = m_PostBoxComposer.Generate(post);
                     //// this.flowLayoutPanelPosts.Controls.Add(postBox);
                     flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Add(postBox)));
                     i++;
@@ -273,6 +280,14 @@ namespace FacebookApp.UI
                     }
                 }
             }
+        }
+
+        private PostBox composePostBox(Post i_Post, User i_From)
+        {
+            IPostBoxBuilder builder = new PostBoxBuilder(i_Post);
+            PostBoxComposer_2 composer = new PostBoxComposer_2();
+            composer.ConstructPostBox(builder, i_From);
+            return builder.CreatedPostBox;
         }
 
         private void populateUserFriends()

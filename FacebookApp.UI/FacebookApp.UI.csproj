@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\IPostBoxBuilder.cs" />
+    <Compile Include="Builders\PostBoxBuilder.cs" />
     <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +67,7 @@
       <DependentUpon>PostBox.cs</DependentUpon>
     </Compile>
     <Compile Include="PostBoxComposer.cs" />
+    <Compile Include="PostBoxComposer_2.cs" />
     <Compile Include="PostBoxProxy.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +114,7 @@
       <Name>FacebookApp.Logic</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

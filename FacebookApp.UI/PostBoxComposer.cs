@@ -11,7 +11,7 @@ namespace FacebookApp.UI
     {
 
         #region Constructor
-        private PostBoxComposer()
+        public PostBoxComposer()
         {
 
         }
@@ -24,7 +24,7 @@ namespace FacebookApp.UI
         /// </summary>
         /// <param name="i_Post"></param>
         /// <returns></returns>
-        public static PostBox Generate(Post i_Post)
+        public PostBox Generate(Post i_Post)
         {
             PostBox result = new PostBox();
             CreateView(ref result);
@@ -44,7 +44,7 @@ namespace FacebookApp.UI
         /// </summary>
         /// <param name="i_Post"></param>
         /// <returns></returns>
-        public static PostBox Generate(Post i_Post, User i_From)
+        public PostBox Generate(Post i_Post, User i_From)
         {
             PostBox result = new PostBox();
             CreateView(ref result);
@@ -63,7 +63,7 @@ namespace FacebookApp.UI
         /// </summary>
         /// <param name="i_Post"></param>
         /// <returns></returns>
-        public static PostBoxProxy GenerateLazyPostBox(Post i_Post)
+        public PostBoxProxy GenerateLazyPostBox(Post i_Post)
         {
             PostBoxProxy result = new PostBoxProxy();
             result.Paint += new PaintEventHandler((sender, e) =>
@@ -108,6 +108,11 @@ namespace FacebookApp.UI
 
     #region Builders
 
+    internal interface IBuilder
+    {
+        Control Create(Post i_Post);
+    }
+
     internal class PictureBoxBuilder
     {
         internal static PictureBox CreatePicture(Post i_Post)
@@ -121,11 +126,12 @@ namespace FacebookApp.UI
             result.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             result.TabIndex = 0;
             result.TabStop = false;
-            ((System.ComponentModel.ISupportInitialize)(result)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(result)).BeginInit();
             result.Load(i_Post.From.PictureSmallURL);
 
             return result;
         }
+
 
         internal static PictureBox CreatePicture(Post i_Post, string i_URL)
         {
@@ -138,7 +144,7 @@ namespace FacebookApp.UI
             result.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             result.TabIndex = 0;
             result.TabStop = false;
-            ((System.ComponentModel.ISupportInitialize)(result)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(result)).BeginInit();
             result.Load(i_URL);
 
             return result;
@@ -290,9 +296,9 @@ namespace FacebookApp.UI
             result.UseVisualStyleBackColor = true;
             result.Click += ((sender, e) =>
             {
+                i_ControlToFil.Clear();
                 try
                 {
-                    i_ControlToFil.Clear();
                     foreach (User user in i_Post.LikedBy)
                     {
                         i_ControlToFil.AppendText(string.Format("{0}{1}", user.Name, Environment.NewLine));
