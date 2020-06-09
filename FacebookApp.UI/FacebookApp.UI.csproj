@@ -67,12 +67,10 @@
       <DependentUpon>PostBox.cs</DependentUpon>
     </Compile>
     <Compile Include="PostBoxComposer.cs" />
-    <Compile Include="PostBoxComposer_2.cs" />
     <Compile Include="PostBoxProxy.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PostsStatisticsGenerator.cs" />
-    <Compile Include="PostsStatsGeneratorAdapter.cs" />
+    <Compile Include="PostsStatisticsGeneratorAdapter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIManager.cs" />

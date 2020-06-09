@@ -31,7 +31,7 @@ namespace FacebookApp.UI
         private LoginManager m_LoginManager;
         private User m_LoggedInUser;
         private bool m_IsPostsStatisticsPopulated = false;
-        private PostBoxComposer m_PostBoxComposer;
+        //// private PostBoxComposer m_PostBoxComposer;
 
         public FormMain()
         {
@@ -40,7 +40,7 @@ namespace FacebookApp.UI
             m_ApplicationSettings = ApplicationSettings.Instance;
             m_LoginManager = LoginManager.Instance;
             m_LoginManager.LogoutSuccessful += new EventHandler(loginManager_LogoutSuccessful);
-            m_PostBoxComposer = new PostBoxComposer();
+            //// m_PostBoxComposer = new PostBoxComposer();
         }
 
         private void buttonLogin_Click(object i_Sender, EventArgs e)
@@ -176,7 +176,7 @@ namespace FacebookApp.UI
             PictureBox picBoxSender = i_Sender as PictureBox;
             Album album = picBoxSender.Tag as Album;
             if (album != null)
-            {
+            { // TODO: [Dudi:] We get an exception here when viewing the 'Friends' Tab upon fetching photos.
                 foreach (Photo photo in album.Photos)
                 {
                     EventHandler picBoxPhotosAlbumPicClickEventHandler = new EventHandler(this.picBoxPhotosAlbumPic_Click);
@@ -248,6 +248,7 @@ namespace FacebookApp.UI
                     //PostBox postBox = m_PostBoxComposer.Generate(post);
                     //// this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                     //flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(postBox)));
+                    // TODO: [Dudi:] Received an exception here when closed the app.
                     flowLayoutPanelFeedPosts.Invoke(new Action(() => {
                         this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                         this.flowLayoutPanelFeedPosts.SetFlowBreak(postBox, true);
@@ -285,7 +286,7 @@ namespace FacebookApp.UI
         private PostBox composePostBox(Post i_Post, User i_From)
         {
             IPostBoxBuilder builder = new PostBoxBuilder(i_Post);
-            PostBoxComposer_2 composer = new PostBoxComposer_2();
+            PostBoxComposer composer = new PostBoxComposer();
             composer.ConstructPostBox(builder, i_From);
             return builder.CreatedPostBox;
         }
@@ -379,17 +380,7 @@ namespace FacebookApp.UI
         {
             if (!m_IsPostsStatisticsPopulated)
             {
-                ////PostsStatisticsGenerator postsStatsGenerator = new PostsStatisticsGenerator(
-                ////    m_LoggedInUser,
-                ////    this.chart_Likes_Time,
-                ////    this.txt_LetterPerPost,
-                ////    this.txt_PostsPerDay,
-                ////    this.txt_LikesPerPost,
-                ////    this.txt_PhotosInPosts,
-                ////    this.txt_TotalLikes);
-                ////postsStatsGenerator.GenerateStatistics();
-
-                PostsStatsGeneratorAdapter postStatsAdapter = new PostsStatsGeneratorAdapter(m_LoggedInUser.Posts);
+                PostsStatisticsGeneratorAdapter postStatsAdapter = new PostsStatisticsGeneratorAdapter(m_LoggedInUser.Posts);
                 this.chart_Likes_Time.Invoke(new Action(() => {
                     this.chart_Likes_Time.Series.Clear();
                     this.chart_Likes_Time.Series.Add(postStatsAdapter.PostsPerTimeOfDay());

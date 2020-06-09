@@ -6,7 +6,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.Logic
 {
-    public class PostsStatsGenerator
+    public class PostsStatisticsGenerator
     {
         private FacebookObjectCollection<Post> m_Posts;
         //// private List<PostMetaData> m_PostsMetaDataList = new List<PostMetaData>();
@@ -33,7 +33,7 @@ namespace FacebookApp.Logic
 
         public double PercentageOfPostsWithPhotos { get; private set; }
 
-        public PostsStatsGenerator(FacebookObjectCollection<Post> i_Posts)
+        public PostsStatisticsGenerator(FacebookObjectCollection<Post> i_Posts)
         {
             m_Posts = i_Posts;
             PostsMetaDataList = new List<PostMetaData>();

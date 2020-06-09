@@ -10,13 +10,13 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.UI
 {
-    public class PostsStatsGeneratorAdapter
+    public class PostsStatisticsGeneratorAdapter
     {
-        private readonly PostsStatsGenerator r_PostsStatsGenerator;
+        private readonly PostsStatisticsGenerator r_PostsStatsGenerator;
 
-        public PostsStatsGeneratorAdapter(FacebookObjectCollection<Post> i_Posts)
+        public PostsStatisticsGeneratorAdapter(FacebookObjectCollection<Post> i_Posts)
         {
-            r_PostsStatsGenerator = new PostsStatsGenerator(i_Posts);
+            r_PostsStatsGenerator = new PostsStatisticsGenerator(i_Posts);
             r_PostsStatsGenerator.AnalyzePostsStatistics();
         }
 
