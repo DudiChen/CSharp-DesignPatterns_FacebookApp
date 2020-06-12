@@ -176,7 +176,7 @@ namespace FacebookApp.UI
             PictureBox picBoxSender = i_Sender as PictureBox;
             Album album = picBoxSender.Tag as Album;
             if (album != null)
-            { // TODO: [Dudi:] We get an exception here when viewing the 'Friends' Tab upon fetching photos.
+            { // TODO: [Dudi:] We get an exception here when viewing the 'Friends' Tab upon fetching photos [Bug isn't consistent]
                 foreach (Photo photo in album.Photos)
                 {
                     EventHandler picBoxPhotosAlbumPicClickEventHandler = new EventHandler(this.picBoxPhotosAlbumPic_Click);
