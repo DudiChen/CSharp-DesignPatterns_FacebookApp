@@ -57,7 +57,6 @@ namespace FacebookApp.UI
                 this.labelUserName.Text = m_LoggedInUser.Name;
                 this.pictureBoxProfilePic.Load(m_LoggedInUser.PictureNormalURL);
                 loadUserCoverPictureBox();
-                //populateNewsFeed();
                 new Thread(populateNewsFeed).Start();
                 showAllMainFormControls(true);
             }
@@ -67,32 +66,26 @@ namespace FacebookApp.UI
         {
             if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageNewsFeed.Name))
             {
-                ////populateNewsFeed();
                 new Thread(populateNewsFeed).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePosts.Name))
             {
-                ////populateUserPosts();
                 new Thread(populateUserPosts).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageFriends.Name))
             {
-                ////populateUserFriends();
                 new Thread(populateUserFriends).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePhotos.Name))
             {
-                ////populateUserPhotos();
                 new Thread(populateUserPhotos).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPagePostsStatistics.Name))
             {
-                //// populatePostsStatistics();
                 new Thread(populatePostsStatistics).Start();
             }
             else if (this.tabControlFormMain.SelectedTab.Name.Equals(tabPageBirthdayWisher.Name))
             {
-                ////populateBirthdayWisher();
                 new Thread(populateBirthdayWisher).Start();
             }
         }
@@ -367,7 +360,6 @@ namespace FacebookApp.UI
             picBox.Size = new System.Drawing.Size(75, 75);
             picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             picBox.Visible = true;
-            //// i_DestPanel.Controls.Add(picBox);
             i_DestPanel.Invoke(new Action(() => i_DestPanel.Controls.Add(picBox)));
             return picBox;
         }
@@ -404,13 +396,10 @@ namespace FacebookApp.UI
         {
             // Set custom chart area position
             i_Chart.ChartAreas["ChartArea1"].Position = new ElementPosition(25, 10, 68, 85);
-            //// //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas["ChartArea1"].Position = new ElementPosition(25, 10, 68, 85)));
             i_Chart.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 90, 90);
-            //// //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas["ChartArea1"].InnerPlotPosition = new ElementPosition(10, 0, 90, 90)));
 
             // Create extra Y axis for second
             createYAxis(i_Chart, i_Chart.ChartAreas["ChartArea1"], i_Chart.Series[i_Series], 13, 8);
-            //// i_Chart.Invoke(new Action(() => createYAxis(i_Chart, i_Chart.ChartAreas["ChartArea1"], i_Chart.Series[i_Series], 13, 8)));
         }
 
         private void createYAxis(
@@ -422,9 +411,6 @@ namespace FacebookApp.UI
         {
             // Create new chart area for original series
             ChartArea areaSeries = i_Chart.ChartAreas.Add("ChartArea_" + i_Series.Name);
-            //// //// string chartAreaName = string.Format("ChartArea_{0}", i_Series.Name);
-            //// //// i_Chart.Invoke(new Action(() => i_Chart.ChartAreas.Add(chartAreaName)));
-            //// //// ChartArea areaSeries = i_Chart.ChartAreas[chartAreaName];
             areaSeries.BackColor = Color.Transparent;
             areaSeries.BorderColor = Color.Transparent;
             areaSeries.Position.FromRectangleF(i_Area.Position.ToRectangleF());
