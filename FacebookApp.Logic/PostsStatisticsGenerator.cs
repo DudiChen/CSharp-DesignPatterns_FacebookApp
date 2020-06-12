@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using FacebookWrapper.ObjectModel;
@@ -48,6 +47,7 @@ namespace FacebookApp.Logic
                 {
                     m_NumberOfPostsWithPhotos++;
                 }
+
                 PostsMetaDataList.Add(new PostMetaData(createdTime, likes, length));
                 TotalNumberOfLikes += likes;
                 PostsPerHour[createdTime.Hour]++;
@@ -113,7 +113,7 @@ namespace FacebookApp.Logic
                 }
 
                 // divide by the number of posts he wrote
-                AvgLettersPerPost =  sumPostsLength / PostsMetaDataList.Count;
+                AvgLettersPerPost = sumPostsLength / PostsMetaDataList.Count;
             }
         }
 

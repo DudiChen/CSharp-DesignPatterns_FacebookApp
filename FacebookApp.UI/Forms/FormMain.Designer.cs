@@ -652,7 +652,7 @@
             this.richTextBoxPostsPublish.Name = "richTextBoxPostsPublish";
             this.richTextBoxPostsPublish.Size = new System.Drawing.Size(257, 165);
             this.richTextBoxPostsPublish.TabIndex = 1;
-            this.richTextBoxPostsPublish.Text = "";
+            this.richTextBoxPostsPublish.Text = string.Empty;
             // 
             // labelPostsPublish
             // 
@@ -765,7 +765,7 @@
             this.txtBox_BirthdayWish.Name = "txtBox_BirthdayWish";
             this.txtBox_BirthdayWish.Size = new System.Drawing.Size(843, 117);
             this.txtBox_BirthdayWish.TabIndex = 4;
-            this.txtBox_BirthdayWish.Text = "";
+            this.txtBox_BirthdayWish.Text = string.Empty;
             // 
             // tableLayoutPanel2
             // 

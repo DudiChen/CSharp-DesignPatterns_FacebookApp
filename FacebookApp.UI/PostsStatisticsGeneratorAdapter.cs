@@ -69,6 +69,7 @@ namespace FacebookApp.UI
                 string createdTimeString = string.Format("{0:H:mm}", post.PostCreationTime);
                 result.Points.AddXY(createdTimeString, post.PostNumberOfLikes);
             }
+
             result.Sort(PointSortOrder.Ascending, "X");
             return result;
         }

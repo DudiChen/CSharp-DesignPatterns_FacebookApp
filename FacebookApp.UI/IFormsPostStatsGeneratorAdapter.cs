@@ -10,7 +10,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.UI
 {
-    interface IFormsPostStatsGeneratorAdapter
+    public interface IFormsPostStatsGeneratorAdapter
     {
         void GeneratePostsStatistics();
     }

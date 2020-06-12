@@ -245,7 +245,8 @@ namespace FacebookApp.UI
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
                     PostBox postBox = composePostBox(post, post.From);
-                    flowLayoutPanelFeedPosts.Invoke(new Action(() => {
+                    flowLayoutPanelFeedPosts.Invoke(new Action(() => 
+                        {
                         this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                         this.flowLayoutPanelFeedPosts.SetFlowBreak(postBox, true);
                     }));
@@ -338,15 +339,15 @@ namespace FacebookApp.UI
 
                 foreach (User friend in m_LoggedInUser.Friends)
                 {
-                    // in real scenrio i will only show the friends with birtday today,
-                    // but because we only have 2 friends to show, i will not filter them
-                    //if (friend.Birthday.Contains(todayDate))
-                    //{
+                    //// in real scenrio i will only show the friends with birtday today,
+                    //// but because we only have 2 friends to show, i will not filter them
+                    //// if (friend.Birthday.Contains(todayDate))
+                    //// {
                     EventHandler picBoxFriendClickEventHandler = new EventHandler(this.picBoxFriendBirthDay_Click);
                     PictureBox picBox = addPictureBoxToLayout(friend.Name, this.flowLayoutPanelFreindsW8Birthday, picBoxFriendClickEventHandler);
                     picBox.Tag = friend;
                     picBox.Load(friend.PictureNormalURL);
-                    //}
+                    //// }
                 }
             }
         }
@@ -369,10 +370,12 @@ namespace FacebookApp.UI
             if (!m_IsPostsStatisticsPopulated)
             {
                 PostsStatisticsGeneratorAdapter postStatsAdapter = new PostsStatisticsGeneratorAdapter(m_LoggedInUser.Posts);
-                this.chart_Likes_Time.Invoke(new Action(() => {
+                this.chart_Likes_Time.Invoke(new Action(() => 
+                    {
                     this.chart_Likes_Time.Series.Clear();
                     this.chart_Likes_Time.Series.Add(postStatsAdapter.PostsPerTimeOfDay());
                     this.chart_Likes_Time.Series.Add(postStatsAdapter.LikesPerTimeOfDay());
+
                     // Insert this graph as a secondary line, with a unique Y axis to the main chart control
                     createSecondYAxisScale(this.chart_Likes_Time, "Posts");
                 }));
@@ -519,7 +522,7 @@ namespace FacebookApp.UI
             Post birthdayWish = new Post();
 
             // Facebook Wrapper gives me no way to edit post's message 
-            //birthdayWish.Message = txtBox_BirthdayWish;
+            // birthdayWish.Message = txtBox_BirthdayWish;
             // and doesnt allow me any other way to post on wall
             birthdayFriend.WallPosts.Add(birthdayWish);
         }

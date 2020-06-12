@@ -1,9 +1,7 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Text;
 using System.Windows.Forms;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.UI.Builders
 {
@@ -29,7 +27,8 @@ namespace FacebookApp.UI.Builders
         #endregion
 
         #region Properties
-        public PostBox CreatedPostBox { 
+        public PostBox CreatedPostBox
+        { 
             get
             {
                 return m_PostBox;
@@ -51,7 +50,6 @@ namespace FacebookApp.UI.Builders
         public void AddPictureBox(string i_FromURL)
         {
             PictureBox picBox = new PictureBox();
-
             picBox.Location = new System.Drawing.Point(3, 3);
             picBox.Margin = new System.Windows.Forms.Padding(2);
             picBox.Name = "m_Pic";
@@ -59,26 +57,21 @@ namespace FacebookApp.UI.Builders
             picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             picBox.TabIndex = 0;
             picBox.TabStop = false;
-            //CHECK: ((System.ComponentModel.ISupportInitialize)(picBox)).BeginInit();
             picBox.Load(i_FromURL);
-
-
             m_PostBox.Picture = picBox;
         }
 
         public void AddHeadline(string i_FromName)
         {
             Label headline = new Label();
-
-            headline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            headline.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headline.Anchor = (System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            headline.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
             headline.Location = new System.Drawing.Point(45, 11);
             headline.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             headline.Name = "m_Headline";
             headline.Size = new System.Drawing.Size(379, 22);
             headline.Text = CreateHeadline_Value(m_Post.CreatedTime, i_FromName);   // This line throw Exception when asking posts from 'Friends' tab
-
             m_PostBox.Headline = headline;
         }
 
@@ -86,9 +79,9 @@ namespace FacebookApp.UI.Builders
         {
             RichTextBox content = new RichTextBox();
 
-            content.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            content.Anchor = (System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right);
             content.Location = new System.Drawing.Point(0, 36);
             content.Margin = new System.Windows.Forms.Padding(2);
             content.Name = "m_Content";
@@ -104,14 +97,14 @@ namespace FacebookApp.UI.Builders
         {
             RichTextBox textBox = new RichTextBox();
 
-            textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            textBox.Anchor = (System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right);
             textBox.Location = new System.Drawing.Point(424, 36);
             textBox.Margin = new System.Windows.Forms.Padding(2);
             textBox.Name = "m_TxtboxLikesComments";
             textBox.Size = new System.Drawing.Size(188, 107);
             textBox.TabIndex = 5;
-            textBox.Text = "";
+            textBox.Text = string.Empty;
 
             m_PostBox.TxtboxLikesComments = textBox;
         }
@@ -120,8 +113,8 @@ namespace FacebookApp.UI.Builders
         {
             Button btnLikes = new Button();
 
-            btnLikes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            btnLikes.Anchor = (System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right);
             btnLikes.Location = new System.Drawing.Point(424, 11);
             btnLikes.Margin = new System.Windows.Forms.Padding(2);
             btnLikes.Name = "m_Likes";
@@ -129,7 +122,7 @@ namespace FacebookApp.UI.Builders
             btnLikes.TabIndex = 3;
             btnLikes.Text = "Likes";
             btnLikes.UseVisualStyleBackColor = true;
-            btnLikes.Click += ((sender, e) =>
+            btnLikes.Click += (sender, e) =>
             {
                 m_PostBox.TxtboxLikesComments.Clear();
                 try
@@ -147,7 +140,7 @@ namespace FacebookApp.UI.Builders
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 }
-            });
+            };
 
             m_PostBox.Likes = btnLikes;
         }
@@ -156,8 +149,8 @@ namespace FacebookApp.UI.Builders
         {
             Button btnComments = new Button();
 
-            btnComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            btnComments.Anchor = (System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right);
             btnComments.Location = new System.Drawing.Point(527, 11);
             btnComments.Margin = new System.Windows.Forms.Padding(2);
             btnComments.Name = "m_Comments";
@@ -165,7 +158,7 @@ namespace FacebookApp.UI.Builders
             btnComments.TabIndex = 4;
             btnComments.Text = "Comments";
             btnComments.UseVisualStyleBackColor = true;
-            btnComments.Click += ((sender, e) =>
+            btnComments.Click += (sender, e) =>
             {
                 try
                 {
@@ -189,7 +182,7 @@ namespace FacebookApp.UI.Builders
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 }
-            });
+            };
 
             m_PostBox.Comments = btnComments;
         }
@@ -197,17 +190,6 @@ namespace FacebookApp.UI.Builders
         #endregion
 
         #region Private Methods
-        private void defineView(PostBox i_View)
-        {
-            i_View.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            i_View.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            i_View.Margin = new System.Windows.Forms.Padding(2);
-            i_View.Name = "PostBox";
-            i_View.Size = new System.Drawing.Size(614, 142);
-            i_View.Dock = DockStyle.Bottom;
-            i_View.ResumeLayout(false);
-        }
-
         private static string CreateHeadline_Value(DateTime? i_TimePosted, string i_FromPosted)
         {
             StringBuilder timeAndFromHeader = new StringBuilder();
@@ -248,6 +230,17 @@ namespace FacebookApp.UI.Builders
             {
                 return string.Empty;
             }
+        }
+
+        private void defineView(PostBox i_View)
+        {
+            i_View.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            i_View.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            i_View.Margin = new System.Windows.Forms.Padding(2);
+            i_View.Name = "PostBox";
+            i_View.Size = new System.Drawing.Size(614, 142);
+            i_View.Dock = DockStyle.Bottom;
+            i_View.ResumeLayout(false);
         }
         #endregion
     }

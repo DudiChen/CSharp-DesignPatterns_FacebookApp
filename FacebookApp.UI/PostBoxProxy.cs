@@ -14,9 +14,6 @@ namespace FacebookApp.UI
 
         private void PostBoxProxy_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
-
         }
     }
-
-
 }
