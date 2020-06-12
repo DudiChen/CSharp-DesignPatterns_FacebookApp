@@ -134,10 +134,7 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in friend.Posts)
                 {
-                    //CHECK Builder
                     PostBox postBox = composePostBox(post, friend);
-
-                    //PostBox postBox = m_PostBoxComposer.Generate(post, friend);
                     this.flowLayoutPanelFriendsPosts.Controls.Add(postBox);
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
@@ -356,8 +353,6 @@ namespace FacebookApp.UI
                     PictureBox picBox = addPictureBoxToLayout(friend.Name, this.flowLayoutPanelFreindsW8Birthday, picBoxFriendClickEventHandler);
                     picBox.Tag = friend;
                     picBox.Load(friend.PictureNormalURL);
-                    //User: design.patterns
-                    //Pass: design.patterns20b20
                     //}
                 }
             }
