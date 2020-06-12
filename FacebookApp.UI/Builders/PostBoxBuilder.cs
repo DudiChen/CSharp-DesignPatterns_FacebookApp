@@ -139,7 +139,7 @@ namespace FacebookApp.UI.Builders
                         m_PostBox.TxtboxLikesComments.AppendText(string.Format("{0}{1}", user.Name, Environment.NewLine));
                     }
                 }
-                catch (Exception excp)
+                catch (Exception)
                 {
                     MessageBox.Show(
                     r_MessageLikesUnavailable,
@@ -181,7 +181,7 @@ namespace FacebookApp.UI.Builders
                                 comment.Message));
                     }
                 }
-                catch (Exception excp)
+                catch (Exception)
                 {
                     MessageBox.Show(
                     r_MessageCommentsUnavailable,

@@ -14,7 +14,6 @@ namespace FacebookApp.UI
     {
         #region Fields
 
-        // TODO: evaluate Data Members and properties
         private System.Windows.Forms.PictureBox m_Picture;
         private System.Windows.Forms.Label m_Headline;
         private System.Windows.Forms.RichTextBox m_Content;

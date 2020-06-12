@@ -17,6 +17,10 @@ namespace FacebookApp.UI
             "Albums are currently unavailable.{0}Please try again later.",
             Environment.NewLine);
 
+        private readonly string r_MessageAlbumPhotosUnavailable = string.Format(
+            "This Album Photos are currently unavailable.{0}Please try again later.",
+            Environment.NewLine);
+
         private readonly string r_MessageCoverPhotoUnavailable = string.Format(
             "User's Cover Photo is currently unavailable.{0}Using defualt Cover Image.",
             Environment.NewLine);
@@ -31,7 +35,6 @@ namespace FacebookApp.UI
         private LoginManager m_LoginManager;
         private User m_LoggedInUser;
         private bool m_IsPostsStatisticsPopulated = false;
-        //// private PostBoxComposer m_PostBoxComposer;
 
         public FormMain()
         {
@@ -40,7 +43,6 @@ namespace FacebookApp.UI
             m_ApplicationSettings = ApplicationSettings.Instance;
             m_LoginManager = LoginManager.Instance;
             m_LoginManager.LogoutSuccessful += new EventHandler(loginManager_LogoutSuccessful);
-            //// m_PostBoxComposer = new PostBoxComposer();
         }
 
         private void buttonLogin_Click(object i_Sender, EventArgs e)
@@ -176,13 +178,24 @@ namespace FacebookApp.UI
             PictureBox picBoxSender = i_Sender as PictureBox;
             Album album = picBoxSender.Tag as Album;
             if (album != null)
-            { // TODO: [Dudi:] We get an exception here when viewing the 'Friends' Tab upon fetching photos [Bug isn't consistent]
-                foreach (Photo photo in album.Photos)
+            {
+                try
                 {
-                    EventHandler picBoxPhotosAlbumPicClickEventHandler = new EventHandler(this.picBoxPhotosAlbumPic_Click);
-                    PictureBox picBox = addPictureBoxToLayout(photo.Name, this.flowLayoutPanelFriends, picBoxPhotosAlbumPicClickEventHandler);
-                    picBox.Tag = photo;
-                    picBox.Load(photo.PictureNormalURL);
+                    foreach (Photo photo in album.Photos)
+                    {
+                        EventHandler picBoxPhotosAlbumPicClickEventHandler = new EventHandler(this.picBoxPhotosAlbumPic_Click);
+                        PictureBox picBox = addPictureBoxToLayout(photo.Name, this.flowLayoutPanelPhotosAlbumPics, picBoxPhotosAlbumPicClickEventHandler);
+                        picBox.Tag = photo;
+                        picBox.Load(photo.PictureNormalURL);
+                    }
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show(
+                        r_MessageAlbumPhotosUnavailable,
+                        r_MessageErrorOccuredTitle,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }
@@ -241,14 +254,7 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
-                    //CHECK Builder
-                    // TODO: for Dudi - look here: the PostBoxProxy made everything SOO slower, i think maybe i did it wrong
-                    //PostBox postBox = m_PostBoxComposer.GenerateLazyPostBox(post);
                     PostBox postBox = composePostBox(post, post.From);
-                    //PostBox postBox = m_PostBoxComposer.Generate(post);
-                    //// this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
-                    //flowLayoutPanelFeedPosts.Invoke(new Action(() => this.flowLayoutPanelFeedPosts.Controls.Add(postBox)));
-                    // TODO: [Dudi:] Received an exception here when closed the app.
                     flowLayoutPanelFeedPosts.Invoke(new Action(() => {
                         this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
                         this.flowLayoutPanelFeedPosts.SetFlowBreak(postBox, true);
@@ -269,10 +275,7 @@ namespace FacebookApp.UI
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.Posts)
                 {
-                    //CHECK Builder
                     PostBox postBox = composePostBox(post, post.From);
-                    //PostBox postBox = m_PostBoxComposer.Generate(post);
-                    //// this.flowLayoutPanelPosts.Controls.Add(postBox);
                     flowLayoutPanelPosts.Invoke(new Action(() => flowLayoutPanelPosts.Controls.Add(postBox)));
                     i++;
                     if (i == m_ApplicationSettings.MaxPostsShown)
@@ -302,8 +305,6 @@ namespace FacebookApp.UI
                     picBox.Tag = friend;
                     picBox.Load(friend.PictureNormalURL);
                 }
-
-                ////flowLayoutPanelFriends.Visible = true;
             }
         }
 
@@ -322,9 +323,9 @@ namespace FacebookApp.UI
                     foreach (Album album in m_LoggedInUser.Albums)
                     {
                         EventHandler picBoxAlbumClickEventHandler = new EventHandler(this.picBoxAlbum_Click);
-                        PictureBox picBox = addPictureBoxToLayout(album.Name, this.flowLayoutPanelFriends, picBoxAlbumClickEventHandler);
+                        PictureBox picBox = addPictureBoxToLayout(album.Name, this.flowLayoutPanelPhotosAlbums, picBoxAlbumClickEventHandler);
                         picBox.Tag = album;
-                        picBox.Load(album.CoverPhotoThumbURL);
+                        picBox.Load(album.PictureThumbURL);
                     }
                 }
                 catch (Exception)
@@ -371,7 +372,7 @@ namespace FacebookApp.UI
             picBox.Size = new System.Drawing.Size(75, 75);
             picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             picBox.Visible = true;
-            ////i_DestPanel.Controls.Add(picBox);
+            //// i_DestPanel.Controls.Add(picBox);
             i_DestPanel.Invoke(new Action(() => i_DestPanel.Controls.Add(picBox)));
             return picBox;
         }

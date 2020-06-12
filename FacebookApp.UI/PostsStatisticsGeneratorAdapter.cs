@@ -53,12 +53,10 @@ namespace FacebookApp.UI
             {
                 // Cast time of day to string
                 string createdTimeString = string.Format("{0}{1}:00", i < 10 ? "0" : string.Empty, i);
-                //// this.chart_Likes_Time.Series["Posts"].Points.AddXY(createdTimeString, r_PostsStatsGenerator.PostsPerHour[i]);
                 result.Points.AddXY(createdTimeString, r_PostsStatsGenerator.PostsPerHour[i]);
             }
 
             // Sort the graph in ascending order by X axis - Time of Day
-            //// this.chart_Likes_Time.Series["Posts"].Sort(PointSortOrder.Ascending, "X");
             result.Sort(PointSortOrder.Ascending, "X");
             return result;
         }
@@ -69,8 +67,6 @@ namespace FacebookApp.UI
             foreach (PostMetaData post in r_PostsStatsGenerator.PostsMetaDataList)
             {
                 string createdTimeString = string.Format("{0:H:mm}", post.PostCreationTime);
-                //// POSSIBLE CHANGE:
-                //// string createdTimeString = string.Format("{0}{1}:00", post.PostCreationTime.Hour < 10 ? "0" : string.Empty, post.PostCreationTime.Hour);
                 result.Points.AddXY(createdTimeString, post.PostNumberOfLikes);
             }
             result.Sort(PointSortOrder.Ascending, "X");
