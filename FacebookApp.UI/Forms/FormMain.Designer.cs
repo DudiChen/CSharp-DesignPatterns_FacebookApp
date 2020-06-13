@@ -202,7 +202,7 @@
             this.tabPagePostsStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPagePostsStatistics.Name = "tabPagePostsStatistics";
             this.tabPagePostsStatistics.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPagePostsStatistics.Size = new System.Drawing.Size(1131, 378);
+            this.tabPagePostsStatistics.Size = new System.Drawing.Size(1131, 466);
             this.tabPagePostsStatistics.TabIndex = 4;
             this.tabPagePostsStatistics.Text = "PostsStatistics";
             this.tabPagePostsStatistics.UseVisualStyleBackColor = true;
@@ -420,7 +420,7 @@
             this.tabPagePhotos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPagePhotos.Name = "tabPagePhotos";
             this.tabPagePhotos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPagePhotos.Size = new System.Drawing.Size(1131, 378);
+            this.tabPagePhotos.Size = new System.Drawing.Size(1131, 466);
             this.tabPagePhotos.TabIndex = 3;
             this.tabPagePhotos.Text = "Photos";
             this.tabPagePhotos.UseVisualStyleBackColor = true;
@@ -616,7 +616,7 @@
             this.tabPagePosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPagePosts.Name = "tabPagePosts";
             this.tabPagePosts.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPagePosts.Size = new System.Drawing.Size(1131, 378);
+            this.tabPagePosts.Size = new System.Drawing.Size(1131, 466);
             this.tabPagePosts.TabIndex = 1;
             this.tabPagePosts.Text = "Posts";
             this.tabPagePosts.UseVisualStyleBackColor = true;
@@ -630,7 +630,7 @@
             this.panel1.Location = new System.Drawing.Point(853, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(275, 374);
+            this.panel1.Size = new System.Drawing.Size(275, 462);
             this.panel1.TabIndex = 1;
             // 
             // buttonPostsPublish
@@ -672,7 +672,7 @@
             this.flowLayoutPanelPosts.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanelPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanelPosts.Name = "flowLayoutPanelPosts";
-            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(859, 374);
+            this.flowLayoutPanelPosts.Size = new System.Drawing.Size(859, 462);
             this.flowLayoutPanelPosts.TabIndex = 0;
             // 
             // tabPageNewsFeed
@@ -729,7 +729,7 @@
             this.tabPageBirthdayWisher.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageBirthdayWisher.Name = "tabPageBirthdayWisher";
             this.tabPageBirthdayWisher.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPageBirthdayWisher.Size = new System.Drawing.Size(1131, 378);
+            this.tabPageBirthdayWisher.Size = new System.Drawing.Size(1131, 466);
             this.tabPageBirthdayWisher.TabIndex = 5;
             this.tabPageBirthdayWisher.Text = "Birthday Wisher";
             this.tabPageBirthdayWisher.UseVisualStyleBackColor = true;
@@ -781,7 +781,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(267, 374);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(267, 462);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // label6
@@ -798,10 +798,10 @@
             // flowLayoutPanelFreindsW8Birthday
             // 
             this.flowLayoutPanelFreindsW8Birthday.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelFreindsW8Birthday.Location = new System.Drawing.Point(4, 60);
+            this.flowLayoutPanelFreindsW8Birthday.Location = new System.Drawing.Point(4, 73);
             this.flowLayoutPanelFreindsW8Birthday.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanelFreindsW8Birthday.Name = "flowLayoutPanelFreindsW8Birthday";
-            this.flowLayoutPanelFreindsW8Birthday.Size = new System.Drawing.Size(259, 310);
+            this.flowLayoutPanelFreindsW8Birthday.Size = new System.Drawing.Size(259, 385);
             this.flowLayoutPanelFreindsW8Birthday.TabIndex = 3;
             this.flowLayoutPanelFreindsW8Birthday.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelFreindsW8Birthday_Paint);
             // 

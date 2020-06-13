@@ -71,17 +71,24 @@ namespace FacebookApp.Logic
         public void Login()
         {
             LoginResult result;
-            try
+            if (r_ApplicationSettings.LastAccessToken == string.Empty)
             {
-                result = FacebookService.Login(r_ApplicationSettings.ApplicationID, r_ApplicationSettings.UserPermissions);
-                if (!string.IsNullOrEmpty(result.AccessToken))
+                try
                 {
-                    storeLoginData(result);
+                    result = FacebookService.Login(r_ApplicationSettings.ApplicationID, r_ApplicationSettings.UserPermissions);
+                    if (!string.IsNullOrEmpty(result.AccessToken))
+                    {
+                        storeLoginData(result);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new Exception(sr_FailedLoginMsg);
                 }
             }
-            catch (Exception)
+            else
             {
-                throw new Exception(sr_FailedLoginMsg);
+                connect(r_ApplicationSettings.LastAccessToken);
             }
         }
 
@@ -95,7 +102,7 @@ namespace FacebookApp.Logic
             onLogoutSuccessful(EventArgs.Empty);
         }
 
-        public void Connect(string i_AccessToken)
+        private void connect(string i_AccessToken)
         {
             try
             {
