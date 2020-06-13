@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using FacebookApp.Logic;
+using FacebookApp.UI.Forms;
 
 namespace FacebookApp.UI
 {

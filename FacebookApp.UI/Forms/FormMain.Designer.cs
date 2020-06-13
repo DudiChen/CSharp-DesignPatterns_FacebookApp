@@ -1,4 +1,4 @@
-﻿namespace FacebookApp.UI
+﻿namespace FacebookApp.UI.Forms
 {
     public partial class FormMain
     {
@@ -566,7 +566,7 @@
             this.richTextBoxPostsPublish.Name = "richTextBoxPostsPublish";
             this.richTextBoxPostsPublish.Size = new System.Drawing.Size(257, 165);
             this.richTextBoxPostsPublish.TabIndex = 1;
-            this.richTextBoxPostsPublish.Text = "";
+            this.richTextBoxPostsPublish.Text = string.Empty;
             // 
             // labelPostsPublish
             // 
@@ -679,7 +679,7 @@
             this.txtBox_BirthdayWish.Name = "txtBox_BirthdayWish";
             this.txtBox_BirthdayWish.Size = new System.Drawing.Size(843, 117);
             this.txtBox_BirthdayWish.TabIndex = 4;
-            this.txtBox_BirthdayWish.Text = "";
+            this.txtBox_BirthdayWish.Text = string.Empty;
             // 
             // tableLayoutPanel2
             // 
@@ -717,7 +717,6 @@
             this.flowLayoutPanelFreindsW8Birthday.Name = "flowLayoutPanelFreindsW8Birthday";
             this.flowLayoutPanelFreindsW8Birthday.Size = new System.Drawing.Size(259, 385);
             this.flowLayoutPanelFreindsW8Birthday.TabIndex = 3;
-            this.flowLayoutPanelFreindsW8Birthday.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelFreindsW8Birthday_Paint);
             // 
             // flowLayoutPanelFriendsPosts
             // 
@@ -870,7 +869,6 @@
             labelFriendAbout.TabIndex = 9;
             labelFriendAbout.Text = "About:";
             labelFriendAbout.Visible = false;
-            labelFriendAbout.Click += new System.EventHandler(this.aboutLabel_Click);
             // 
             // textBoxFriendAbout
             // 
@@ -919,7 +917,6 @@
             labelFriendsHometown.TabIndex = 14;
             labelFriendsHometown.Text = "Hometown:";
             labelFriendsHometown.Visible = false;
-            labelFriendsHometown.Click += new System.EventHandler(this.cityLabel_Click);
             // 
             // textBoxHometown
             // 
@@ -929,7 +926,6 @@
             this.textBoxHometown.Size = new System.Drawing.Size(116, 22);
             this.textBoxHometown.TabIndex = 15;
             this.textBoxHometown.Visible = false;
-            this.textBoxHometown.TextChanged += new System.EventHandler(this.cityTextBox_TextChanged);
             // 
             // pictureBoxFriendPic
             // 

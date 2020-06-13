@@ -12,7 +12,7 @@ namespace FacebookApp.UI
             Paint += PostBoxProxy_Paint;
         }
 
-        private void PostBoxProxy_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        private void PostBoxProxy_Paint(object i_Sender, System.Windows.Forms.PaintEventArgs e)
         {
         }
     }

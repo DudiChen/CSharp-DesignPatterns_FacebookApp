@@ -7,7 +7,7 @@ using FacebookApp.Logic;
 using FacebookWrapper.ObjectModel;
 using FacebookApp.UI.Builders;
 
-namespace FacebookApp.UI
+namespace FacebookApp.UI.Forms
 {
     public partial class FormMain : Form
     {
@@ -97,7 +97,7 @@ namespace FacebookApp.UI
         private void picBoxFriendBirthDay_Click(object i_Sender, EventArgs e)
         {
             PictureBox picBox = i_Sender as PictureBox;
-            User friend = picBox.Tag as User;
+            User friend = picBox?.Tag as User;
 
             if (friend != null)
             {
@@ -118,7 +118,7 @@ namespace FacebookApp.UI
         private void picBoxFriend_Click(object i_Sender, EventArgs e)
         {
             PictureBox picBox = i_Sender as PictureBox;
-            User friend = picBox.Tag as User;
+            User friend = picBox?.Tag as User;
             if (friend != null)
             {
                 this.flowLayoutPanelFriendsPosts.Controls.Clear();
@@ -142,12 +142,7 @@ namespace FacebookApp.UI
 
         private void picBoxFriendClickSetControlsAttributes(User i_Friend)
         {
-            //this.pictureBoxFriendPic.Load(i_Friend.PictureNormalURL);
             userBindingSource.DataSource = i_Friend;
-            //this.labelFriendName.Text = i_Friend.Name;
-            //this.listBoxFriendAbout.Text = i_Friend.About;
-            //this.textBoxHometown.Text = getUserHometown(i_Friend);
-            //this.textBoxFriendsBirthday.Text = i_Friend.Birthday;
         }
 
         private void picBoxFriendClickShowControls(bool i_ToggleMode)
@@ -167,7 +162,7 @@ namespace FacebookApp.UI
         private void picBoxAlbum_Click(object i_Sender, EventArgs e)
         {
             PictureBox picBoxSender = i_Sender as PictureBox;
-            Album album = picBoxSender.Tag as Album;
+            Album album = picBoxSender?.Tag as Album;
             if (album != null)
             {
                 try
@@ -194,7 +189,7 @@ namespace FacebookApp.UI
         private void picBoxPhotosAlbumPic_Click(object i_Sender, EventArgs e)
         {
             PictureBox picBoxSender = i_Sender as PictureBox;
-            Photo photo = picBoxSender.Tag as Photo;
+            Photo photo = picBoxSender?.Tag as Photo;
             if (photo != null)
             {
                 this.pictureBoxPhotosPic.Load(photo.PictureNormalURL);
@@ -525,7 +520,7 @@ namespace FacebookApp.UI
             // Facebook Wrapper gives me no way to edit post's message 
             // birthdayWish.Message = txtBox_BirthdayWish;
             // and doesnt allow me any other way to post on wall
-            birthdayFriend.WallPosts.Add(birthdayWish);
+            birthdayFriend?.WallPosts.Add(birthdayWish);
         }
 
         /// <summary>
@@ -553,52 +548,6 @@ namespace FacebookApp.UI
             }
 
             this.richTextBoxPostsPublish.Text = string.Empty;
-        }
-
-        private void flowLayoutPanelFreindsW8Birthday_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void listBoxFriendAbout_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void pictureBoxFriendPic_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textBoxHometown_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void labelFriendsHometown_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void labelFriendsBirthday_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textBoxFriendsBirthday_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void cityLabel_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void cityTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void pictureNormalURLPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void aboutLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

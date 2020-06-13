@@ -20,8 +20,6 @@ namespace FacebookApp.UI
         private System.Windows.Forms.Button m_Likes;
         private System.Windows.Forms.Button m_Comments;
         private System.Windows.Forms.RichTextBox m_TxtboxLikesComments;
-        private System.Windows.Forms.BindingSource m_BinddingDataPost;
-
         #endregion
 
         #region Properties
@@ -110,7 +108,6 @@ namespace FacebookApp.UI
             }
         }
 
-        //// public BindingSource BinddingDataPost { get => m_BinddingDataPost; set => m_BinddingDataPost = value; }
         #endregion
 
         #region Constructor
