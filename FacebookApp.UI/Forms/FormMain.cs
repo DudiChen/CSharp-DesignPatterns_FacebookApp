@@ -142,11 +142,12 @@ namespace FacebookApp.UI
 
         private void picBoxFriendClickSetControlsAttributes(User i_Friend)
         {
-            this.pictureBoxFriendPic.Load(i_Friend.PictureNormalURL);
-            this.labelFriendName.Text = i_Friend.Name;
-            this.listBoxFriendAbout.Text = i_Friend.About;
-            this.textBoxHometown.Text = getUserHometown(i_Friend);
-            this.textBoxFriendsBirthday.Text = i_Friend.Birthday;
+            //this.pictureBoxFriendPic.Load(i_Friend.PictureNormalURL);
+            userBindingSource.DataSource = i_Friend;
+            //this.labelFriendName.Text = i_Friend.Name;
+            //this.listBoxFriendAbout.Text = i_Friend.About;
+            //this.textBoxHometown.Text = getUserHometown(i_Friend);
+            //this.textBoxFriendsBirthday.Text = i_Friend.Birthday;
         }
 
         private void picBoxFriendClickShowControls(bool i_ToggleMode)
@@ -154,7 +155,7 @@ namespace FacebookApp.UI
             this.pictureBoxFriendPic.Visible = i_ToggleMode;
             this.labelFriendName.Visible = i_ToggleMode;
             this.labelFriendAbout.Visible = i_ToggleMode;
-            this.listBoxFriendAbout.Visible = i_ToggleMode;
+            this.textBoxFriendAbout.Visible = i_ToggleMode;
             this.labelFriendsHometown.Visible = i_ToggleMode;
             this.textBoxHometown.Visible = i_ToggleMode;
             this.labelFriendsBirthday.Visible = i_ToggleMode;
@@ -556,6 +557,48 @@ namespace FacebookApp.UI
 
         private void flowLayoutPanelFreindsW8Birthday_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void listBoxFriendAbout_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void pictureBoxFriendPic_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBoxHometown_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void labelFriendsHometown_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void labelFriendsBirthday_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBoxFriendsBirthday_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cityLabel_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void cityTextBox_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void pictureNormalURLPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aboutLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

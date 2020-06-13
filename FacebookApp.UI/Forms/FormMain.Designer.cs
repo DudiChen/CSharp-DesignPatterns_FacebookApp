@@ -29,12 +29,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.pictureBoxProfilePic = new System.Windows.Forms.PictureBox();
             this.pictureBoxCoverPic = new System.Windows.Forms.PictureBox();
@@ -60,16 +61,7 @@
             this.pictureBoxPhotosPic = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelPhotosAlbumPics = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPageFriends = new System.Windows.Forms.TabPage();
-            this.textBoxHometown = new System.Windows.Forms.TextBox();
-            this.textBoxFriendsBirthday = new System.Windows.Forms.TextBox();
-            this.labelFriendsHometown = new System.Windows.Forms.Label();
-            this.labelFriendsBirthday = new System.Windows.Forms.Label();
-            this.flowLayoutPanelFriendsPosts = new System.Windows.Forms.FlowLayoutPanel();
             this.labelFriendPosts = new System.Windows.Forms.Label();
-            this.labelFriendAbout = new System.Windows.Forms.Label();
-            this.listBoxFriendAbout = new System.Windows.Forms.ListBox();
-            this.labelFriendName = new System.Windows.Forms.Label();
-            this.pictureBoxFriendPic = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelFriends = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPagePosts = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -87,6 +79,29 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.flowLayoutPanelFreindsW8Birthday = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelFriendsPosts = new System.Windows.Forms.FlowLayoutPanel();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.userBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.textBoxFriendAbout = new System.Windows.Forms.TextBox();
+            this.textBoxFriendsBirthday = new System.Windows.Forms.TextBox();
+            this.labelFriendName = new System.Windows.Forms.Label();
+            this.textBoxHometown = new System.Windows.Forms.TextBox();
+            this.pictureBoxFriendPic = new System.Windows.Forms.PictureBox();
+            labelFriendAbout = new System.Windows.Forms.Label();
+            labelFriendsBirthday = new System.Windows.Forms.Label();
+            labelFriendsHometown = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoverPic)).BeginInit();
             this.tabPagePostsStatistics.SuspendLayout();
@@ -96,13 +111,16 @@
             this.tabPagePhotos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhotosPic)).BeginInit();
             this.tabPageFriends.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendPic)).BeginInit();
             this.tabPagePosts.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPageNewsFeed.SuspendLayout();
             this.tabControlFormMain.SuspendLayout();
             this.tabPageBirthdayWisher.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingNavigator)).BeginInit();
+            this.userBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendPic)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -228,36 +246,36 @@
             // 
             // chart_Likes_Time
             // 
-            chartArea1.AxisX.LineWidth = 2;
-            chartArea1.AxisY.LineWidth = 2;
-            chartArea1.Name = "ChartArea1";
-            this.chart_Likes_Time.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.LineWidth = 2;
+            chartArea2.AxisY.LineWidth = 2;
+            chartArea2.Name = "ChartArea1";
+            this.chart_Likes_Time.ChartAreas.Add(chartArea2);
             this.chart_Likes_Time.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart_Likes_Time.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart_Likes_Time.Legends.Add(legend2);
             this.chart_Likes_Time.Location = new System.Drawing.Point(3, 2);
             this.chart_Likes_Time.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart_Likes_Time.Name = "chart_Likes_Time";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Likes";
-            series1.YValuesPerPoint = 2;
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Posts";
-            this.chart_Likes_Time.Series.Add(series1);
-            this.chart_Likes_Time.Series.Add(series2);
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.Name = "Likes";
+            series3.YValuesPerPoint = 2;
+            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Posts";
+            this.chart_Likes_Time.Series.Add(series3);
+            this.chart_Likes_Time.Series.Add(series4);
             this.chart_Likes_Time.Size = new System.Drawing.Size(556, 374);
             this.chart_Likes_Time.TabIndex = 0;
             this.chart_Likes_Time.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Posts Compare Time of Day";
-            this.chart_Likes_Time.Titles.Add(title1);
+            title2.Name = "Title1";
+            title2.Text = "Posts Compare Time of Day";
+            this.chart_Likes_Time.Titles.Add(title2);
             // 
             // grp_Stats
             // 
@@ -459,17 +477,18 @@
             // 
             // tabPageFriends
             // 
+            this.tabPageFriends.AutoScroll = true;
             this.tabPageFriends.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPageFriends.Controls.Add(this.pictureBoxFriendPic);
+            this.tabPageFriends.Controls.Add(labelFriendsHometown);
             this.tabPageFriends.Controls.Add(this.textBoxHometown);
+            this.tabPageFriends.Controls.Add(labelFriendAbout);
+            this.tabPageFriends.Controls.Add(this.textBoxFriendAbout);
+            this.tabPageFriends.Controls.Add(labelFriendsBirthday);
             this.tabPageFriends.Controls.Add(this.textBoxFriendsBirthday);
-            this.tabPageFriends.Controls.Add(this.labelFriendsHometown);
-            this.tabPageFriends.Controls.Add(this.labelFriendsBirthday);
+            this.tabPageFriends.Controls.Add(this.labelFriendName);
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriendsPosts);
             this.tabPageFriends.Controls.Add(this.labelFriendPosts);
-            this.tabPageFriends.Controls.Add(this.labelFriendAbout);
-            this.tabPageFriends.Controls.Add(this.listBoxFriendAbout);
-            this.tabPageFriends.Controls.Add(this.labelFriendName);
-            this.tabPageFriends.Controls.Add(this.pictureBoxFriendPic);
             this.tabPageFriends.Controls.Add(this.flowLayoutPanelFriends);
             this.tabPageFriends.Location = new System.Drawing.Point(4, 25);
             this.tabPageFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -479,65 +498,6 @@
             this.tabPageFriends.TabIndex = 2;
             this.tabPageFriends.Text = "Friends";
             this.tabPageFriends.UseVisualStyleBackColor = true;
-            // 
-            // textBoxHometown
-            // 
-            this.textBoxHometown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxHometown.Location = new System.Drawing.Point(740, 7);
-            this.textBoxHometown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxHometown.Name = "textBoxHometown";
-            this.textBoxHometown.ReadOnly = true;
-            this.textBoxHometown.Size = new System.Drawing.Size(143, 22);
-            this.textBoxHometown.TabIndex = 13;
-            this.textBoxHometown.Visible = false;
-            // 
-            // textBoxFriendsBirthday
-            // 
-            this.textBoxFriendsBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFriendsBirthday.Location = new System.Drawing.Point(983, 7);
-            this.textBoxFriendsBirthday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxFriendsBirthday.Name = "textBoxFriendsBirthday";
-            this.textBoxFriendsBirthday.ReadOnly = true;
-            this.textBoxFriendsBirthday.Size = new System.Drawing.Size(143, 22);
-            this.textBoxFriendsBirthday.TabIndex = 11;
-            this.textBoxFriendsBirthday.Visible = false;
-            // 
-            // labelFriendsHometown
-            // 
-            this.labelFriendsHometown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelFriendsHometown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFriendsHometown.Location = new System.Drawing.Point(637, 7);
-            this.labelFriendsHometown.Name = "labelFriendsHometown";
-            this.labelFriendsHometown.Size = new System.Drawing.Size(97, 25);
-            this.labelFriendsHometown.TabIndex = 12;
-            this.labelFriendsHometown.Text = "Hometown:";
-            this.labelFriendsHometown.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelFriendsHometown.Visible = false;
-            // 
-            // labelFriendsBirthday
-            // 
-            this.labelFriendsBirthday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelFriendsBirthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFriendsBirthday.Location = new System.Drawing.Point(907, 7);
-            this.labelFriendsBirthday.Name = "labelFriendsBirthday";
-            this.labelFriendsBirthday.Size = new System.Drawing.Size(71, 25);
-            this.labelFriendsBirthday.TabIndex = 10;
-            this.labelFriendsBirthday.Text = "Birthday:";
-            this.labelFriendsBirthday.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelFriendsBirthday.Visible = false;
-            // 
-            // flowLayoutPanelFriendsPosts
-            // 
-            this.flowLayoutPanelFriendsPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelFriendsPosts.AutoScroll = true;
-            this.flowLayoutPanelFriendsPosts.Location = new System.Drawing.Point(240, 130);
-            this.flowLayoutPanelFriendsPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.flowLayoutPanelFriendsPosts.Name = "flowLayoutPanelFriendsPosts";
-            this.flowLayoutPanelFriendsPosts.Size = new System.Drawing.Size(891, 332);
-            this.flowLayoutPanelFriendsPosts.TabIndex = 9;
-            this.flowLayoutPanelFriendsPosts.Visible = false;
             // 
             // labelFriendPosts
             // 
@@ -550,52 +510,6 @@
             this.labelFriendPosts.Text = "Posts:";
             this.labelFriendPosts.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.labelFriendPosts.Visible = false;
-            // 
-            // labelFriendAbout
-            // 
-            this.labelFriendAbout.AutoSize = true;
-            this.labelFriendAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFriendAbout.Location = new System.Drawing.Point(389, 36);
-            this.labelFriendAbout.Name = "labelFriendAbout";
-            this.labelFriendAbout.Size = new System.Drawing.Size(49, 17);
-            this.labelFriendAbout.TabIndex = 7;
-            this.labelFriendAbout.Text = "About:";
-            this.labelFriendAbout.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.labelFriendAbout.Visible = false;
-            // 
-            // listBoxFriendAbout
-            // 
-            this.listBoxFriendAbout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxFriendAbout.FormattingEnabled = true;
-            this.listBoxFriendAbout.ItemHeight = 16;
-            this.listBoxFriendAbout.Location = new System.Drawing.Point(393, 57);
-            this.listBoxFriendAbout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxFriendAbout.Name = "listBoxFriendAbout";
-            this.listBoxFriendAbout.Size = new System.Drawing.Size(732, 52);
-            this.listBoxFriendAbout.TabIndex = 6;
-            this.listBoxFriendAbout.Visible = false;
-            // 
-            // labelFriendName
-            // 
-            this.labelFriendName.AutoSize = true;
-            this.labelFriendName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFriendName.Location = new System.Drawing.Point(389, 7);
-            this.labelFriendName.Name = "labelFriendName";
-            this.labelFriendName.Size = new System.Drawing.Size(112, 22);
-            this.labelFriendName.TabIndex = 2;
-            this.labelFriendName.Text = "Lorem Ipsum";
-            this.labelFriendName.Visible = false;
-            // 
-            // pictureBoxFriendPic
-            // 
-            this.pictureBoxFriendPic.Location = new System.Drawing.Point(240, 2);
-            this.pictureBoxFriendPic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxFriendPic.Name = "pictureBoxFriendPic";
-            this.pictureBoxFriendPic.Size = new System.Drawing.Size(135, 105);
-            this.pictureBoxFriendPic.TabIndex = 1;
-            this.pictureBoxFriendPic.TabStop = false;
-            this.pictureBoxFriendPic.Visible = false;
             // 
             // flowLayoutPanelFriends
             // 
@@ -805,12 +719,235 @@
             this.flowLayoutPanelFreindsW8Birthday.TabIndex = 3;
             this.flowLayoutPanelFreindsW8Birthday.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelFreindsW8Birthday_Paint);
             // 
+            // flowLayoutPanelFriendsPosts
+            // 
+            this.flowLayoutPanelFriendsPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelFriendsPosts.AutoScroll = true;
+            this.flowLayoutPanelFriendsPosts.Location = new System.Drawing.Point(240, 130);
+            this.flowLayoutPanelFriendsPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanelFriendsPosts.Name = "flowLayoutPanelFriendsPosts";
+            this.flowLayoutPanelFriendsPosts.Size = new System.Drawing.Size(891, 332);
+            this.flowLayoutPanelFriendsPosts.TabIndex = 9;
+            this.flowLayoutPanelFriendsPosts.Visible = false;
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.User);
+            // 
+            // userBindingNavigator
+            // 
+            this.userBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.userBindingNavigator.BindingSource = this.userBindingSource;
+            this.userBindingNavigator.CountItem = this.bindingNavigatorCountItem;
+            this.userBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.userBindingNavigator.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.userBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem,
+            this.userBindingNavigatorSaveItem});
+            this.userBindingNavigator.Location = new System.Drawing.Point(0, 167);
+            this.userBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.userBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.userBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.userBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.userBindingNavigator.Name = "userBindingNavigator";
+            this.userBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
+            this.userBindingNavigator.Size = new System.Drawing.Size(1157, 27);
+            this.userBindingNavigator.TabIndex = 8;
+            this.userBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 27);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 24);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // userBindingNavigatorSaveItem
+            // 
+            this.userBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.userBindingNavigatorSaveItem.Enabled = false;
+            this.userBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("userBindingNavigatorSaveItem.Image")));
+            this.userBindingNavigatorSaveItem.Name = "userBindingNavigatorSaveItem";
+            this.userBindingNavigatorSaveItem.Size = new System.Drawing.Size(24, 24);
+            this.userBindingNavigatorSaveItem.Text = "Save Data";
+            // 
+            // labelFriendAbout
+            // 
+            labelFriendAbout.AutoSize = true;
+            labelFriendAbout.Location = new System.Drawing.Point(381, 58);
+            labelFriendAbout.Name = "labelFriendAbout";
+            labelFriendAbout.Size = new System.Drawing.Size(49, 17);
+            labelFriendAbout.TabIndex = 9;
+            labelFriendAbout.Text = "About:";
+            labelFriendAbout.Visible = false;
+            labelFriendAbout.Click += new System.EventHandler(this.aboutLabel_Click);
+            // 
+            // textBoxFriendAbout
+            // 
+            this.textBoxFriendAbout.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "About", true));
+            this.textBoxFriendAbout.Location = new System.Drawing.Point(384, 78);
+            this.textBoxFriendAbout.Name = "textBoxFriendAbout";
+            this.textBoxFriendAbout.Size = new System.Drawing.Size(381, 22);
+            this.textBoxFriendAbout.TabIndex = 10;
+            this.textBoxFriendAbout.Visible = false;
+            // 
+            // labelFriendsBirthday
+            // 
+            labelFriendsBirthday.AutoSize = true;
+            labelFriendsBirthday.Location = new System.Drawing.Point(701, 15);
+            labelFriendsBirthday.Name = "labelFriendsBirthday";
+            labelFriendsBirthday.Size = new System.Drawing.Size(64, 17);
+            labelFriendsBirthday.TabIndex = 11;
+            labelFriendsBirthday.Text = "Birthday:";
+            labelFriendsBirthday.Visible = false;
+            // 
+            // textBoxFriendsBirthday
+            // 
+            this.textBoxFriendsBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Birthday", true));
+            this.textBoxFriendsBirthday.Location = new System.Drawing.Point(771, 12);
+            this.textBoxFriendsBirthday.Name = "textBoxFriendsBirthday";
+            this.textBoxFriendsBirthday.Size = new System.Drawing.Size(100, 22);
+            this.textBoxFriendsBirthday.TabIndex = 12;
+            this.textBoxFriendsBirthday.Visible = false;
+            // 
+            // labelFriendName
+            // 
+            this.labelFriendName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Name", true));
+            this.labelFriendName.Location = new System.Drawing.Point(390, 15);
+            this.labelFriendName.Name = "labelFriendName";
+            this.labelFriendName.Size = new System.Drawing.Size(100, 23);
+            this.labelFriendName.TabIndex = 14;
+            this.labelFriendName.Text = "label8";
+            this.labelFriendName.Visible = false;
+            // 
+            // labelFriendsHometown
+            // 
+            labelFriendsHometown.AutoSize = true;
+            labelFriendsHometown.Location = new System.Drawing.Point(910, 15);
+            labelFriendsHometown.Name = "labelFriendsHometown";
+            labelFriendsHometown.Size = new System.Drawing.Size(78, 17);
+            labelFriendsHometown.TabIndex = 14;
+            labelFriendsHometown.Text = "Hometown:";
+            labelFriendsHometown.Visible = false;
+            labelFriendsHometown.Click += new System.EventHandler(this.cityLabel_Click);
+            // 
+            // textBoxHometown
+            // 
+            this.textBoxHometown.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Hometown.Location.City", true));
+            this.textBoxHometown.Location = new System.Drawing.Point(994, 12);
+            this.textBoxHometown.Name = "textBoxHometown";
+            this.textBoxHometown.Size = new System.Drawing.Size(116, 22);
+            this.textBoxHometown.TabIndex = 15;
+            this.textBoxHometown.Visible = false;
+            this.textBoxHometown.TextChanged += new System.EventHandler(this.cityTextBox_TextChanged);
+            // 
+            // pictureBoxFriendPic
+            // 
+            this.pictureBoxFriendPic.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.userBindingSource, "ImageNormal", true));
+            this.pictureBoxFriendPic.Location = new System.Drawing.Point(243, 5);
+            this.pictureBoxFriendPic.Name = "pictureBoxFriendPic";
+            this.pictureBoxFriendPic.Size = new System.Drawing.Size(117, 96);
+            this.pictureBoxFriendPic.TabIndex = 16;
+            this.pictureBoxFriendPic.TabStop = false;
+            this.pictureBoxFriendPic.Visible = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1157, 721);
+            this.Controls.Add(this.userBindingNavigator);
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.labelUserName);
@@ -834,13 +971,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhotosPic)).EndInit();
             this.tabPageFriends.ResumeLayout(false);
             this.tabPageFriends.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendPic)).EndInit();
             this.tabPagePosts.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tabPageNewsFeed.ResumeLayout(false);
             this.tabControlFormMain.ResumeLayout(false);
             this.tabPageBirthdayWisher.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingNavigator)).EndInit();
+            this.userBindingNavigator.ResumeLayout(false);
+            this.userBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -873,16 +1014,7 @@
         private System.Windows.Forms.PictureBox pictureBoxPhotosPic;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPhotosAlbumPics;
         private System.Windows.Forms.TabPage tabPageFriends;
-        private System.Windows.Forms.TextBox textBoxHometown;
-        private System.Windows.Forms.TextBox textBoxFriendsBirthday;
-        private System.Windows.Forms.Label labelFriendsHometown;
-        private System.Windows.Forms.Label labelFriendsBirthday;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriendsPosts;
         private System.Windows.Forms.Label labelFriendPosts;
-        private System.Windows.Forms.Label labelFriendAbout;
-        private System.Windows.Forms.ListBox listBoxFriendAbout;
-        private System.Windows.Forms.Label labelFriendName;
-        private System.Windows.Forms.PictureBox pictureBoxFriendPic;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriends;
         private System.Windows.Forms.TabPage tabPagePosts;
         private System.Windows.Forms.Panel panel1;
@@ -900,5 +1032,28 @@
         private System.Windows.Forms.Button btn_PostBirthdayWish;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox txtBox_BirthdayWish;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFriendsPosts;
+        private System.Windows.Forms.TextBox textBoxHometown;
+        private System.Windows.Forms.BindingSource userBindingSource;
+        private System.Windows.Forms.TextBox textBoxFriendAbout;
+        private System.Windows.Forms.TextBox textBoxFriendsBirthday;
+        private System.Windows.Forms.Label labelFriendName;
+        private System.Windows.Forms.BindingNavigator userBindingNavigator;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton userBindingNavigatorSaveItem;
+        private System.Windows.Forms.PictureBox pictureBoxFriendPic;
+        private System.Windows.Forms.Label labelFriendAbout;
+        private System.Windows.Forms.Label labelFriendsBirthday;
+        private System.Windows.Forms.Label labelFriendsHometown;
     }
 }
