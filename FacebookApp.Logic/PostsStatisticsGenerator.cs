@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.Logic
 {
-    public class PostsStatisticsGenerator
+    public class PostsStatisticsGenerator : IEnumerable<PostMetaData>
     {
         private FacebookObjectCollection<Post> m_Posts;
 
         private uint m_NumberOfPostsWithPhotos = 0;
 
-        public List<PostMetaData> PostsMetaDataList { get; private set; }
+        private List<PostMetaData> PostsMetaDataList;
 
         public uint[] PostsPerHour { get; private set; }
 
@@ -66,8 +67,8 @@ namespace FacebookApp.Logic
         }
 
         #region Logic Methods
-        private DateTime GetPostCreatedTime(Post i_Post)
-        {
+        protected /*virtual*/ DateTime GetPostCreatedTime(Post i_Post)
+        {   // TODO: remove comme   nt if we found better TemplateMethod implementation
             DateTime result;
             try
             {
@@ -136,6 +137,41 @@ namespace FacebookApp.Logic
         {
             PercentageOfPostsWithPhotos = ((double)m_NumberOfPostsWithPhotos / (double)PostsMetaDataList.Count) * 100;
         }
+
+        public IEnumerator<PostMetaData> GetEnumerator()
+        {
+            return PostsMetaDataList.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
         #endregion
     }
+
+    //public class PostsStatisticsGeneratorForAmericans : PostsStatisticsGenerator
+    //{
+    //    public PostsStatisticsGeneratorForAmericans(FacebookObjectCollection<Post> i_Posts) : base(i_Posts) 
+    //    {
+    //
+    //    }
+    //
+    //    protected override DateTime GetPostCreatedTime(Post i_Post)
+    //    {
+    //        DateTime result;
+    //        try
+    //        {
+    //            // if Facebook allow, get post's created time,
+    //            result = (DateTime)i_Post.CreatedTime;
+    //        }
+    //        catch (Exception)
+    //        {
+    //            // if not, insert Random Time between 01/01/2000 10:00 to now,
+    //            result = DummyDataGenerator.GetRandomDateTime(new DateTime(2000, 01, 01, 10, 00, 00), DateTime.Now);
+    //        }
+    //
+    //        return result;
+    //    }
+    //}
 }

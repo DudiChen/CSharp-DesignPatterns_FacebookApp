@@ -42,7 +42,7 @@ namespace FacebookApp.UI.Forms
             tabControlFormMain.SelectedIndexChanged += new EventHandler(tabControlFormMain_SelectedIndexChanged);
             m_ApplicationSettings = ApplicationSettings.Instance;
             m_LoginManager = LoginManager.Instance;
-            m_LoginManager.LogoutSuccessful += new EventHandler(loginManager_LogoutSuccessful);
+            m_LoginManager.LogoutSuccessful += loginManager_LogoutSuccessful;
         }
 
         private void buttonLogin_Click(object i_Sender, EventArgs e)

@@ -7,6 +7,7 @@ namespace FacebookApp.Logic
 {
     public sealed class LoginManager
     {
+        public event EventHandler LogoutSuccessful;
         private static readonly object sr_CreateLock = new object();
         private static readonly string sr_FailedLoginMsg = "Error: Login Attempt Failed... Please Try Again...";
         private static readonly string sr_InvalidAccessTokenMsg = "Error: Invalid Access Token... Please Perform Login Again...";
@@ -120,13 +121,7 @@ namespace FacebookApp.Logic
 
         private void onLogoutSuccessful(EventArgs e)
         {
-            EventHandler handler = LogoutSuccessful;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            LogoutSuccessful?.Invoke(this, e);
         }
-
-        public event EventHandler LogoutSuccessful;
     }
 }

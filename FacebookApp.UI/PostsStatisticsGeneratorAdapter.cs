@@ -64,7 +64,7 @@ namespace FacebookApp.UI
         public Series LikesPerTimeOfDay()
         {
             Series result = new Series("Likes");
-            foreach (PostMetaData post in r_PostsStatsGenerator.PostsMetaDataList)
+            foreach (PostMetaData post in r_PostsStatsGenerator)
             {
                 string createdTimeString = string.Format("{0:H:mm}", post.PostCreationTime);
                 result.Points.AddXY(createdTimeString, post.PostNumberOfLikes);
