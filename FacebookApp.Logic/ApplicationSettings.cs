@@ -3,10 +3,12 @@ using System.IO;
 
 namespace FacebookApp.Logic
 {
+    // TODO: Fix the Serialization issue
     public sealed class ApplicationSettings
     {
         private static readonly object sr_CreateLock = new object();
         private static readonly string sr_AppSettingsConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\ApplicationSettings.xml";
+        private static readonly ApplicationSettingsParser sr_Parser = new ApplicationSettingsXmlParser();
         private static ApplicationSettings s_Instance = null;
         private readonly int r_MaxPostsShown = 15;
         private readonly string r_ApplicationID = "1089225541443714";
@@ -35,7 +37,7 @@ namespace FacebookApp.Logic
             {
                 using (Stream stream = new FileStream(sr_AppSettingsConfigPath, FileMode.Open))
                 {
-                    appSettings = ApplicationSettingsParser.Desirialize(stream);
+                    appSettings = sr_Parser.Desirialize(stream);
                 }
             }
             else
@@ -126,7 +128,7 @@ namespace FacebookApp.Logic
             {
                 using (Stream stream = new FileStream(sr_AppSettingsConfigPath, FileMode.Create))
                 {
-                    ApplicationSettingsParser.Serialize(stream, Instance);
+                    new ApplicationSettingsXmlParser().Serialize(stream, Instance);
                 }
             }
             else
