@@ -138,8 +138,14 @@ namespace FacebookApp.Logic
             PercentageOfPostsWithPhotos = ((double)m_NumberOfPostsWithPhotos / (double)PostsMetaDataList.Count) * 100;
         }
 
+        //public System.Collections.Generic.IEnumerator<ElementType> GetEnumerator()
+        //{
+        //    throw new NotImplementedException();
+        //    yield return default(ElementType);
+        //}
+
         public IEnumerator<PostMetaData> GetEnumerator()
-        {
+        {  
             return PostsMetaDataList.GetEnumerator();
         }
 
