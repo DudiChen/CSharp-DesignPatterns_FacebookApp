@@ -147,8 +147,12 @@ namespace FacebookApp.Logic
         //// }
 
         public IEnumerator<PostMetaData> GetEnumerator()
-        {  
-            return PostsMetaDataList.GetEnumerator();
+        {
+            IEnumerator<PostMetaData> iterator = PostsMetaDataList.GetEnumerator();
+            while (iterator.MoveNext())
+            {
+                yield return iterator.Current;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -157,29 +161,4 @@ namespace FacebookApp.Logic
         }
         #endregion
     }
-
-    //public class PostsStatisticsGeneratorForAmericans : PostsStatisticsGenerator
-    //{
-    //    public PostsStatisticsGeneratorForAmericans(FacebookObjectCollection<Post> i_Posts) : base(i_Posts) 
-    //    {
-    //
-    //    }
-    //
-    //    protected override DateTime GetPostCreatedTime(Post i_Post)
-    //    {
-    //        DateTime result;
-    //        try
-    //        {
-    //            // if Facebook allow, get post's created time,
-    //            result = (DateTime)i_Post.CreatedTime;
-    //        }
-    //        catch (Exception)
-    //        {
-    //            // if not, insert Random Time between 01/01/2000 10:00 to now,
-    //            result = DummyDataGenerator.GetRandomDateTime(new DateTime(2000, 01, 01, 10, 00, 00), DateTime.Now);
-    //        }
-    //
-    //        return result;
-    //    }
-    //}
 }
