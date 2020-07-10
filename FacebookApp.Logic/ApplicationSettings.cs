@@ -112,7 +112,7 @@ namespace FacebookApp.Logic
             {
                 using (Stream stream = new FileStream(sr_AppSettingsConfigPath, FileMode.Open))
                 {
-                    appSettings = sr_Parser.Desirialize(stream);
+                    appSettings = sr_Parser.Deserialize(stream);
                 }
             }
             else

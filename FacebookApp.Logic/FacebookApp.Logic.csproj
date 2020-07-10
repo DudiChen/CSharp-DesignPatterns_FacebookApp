@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationSettings.cs" />
+    <Compile Include="ApplicationSettingsBinaryParser.cs" />
     <Compile Include="ApplicationSettingsParser.cs" />
+    <Compile Include="ApplicationSettingsXmlParser.cs" />
     <Compile Include="DummyDataGenerator.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="PostMetaData.cs" />
