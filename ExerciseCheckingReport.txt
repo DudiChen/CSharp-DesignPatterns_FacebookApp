@@ -1,9 +1,9 @@
 ==========================Exercise Checking Report==========================
-Exercise No...........: 2
+Exercise No...........: 3
 First Student Details.: 300334034 - Dudi Chen
 Second Student Details: 313543696 - Maor Solomonov
-Delivery Date.........: 13 - June - 2020
-Delivered In Delay....: Yes (1 Day)
-Delay Reason..........: Dudi's illness. A Doctor's note will be delivered soon.
+Delivery Date.........: 10 - July - 2020
+Delivered In Delay....: No
+Delay Reason..........: N/A
 Comments..............: Successful logout Message appears twice when logging out.
 =======================End Exercise Checking Report=========================

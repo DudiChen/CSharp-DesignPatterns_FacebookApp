@@ -67,8 +67,8 @@ namespace FacebookApp.Logic
         }
 
         #region Logic Methods
-        protected /*virtual*/ DateTime GetPostCreatedTime(Post i_Post)
-        {   // TODO: remove comme   nt if we found better TemplateMethod implementation
+        protected DateTime GetPostCreatedTime(Post i_Post)
+        {   
             DateTime result;
             try
             {
@@ -146,20 +146,17 @@ namespace FacebookApp.Logic
             }
         }
 
-        /// <summary>
-        /// NOTE TO CHECKER:
-        /// We used the above code block for abbreviation ease;
-        /// It is partially translated to the following block:
-        /// public IEnumerator<PostMetaData> GetEnumerator()
-        /// {
-        ///     IEnumerator<PostMetaData> iterator = PostsMetaDataList.GetEnumerator();
-        ///     while (iterator.MoveNext())
-        ///     {
-        ///         yield return iterator.Current;
-        ///     }
-        /// }
-        /// </summary>
-        /// <returns></returns>
+        // NOTE TO CHECKER:
+        // We used the above code block for abbreviation ease;
+        // It is partially translated to the following block:
+        // public IEnumerator<PostMetaData> GetEnumerator()
+        // {
+        //     IEnumerator<PostMetaData> iterator = PostsMetaDataList.GetEnumerator();
+        //     while (iterator.MoveNext())
+        //     {
+        //         yield return iterator.Current;
+        //     }
+        // }
 
         IEnumerator IEnumerable.GetEnumerator()
          {

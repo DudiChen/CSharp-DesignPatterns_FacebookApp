@@ -5,22 +5,22 @@ namespace FacebookApp.Logic
 {
     internal class ApplicationSettingsXmlParser : ApplicationSettingsParser
     {
-        private XmlSerializer xmlSerializer;
+        private readonly XmlSerializer r_XmlSerializer;
 
         public ApplicationSettingsXmlParser()
         {
-            xmlSerializer = new XmlSerializer(typeof(ApplicationSettings));
+            r_XmlSerializer = new XmlSerializer(typeof(ApplicationSettings));
         }
 
         public override ApplicationSettings Deserialize(Stream i_Stream)
         {
-            ApplicationSettings result = xmlSerializer.Deserialize(i_Stream) as ApplicationSettings;
+            ApplicationSettings result = r_XmlSerializer.Deserialize(i_Stream) as ApplicationSettings;
             return result;
         }
 
         public override void Serialize(Stream i_Stream, object i_Caller)
         {
-            xmlSerializer.Serialize(i_Stream, i_Caller);
+            r_XmlSerializer.Serialize(i_Stream, i_Caller);
         }
     }
 }

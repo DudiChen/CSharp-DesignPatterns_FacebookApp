@@ -256,7 +256,6 @@ namespace FacebookApp.UI.Forms
                     }
                     catch (Exception)
                     {
-
                     }
                 }
             }
@@ -302,12 +301,10 @@ namespace FacebookApp.UI.Forms
             }
         }
 
-        /// <summary>
-        /// FOR ASSIGNMENT CHECKER:
-        /// Facebook API Issue Encountered:
-        /// Facebook.FacebookOAuthException' occurred in Facebook.dll
-        /// Additional information: (OAuthException - #100) (#100) Tried accessing nonexisting field (likes) on node type (Album)
-        /// </summary>
+        // FOR ASSIGNMENT CHECKER:
+        // Facebook API Issue Encountered:
+        // Facebook.FacebookOAuthException' occurred in Facebook.dll
+        // Additional information: (OAuthException - #100) (#100) Tried accessing nonexisting field (likes) on node type (Album)
         private void populateUserPhotos()
         {
             if (this.flowLayoutPanelPhotosAlbums.Controls.Count == 0)
@@ -525,12 +522,10 @@ namespace FacebookApp.UI.Forms
             birthdayFriend?.WallPosts.Add(birthdayWish);
         }
 
-        /// <summary>
-        /// FOR ASSIGNMENT CHECKER:
-        /// Facebook API Issue Encountered:
-        /// 'Facebook.FacebookOAuthException' occurred in Facebook.dll
-        /// Additional information: (OAuthException - #200) (#200) If posting to a group, requires app being installed in the group, 
-        /// </summary>
+        // FOR ASSIGNMENT CHECKER:
+        // Facebook API Issue Encountered:
+        // 'Facebook.FacebookOAuthException' occurred in Facebook.dll
+        // Additional information: (OAuthException - #200) (#200) If posting to a group, requires app being installed in the group, 
         private void publishNewPost()
         {
             if (!string.IsNullOrEmpty(this.richTextBoxPostsPublish.Text))

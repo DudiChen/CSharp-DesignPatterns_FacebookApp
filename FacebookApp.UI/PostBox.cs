@@ -5,11 +5,8 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.UI
 {
-    /// <summary>
-    /// A standard Post UI
-    /// 
-    /// In Builder Patters PostBox is the 'Product'
-    /// </summary>
+    // A standard Post UI
+    // In Builder Patters PostBox is the 'Product'
     public partial class PostBox : UserControl
     {
         #region Fields

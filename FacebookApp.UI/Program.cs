@@ -7,9 +7,7 @@ namespace FacebookApp.UI
 {
     public static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        // The main entry point for the application.
         [STAThread]
         public static void Main()
         {
