@@ -8,7 +8,7 @@ namespace FacebookApp.Logic
     {
         private static readonly object sr_CreateLock = new object();
         private static readonly string sr_AppSettingsConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\ApplicationSettings.out";
-        private static readonly ApplicationSettingsParser sr_Parser = new ApplicationSettingsBinaryParser();
+        private static readonly ApplicationSettingsParser sr_Parser = new ApplicationSettingsXmlParser();
         private static ApplicationSettings s_Instance = null;
         private readonly int r_MaxPostsShown = 15;
         private readonly string r_ApplicationID = "1089225541443714";
