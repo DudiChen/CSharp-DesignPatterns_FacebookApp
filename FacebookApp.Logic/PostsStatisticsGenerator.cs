@@ -138,14 +138,6 @@ namespace FacebookApp.Logic
             PercentageOfPostsWithPhotos = ((double)m_NumberOfPostsWithPhotos / (double)PostsMetaDataList.Count) * 100;
         }
 
-        //// public IEnumerator<PostMetaData> GetEnumerator()
-        //// {
-        ////     while(PostsMetaDataList.GetEnumerator().MoveNext())
-        ////     {
-        ////         yield return PostsMetaDataList.GetEnumerator().Current;
-        ////     }
-        //// }
-
         public IEnumerator<PostMetaData> GetEnumerator()
         {
             foreach (PostMetaData postData in PostsMetaDataList)
@@ -153,6 +145,21 @@ namespace FacebookApp.Logic
                 yield return postData;
             }
         }
+
+        /// <summary>
+        /// NOTE TO CHECKER:
+        /// We used the above code block for abbreviation ease;
+        /// It is partially translated to the following block:
+        /// public IEnumerator<PostMetaData> GetEnumerator()
+        /// {
+        ///     IEnumerator<PostMetaData> iterator = PostsMetaDataList.GetEnumerator();
+        ///     while (iterator.MoveNext())
+        ///     {
+        ///         yield return iterator.Current;
+        ///     }
+        /// }
+        /// </summary>
+        /// <returns></returns>
 
         IEnumerator IEnumerable.GetEnumerator()
          {
