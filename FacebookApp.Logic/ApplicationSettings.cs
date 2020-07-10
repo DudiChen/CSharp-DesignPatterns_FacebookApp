@@ -3,12 +3,12 @@ using System.IO;
 
 namespace FacebookApp.Logic
 {
-    // TODO: Fix the Serialization issue
+    [Serializable]
     public sealed class ApplicationSettings
     {
         private static readonly object sr_CreateLock = new object();
-        private static readonly string sr_AppSettingsConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\ApplicationSettings.xml";
-        private static readonly ApplicationSettingsParser sr_Parser = new ApplicationSettingsXmlParser();
+        private static readonly string sr_AppSettingsConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\ApplicationSettings.out";
+        private static readonly ApplicationSettingsParser sr_Parser = new ApplicationSettingsBinaryParser();
         private static ApplicationSettings s_Instance = null;
         private readonly int r_MaxPostsShown = 15;
         private readonly string r_ApplicationID = "1089225541443714";
@@ -27,25 +27,6 @@ namespace FacebookApp.Logic
         {
             m_RememberUser = false;
             m_LastAccessToken = string.Empty;
-        }
-
-        private static ApplicationSettings loadApplicationSettings()
-        {
-            ApplicationSettings appSettings = null;
-
-            if (File.Exists(sr_AppSettingsConfigPath))
-            {
-                using (Stream stream = new FileStream(sr_AppSettingsConfigPath, FileMode.Open))
-                {
-                    appSettings = sr_Parser.Desirialize(stream);
-                }
-            }
-            else
-            {
-                appSettings = new ApplicationSettings();
-            }
-
-            return appSettings;
         }
         #endregion
 
@@ -122,13 +103,33 @@ namespace FacebookApp.Logic
         #endregion
 
         #region Methods
+
+        private static ApplicationSettings loadApplicationSettings()
+        {
+            ApplicationSettings appSettings = null;
+
+            if (File.Exists(sr_AppSettingsConfigPath))
+            {
+                using (Stream stream = new FileStream(sr_AppSettingsConfigPath, FileMode.Open))
+                {
+                    appSettings = sr_Parser.Desirialize(stream);
+                }
+            }
+            else
+            {
+                appSettings = new ApplicationSettings();
+            }
+
+            return appSettings;
+        }
+
         public void SaveApplicationSettings()
         {
             if (m_RememberUser)
             {
                 using (Stream stream = new FileStream(sr_AppSettingsConfigPath, FileMode.Create))
                 {
-                    new ApplicationSettingsXmlParser().Serialize(stream, Instance);
+                    sr_Parser.Serialize(stream, Instance);
                 }
             }
             else

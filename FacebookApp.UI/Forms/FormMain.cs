@@ -240,16 +240,23 @@ namespace FacebookApp.UI.Forms
                 int i = 0;
                 foreach (Post post in m_LoggedInUser.NewsFeed)
                 {
-                    PostBox postBox = composePostBox(post, post.From);
-                    flowLayoutPanelFeedPosts.Invoke(new Action(() => 
-                        {
-                        this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
-                        this.flowLayoutPanelFeedPosts.SetFlowBreak(postBox, true);
-                    }));
-                    i++;
-                    if (i == m_ApplicationSettings.MaxPostsShown)
+                    try
                     {
-                        break;
+                        PostBox postBox = composePostBox(post, post.From);
+                        flowLayoutPanelFeedPosts.Invoke(new Action(() =>
+                            {
+                                this.flowLayoutPanelFeedPosts.Controls.Add(postBox);
+                                this.flowLayoutPanelFeedPosts.SetFlowBreak(postBox, true);
+                            }));
+                        i++;
+                        if (i == m_ApplicationSettings.MaxPostsShown)
+                        {
+                            break;
+                        }
+                    }
+                    catch (Exception)
+                    {
+
                     }
                 }
             }
@@ -479,11 +486,6 @@ namespace FacebookApp.UI.Forms
         }
 
         private void buttonLogout_Click(object i_Sender, EventArgs e)
-        {
-            logoutUser();
-        }
-
-        private void logoutUser()
         {
             ApplicationSettings.Instance.SaveApplicationSettings();
             m_LoginManager.Logout();

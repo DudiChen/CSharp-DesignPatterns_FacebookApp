@@ -49,6 +49,7 @@ namespace FacebookApp.Logic
         {
             m_LoginResult = i_LoginResult;
             m_LoggedInUser = i_LoginResult.LoggedInUser;
+            r_ApplicationSettings.LastAccessToken = i_LoginResult.AccessToken;
         }
 
         public User LoggedInUser
@@ -97,7 +98,7 @@ namespace FacebookApp.Logic
         }
 
         public void Logout()
-        {
+        {             
             FacebookWrapper.FacebookService.Logout(onLogoutSuccessful);
         }
 
