@@ -9,7 +9,7 @@ using FacebookApp.UI.Builders;
 
 namespace FacebookApp.UI.Forms
 {
-    public partial class FormMain : Form, IObserverLogoutSuccessful
+    public partial class FormMain : Form
     {
         private readonly string r_DefaultFormHeader = "Maor & Dudi's Facebook Application";
         private readonly string r_LoggedInString = "Logged-In As: ";
@@ -489,12 +489,7 @@ namespace FacebookApp.UI.Forms
             m_LoginManager.Logout();
         }
 
-        private void loginManager_LogoutSuccessful(object i_Sender, EventArgs e)
-        {
-            UpdateOnLogoutSuccessful();
-        }
-
-        public void UpdateOnLogoutSuccessful()
+        private void loginManager_LogoutSuccessful()
         {
             this.Text = r_DefaultFormHeader;
             toggleAllMainFormControls(false);

@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Mime;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.Logic
 {
+    public delegate void SuccessfulLogoutListeners();
+
     public sealed class LoginManager
     {
-        public event EventHandler LogoutSuccessful;
+        public event SuccessfulLogoutListeners LogoutSuccessful;
         private static readonly object sr_CreateLock = new object();
         private static readonly string sr_FailedLoginMsg = "Error: Login Attempt Failed... Please Try Again...";
         private static readonly string sr_InvalidAccessTokenMsg = "Error: Invalid Access Token... Please Perform Login Again...";
@@ -95,12 +98,7 @@ namespace FacebookApp.Logic
 
         public void Logout()
         {
-            FacebookWrapper.FacebookService.Logout(logoutSuccessful);
-        }
-
-        private void logoutSuccessful()
-        {
-            onLogoutSuccessful(EventArgs.Empty);
+            FacebookWrapper.FacebookService.Logout(onLogoutSuccessful);
         }
 
         private void connect(string i_AccessToken)
@@ -119,9 +117,9 @@ namespace FacebookApp.Logic
             }
         }
 
-        private void onLogoutSuccessful(EventArgs e)
+        private void onLogoutSuccessful()
         {
-            LogoutSuccessful?.Invoke(this, e);
+            LogoutSuccessful?.Invoke();
         }
     }
 }

@@ -60,7 +60,6 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="IFormsPostStatsGeneratorAdapter.cs" />
-    <Compile Include="IObserverLogoutSuccessful.cs" />
     <Compile Include="PostBox.cs">
       <SubType>UserControl</SubType>
     </Compile>

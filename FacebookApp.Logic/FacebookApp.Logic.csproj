@@ -45,6 +45,7 @@
     <Compile Include="ApplicationSettings.cs" />
     <Compile Include="ApplicationSettingsParser.cs" />
     <Compile Include="DummyDataGenerator.cs" />
+    <Compile Include="IObserverLogoutSuccessful.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="PostMetaData.cs" />
     <Compile Include="PostsStatisticsGenerator.cs" />
