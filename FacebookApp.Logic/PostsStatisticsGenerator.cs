@@ -148,17 +148,16 @@ namespace FacebookApp.Logic
 
         public IEnumerator<PostMetaData> GetEnumerator()
         {
-            IEnumerator<PostMetaData> iterator = PostsMetaDataList.GetEnumerator();
-            while (iterator.MoveNext())
+            foreach (PostMetaData postData in PostsMetaDataList)
             {
-                yield return iterator.Current;
+                yield return postData;
             }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+         {
+             return GetEnumerator();
+         }
         #endregion
     }
 }
